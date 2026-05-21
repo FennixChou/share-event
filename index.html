@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>分享活動邀請</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", sans-serif; background: #1a1a2e; color: #fff; min-height: 100vh; display: flex; justify-content: center; align-items: center; }
+  .container { text-align: center; padding: 2rem; max-width: 360px; }
+  .spinner { width: 40px; height: 40px; border: 4px solid rgba(255,255,255,.2); border-top-color: #d4a853; border-radius: 50%; animation: spin .8s linear infinite; margin: 0 auto 1.5rem; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .msg { font-size: 1.1rem; margin-bottom: .5rem; }
+  .sub { font-size: .85rem; color: rgba(255,255,255,.6); }
+  .error { display: none; }
+  .error .msg { color: #ff6b6b; }
+  .retry-btn { display: inline-block; margin-top: 1rem; background: #d4a853; color: #1a1a2e; padding: .7rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 700; border: none; font-size: 1rem; cursor: pointer; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div id="loading">
+    <div class="spinner"></div>
+    <div class="msg">正在開啟分享選擇器...</div>
+    <div class="sub">請選擇要分享的好友或群組</div>
+  </div>
+  <div id="success" style="display:none">
+    <div class="msg" style="font-size:2rem;margin-bottom:1rem">✅</div>
+    <div class="msg">分享成功！</div>
+    <div class="sub">對方將收到完整的活動邀請卡片</div>
+  </div>
+  <div id="error" class="error">
+    <div class="msg">分享未完成</div>
+    <div class="sub" id="errorMsg">請在 LINE App 中開啟此頁面</div>
+    <button class="retry-btn" onclick="doShare()">重試</button>
+  </div>
+</div>
+
+<script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+<script>
+const LIFF_ID = "2010161754-vRBHmFn0";
+
+const flexMessage = {
+  type: "flex",
+  altText: "設計師的獲客新模式 - 分享會邀請",
+  contents: {
+    type: "bubble",
+    size: "mega",
+    hero: {
+      type: "image",
+      url: "https://i.ibb.co/kgdNHV0Y/S-47710218.jpg",
+      size: "full",
+      aspectRatio: "2:3",
+      aspectMode: "fit",
+      backgroundColor: "#1a1a2e",
+      action: {
+        type: "uri",
+        label: "立即報名",
+        uri: "https://forms.gle/tqCdD4jSitMbebXL9"
+      }
+    },
+    footer: {
+      type: "box",
+      layout: "vertical",
+      spacing: "sm",
+      contents: [
+        {
+          type: "button",
+          action: {
+            type: "uri",
+            label: "👉 立即報名",
+            uri: "https://forms.gle/tqCdD4jSitMbebXL9"
+          },
+          style: "primary",
+          color: "#CC0000",
+          height: "md"
+        },
+        {
+          type: "button",
+          action: {
+            type: "uri",
+            label: "📤 分享給好友",
+            uri: "https://liff.line.me/2010161754-vRBHmFn0"
+          },
+          style: "primary",
+          color: "#F5C400",
+          height: "md",
+          margin: "sm"
+        }
+      ]
+    }
+  }
+};
+
+async function doShare() {
+  document.getElementById("loading").style.display = "block";
+  document.getElementById("error").style.display = "none";
+  document.getElementById("success").style.display = "none";
+
+  try {
+    if (!liff.isInClient() && !liff.isLoggedIn()) {
+      liff.login();
+      return;
+    }
+
+    const result = await liff.shareTargetPicker([flexMessage]);
+
+    if (result) {
+      document.getElementById("loading").style.display = "none";
+      document.getElementById("success").style.display = "block";
+      setTimeout(() => { liff.closeWindow(); }, 2000);
+    } else {
+      document.getElementById("loading").style.display = "none";
+      document.getElementById("error").style.display = "block";
+      document.getElementById("errorMsg").textContent = "已取消分享";
+    }
+  } catch (e) {
+    document.getElementById("loading").style.display = "none";
+    document.getElementById("error").style.display = "block";
+    document.getElementById("errorMsg").textContent = e.message || "發生錯誤，請重試";
+  }
+}
+
+liff.init({ liffId: LIFF_ID }).then(() => {
+  doShare();
+}).catch((e) => {
+  document.getElementById("loading").style.display = "none";
+  document.getElementById("error").style.display = "block";
+  document.getElementById("errorMsg").textContent = "LIFF 初始化失敗: " + e.message;
+});
+</script>
+</body>
+</html>
