@@ -1,0 +1,1371 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>安麗 Atmosphere Sky 逸新空氣清淨機 — 完整深度分析報告</title>
+<style>
+  :root {
+    --primary: #1a5276;
+    --accent: #2980b9;
+    --success: #27ae60;
+    --warning: #f39c12;
+    --danger: #e74c3c;
+    --gray: #7f8c8d;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft JhengHei", sans-serif;
+    line-height: 1.7;
+    color: #2c3e50;
+    background: #f5f6fa;
+    padding: 0;
+  }
+  .container { max-width: 900px; margin: 0 auto; padding: 16px; }
+  header {
+    background: linear-gradient(135deg, #1a5276 0%, #2980b9 100%);
+    color: #fff;
+    padding: 32px 16px;
+    text-align: center;
+  }
+  header h1 { font-size: 1.6em; margin-bottom: 8px; }
+  header .subtitle { font-size: 0.95em; opacity: 0.9; }
+  header .date { font-size: 0.8em; opacity: 0.7; margin-top: 8px; }
+
+  .toc {
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 20px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .toc h2 { font-size: 1.1em; color: var(--primary); margin-bottom: 12px; border-bottom: 2px solid var(--accent); padding-bottom: 6px; border-left: none; padding-left: 0; }
+  .toc ol { padding-left: 20px; }
+  .toc li { margin: 4px 0; }
+  .toc a { color: var(--accent); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+
+  section {
+    background: #fff;
+    border-radius: 8px;
+    padding: 24px;
+    margin: 20px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  h2 {
+    font-size: 1.3em;
+    color: var(--primary);
+    border-left: 4px solid var(--accent);
+    padding-left: 12px;
+    margin-bottom: 16px;
+  }
+  h3 {
+    font-size: 1.05em;
+    color: #34495e;
+    margin: 18px 0 10px 0;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 0.9em;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    padding: 8px 10px;
+    text-align: left;
+  }
+  th {
+    background: var(--primary);
+    color: #fff;
+    font-weight: 600;
+  }
+  tr:nth-child(even) { background: #f8f9fa; }
+  td.num { text-align: center; font-family: "Consolas", monospace; }
+
+  .badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    font-weight: 600;
+    color: #fff;
+  }
+  .badge-green { background: var(--success); }
+  .badge-yellow { background: var(--warning); }
+  .badge-red { background: var(--danger); }
+  .badge-gray { background: var(--gray); }
+  .badge-blue { background: var(--accent); }
+  .badge-verified { background: var(--success); }
+  .badge-partial { background: var(--warning); }
+  .badge-unverified { background: var(--danger); }
+
+  .callout {
+    padding: 14px 16px;
+    border-radius: 6px;
+    margin: 14px 0;
+    font-size: 0.92em;
+  }
+  .callout-info { background: #eaf2f8; border-left: 4px solid var(--accent); }
+  .callout-warn { background: #fef9e7; border-left: 4px solid var(--warning); }
+  .callout-danger { background: #fdedec; border-left: 4px solid var(--danger); }
+  .callout-success { background: #eafaf1; border-left: 4px solid var(--success); }
+
+  .rating-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 16px 0;
+  }
+  .rating-item {
+    flex: 1 1 200px;
+    background: var(--light-bg);
+    border-radius: 8px;
+    padding: 14px;
+    text-align: center;
+    border: 1px solid var(--border);
+  }
+  .rating-item .score {
+    font-size: 1.6em;
+    font-weight: 700;
+    margin: 4px 0;
+  }
+  .rating-item .label { font-size: 0.85em; color: var(--gray); }
+
+  .diagram {
+    background: #1a2332;
+    color: #a8d8ea;
+    padding: 20px;
+    border-radius: 8px;
+    font-family: "Courier New", monospace;
+    font-size: 0.82em;
+    line-height: 1.5;
+    overflow-x: auto;
+    white-space: pre;
+    margin: 14px 0;
+  }
+
+  .verdict {
+    background: linear-gradient(135deg, #1a5276 0%, #2980b9 100%);
+    color: #fff;
+    border-radius: 8px;
+    padding: 28px;
+    margin: 20px 0;
+  }
+  .verdict h2 { color: #fff; border-left-color: #fff; }
+  .verdict .score-big { font-size: 2.4em; font-weight: 700; text-align: center; margin: 10px 0; }
+
+  .source-list { font-size: 0.82em; color: var(--gray); }
+  .source-list a { color: var(--accent); }
+
+  ul, ol { padding-left: 20px; margin: 8px 0; }
+  li { margin: 4px 0; }
+  p { margin: 8px 0; }
+
+  .highlight { background: #ffeaa7; padding: 2px 6px; border-radius: 3px; }
+  .unverified { color: var(--danger); font-weight: 600; }
+
+  .legend {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 8px 0;
+    font-size: 0.85em;
+    padding: 10px 14px;
+    background: #fff;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  .status-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 4px;
+    vertical-align: middle;
+  }
+  .dot-green { background: var(--success); }
+  .dot-yellow { background: var(--warning); }
+  .dot-red { background: var(--danger); }
+
+  .disclaimer {
+    background: #fef3cd;
+    border: 1px solid #ffc107;
+    border-radius: 6px;
+    padding: 12px;
+    margin: 12px 0;
+    font-size: 0.85em;
+  }
+
+  @media (max-width: 600px) {
+    header h1 { font-size: 1.3em; }
+    section { padding: 16px; }
+    table { font-size: 0.82em; }
+    th, td { padding: 6px; }
+    .legend { flex-direction: column; gap: 4px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Amway Atmosphere Sky 逸新空氣清淨機</h1>
+  <div class="subtitle">完整深度分析報告 -- 產品剖析 + 國際第三方檢測數據整合</div>
+  <div class="date">報告日期：2026-05-22 | 資料截止：2026-05 | 版本 v1.0</div>
+</header>
+
+<div class="container">
+
+<!-- Verification Legend -->
+<div class="disclaimer">
+  <strong>資料驗證說明：</strong>本報告整合深度產品分析與國際第三方檢測數據。行銷宣稱與第三方驗證數據已明確區分標示。
+</div>
+<div class="legend">
+  <span><span class="status-dot dot-green"></span> <span class="badge badge-verified">已驗證</span> 可從公開資料庫查證</span>
+  <span><span class="status-dot dot-yellow"></span> <span class="badge badge-partial">部分驗證</span> 認證存在但細節未公開</span>
+  <span><span class="status-dot dot-red"></span> <span class="badge badge-unverified">待驗證</span> 宣稱存在但無法獨立確認</span>
+</div>
+
+<!-- TOC -->
+<nav class="toc">
+  <h2>目錄</h2>
+  <ol>
+    <li><a href="#sec1">產品基本資訊</a></li>
+    <li><a href="#sec2">除甲醛能力分析</a></li>
+    <li><a href="#sec3">除異味能力分析</a></li>
+    <li><a href="#sec4">TVOC 降低能力</a></li>
+    <li><a href="#sec5">PM2.5 / 顆粒物降低能力</a></li>
+    <li><a href="#sec6">CCM 累積淨化量分析</a></li>
+    <li><a href="#sec7">活性碳吸附處理面積</a></li>
+    <li><a href="#sec8">濾網系統深度分析</a></li>
+    <li><a href="#sec9">實際使用者評價與第三方測試</a></li>
+    <li><a href="#sec10">爭議與注意事項</a></li>
+    <li><a href="#sec11">適用場景建議</a></li>
+    <li><a href="#sec12">最終評價</a></li>
+    <li><a href="#sec13">國際認證總覽</a></li>
+    <li><a href="#sources">資料來源</a></li>
+  </ol>
+</nav>
+
+<!-- Section 1 -->
+<section id="sec1">
+  <h2>1. 產品基本資訊</h2>
+
+  <h3>產品識別</h3>
+  <table>
+    <tr><th width="35%">項目</th><th>內容</th></tr>
+    <tr><td>完整產品名稱</td><td>Amway Atmosphere Sky Air Treatment System<br>安麗 逸新空氣清淨機 ATMOSPHERE SKY</td></tr>
+    <tr><td>型號</td><td>120539（台灣版 120539T / 韓國版 120539K）</td></tr>
+    <tr><td>訂貨代碼（台灣）</td><td>2070（含安裝）/ 2068（僅宅配）</td></tr>
+    <tr><td>產品類別</td><td>家用空氣淨化設備（Air Treatment System）</td></tr>
+    <tr><td>上市時間</td><td>約 2017-2018 年（第三代）</td></tr>
+    <tr><td>製造地</td><td>中國 Amway 有限責任公司（EPA 生產者設施編號 006718-CHN-001）<br>韓國市場製造商：Technocom Systems</td></tr>
+    <tr><td>技術類型</td><td>Fan and Filter（風扇 + 濾網，無臭氧產生）</td></tr>
+  </table>
+
+  <h3>歷代產品演進</h3>
+  <table>
+    <tr><th>世代</th><th>型號</th><th>推出年份</th><th>重點變化</th></tr>
+    <tr>
+      <td>第一代</td>
+      <td>10-1076 系列</td>
+      <td>約 2005-2006</td>
+      <td>首款家用機型，奠定三層濾網架構</td>
+    </tr>
+    <tr>
+      <td>第二代 / 2.5 代</td>
+      <td>101076 / 101076T / 10-1078</td>
+      <td>約 2012-2013</td>
+      <td>改良濾網面積（27,500 cm&sup2;）、活性碳 1,315g、0.009&mu;m 過濾、五段風速；美製版活性碳 2.5cm 厚、馬來西亞版 2cm</td>
+    </tr>
+    <tr>
+      <td>第三代（Sky）</td>
+      <td>120539 / 120539T</td>
+      <td>約 2017-2018</td>
+      <td>CADR 提升至 510 m&sup3;/h、0.0024&mu;m 過濾宣稱、WiFi/藍牙連線、觸控面板、智慧偵測、外型圓潤化、活性碳約 2kg（含框架）</td>
+    </tr>
+  </table>
+
+  <h3>實體規格（含 ENERGY STAR 數據）</h3>
+  <table>
+    <tr><th>項目</th><th>數值</th><th>驗證狀態</th></tr>
+    <tr><td>尺寸（高 x 寬 x 深）</td><td>74.7 x 41.1 x 30.1 cm</td><td></td></tr>
+    <tr><td>重量</td><td>12.6 kg</td><td></td></tr>
+    <tr><td>額定功率</td><td>65W（韓國 Amway 數據）</td><td><span class="badge badge-verified">已驗證</span></td></tr>
+    <tr><td>電壓</td><td>100-240V~, 50/60Hz</td><td><span class="badge badge-verified">已驗證</span></td></tr>
+    <tr><td>Energy Factor（能效因數）</td><td>6.1 cfm/Watt</td><td><span class="badge badge-verified">已驗證</span></td></tr>
+    <tr><td>年耗電量</td><td>298 kWh/yr（ENERGY STAR 資料庫）</td><td><span class="badge badge-verified">已驗證</span></td></tr>
+    <tr><td>韓國能效等級</td><td>3 等級（0.74 W/m&sup2;）</td><td><span class="badge badge-verified">已驗證</span></td></tr>
+    <tr><td>進風方式</td><td>正面 + 兩側三面進風</td><td></td></tr>
+    <tr><td>出風方式</td><td>頂部出風</td><td></td></tr>
+    <tr><td>移動方式</td><td>底部配有滾輪</td><td></td></tr>
+    <tr><td>連線功能</td><td>WiFi + 藍牙（搭配 Atmosphere Connect APP）</td><td></td></tr>
+    <tr><td>自動模式</td><td>Air Quality Sensor（空氣品質感測器）</td><td><span class="badge badge-verified">已驗證</span></td></tr>
+  </table>
+
+  <h3>價格資訊（台灣市場）</h3>
+  <table>
+    <tr><th>項目</th><th>價格（NTD）</th></tr>
+    <tr><td>主機零售價</td><td><strong>$41,000</strong></td></tr>
+    <tr><td>會員價</td><td>官方未公開差異化定價（安麗採統一售價制度，會員可透過業績獎金回饋間接降低成本）</td></tr>
+    <tr><td>HEPA 濾網</td><td>$5,200 / 片</td></tr>
+    <tr><td>活性碳濾網</td><td>$3,450 / 片</td></tr>
+    <tr><td>年均耗材成本</td><td>約 $6,050（HEPA 兩年換 + 活性碳一年換）</td></tr>
+  </table>
+
+  <h3>濾網系統架構圖</h3>
+  <div class="diagram">
+  空氣進入方向 ===&gt;
+
+  +-----------------+     +------------------+     +-------------------+
+  |   第一層        |     |   第二層         |     |   第三層          |
+  |   前置濾網      | ==&gt; |   HEPA 濾網      | ==&gt; |   活性碳氣味濾網  |
+  |   Pre-filter    |     |   Particle Filter|     |   Carbon Filter   |
+  +-----------------+     +------------------+     +-------------------+
+  |                 |     |                  |     |                   |
+  | - 可水洗重複用  |     | - 過濾顆粒物     |     | - 椰殼活性碳      |
+  | - 攔截毛髮灰塵  |     | - 官稱 H13 等級  |     | - 專利塗層技術    |
+  | - 塵蟎、大顆粒  |     | - 宣稱 0.0024&mu;m |     | - 分解甲醛/TVOC   |
+  | - 免更換        |     | - 99.99% 效率    |     | - 去除異味/臭氧   |
+  |                 |     | - 3-5年更換      |     | - 4-12個月更換    |
+  +-----------------+     +------------------+     +-------------------+
+
+                                                   ===&gt; 潔淨空氣（頂部出風）
+  </div>
+
+  <h3>國際認證一覽</h3>
+  <table>
+    <tr><th>認證機構</th><th>認證內容</th><th>驗證狀態</th></tr>
+    <tr><td>AHAM（美國家電製造商協會）</td><td>CADR 認證：Smoke 316 / Dust 304 / Pollen 319 cfm</td><td><span class="badge badge-verified">已驗證</span></td></tr>
+    <tr><td>ENERGY STAR（美國 EPA）</td><td>能源效率認證，6.1 cfm/Watt，年耗電 298 kWh</td><td><span class="badge badge-verified">已驗證</span></td></tr>
+    <tr><td>Allergy UK（英國過敏協會）</td><td>Seal of Approval -- 全部 22 個過敏觸發類別、102 種污染物</td><td><span class="badge badge-verified">已驗證</span></td></tr>
+    <tr><td>ECARF（歐洲過敏研究基金會）</td><td>Quality Seal -- 證書編號 8314，2017 首發、2025 展延</td><td><span class="badge badge-verified">已驗證</span></td></tr>
+    <tr><td>KACA（韓國空氣清淨協會）</td><td>SPS-KACA002-132:2018 有害氣體去除認證</td><td><span class="badge badge-partial">部分驗證</span></td></tr>
+    <tr><td>SleepScore Labs（美國）</td><td>睡眠品質改善驗證</td><td><span class="badge badge-verified">已驗證</span></td></tr>
+  </table>
+</section>
+
+<!-- Section 2 -->
+<section id="sec2">
+  <h2>2. 除甲醛能力分析</h2>
+
+  <h3>安麗的甲醛技術宣稱</h3>
+  <p>安麗聲稱 Atmosphere Sky 的活性碳濾網具備<strong>「專利塗層」</strong>技術，不僅「吸附」甲醛，更能「分解」甲醛。根據三份相關美國專利文件，此技術涉及：</p>
+  <ul>
+    <li><strong>US10688468</strong>：Treated activated carbon for removal of airborne organic and inorganic contaminants -- 經處理的活性碳，可不可逆地去除甲醛等氣態污染物</li>
+    <li><strong>US11000824</strong>：同上專利之延續案</li>
+    <li><strong>US10773235</strong>：Modified activated carbon for adsorption of airborne formaldehyde -- 針對甲醛吸附改質的活性碳技術</li>
+  </ul>
+  <p>技術核心：</p>
+  <ul>
+    <li><strong>處理過的活性碳</strong>（Treated Activated Carbon）：以有機胺（organic amine）浸漬椰殼活性碳</li>
+    <li><strong>雙催化劑系統</strong>：碳濾網內含兩種催化劑，宣稱可「破壞」（destroy）甲醛分子，而非單純吸附</li>
+    <li><strong>化學反應機制</strong>：有機胺（如 tris-(hydroxymethyl) aminomethane）與甲醛發生化學反應，將甲醛轉化為無害的副產物</li>
+  </ul>
+
+  <div class="callout callout-info">
+    <strong>吸附 vs 分解：</strong>一般活性碳只能「物理吸附」甲醛，吸滿即失效。安麗宣稱其專利塗層能「化學分解」甲醛，這在理論上可延長濾網壽命。有機胺確實可與甲醛反應，此部分有化學依據。但「分解」的程度與速率、在實際使用條件下的持續性，官方未提供定量數據。
+  </div>
+
+  <h3>韓國 KACA 甲醛去除實測 <span class="badge badge-partial">部分驗證</span></h3>
+  <table>
+    <tr><th>項目</th><th>數據</th><th>來源</th></tr>
+    <tr><td>甲醛去除率</td><td class="num"><strong>91%</strong></td><td>韓國 KACA SPS-KACA002-132:2018</td></tr>
+    <tr><td>測試條件</td><td colspan="2">密閉空間 8.0 &plusmn; 0.2 m&sup3;，21 &plusmn; 1&deg;C，45 &plusmn; 5% RH，運轉 30 分鐘，額定風量</td></tr>
+  </table>
+
+  <div class="callout callout-success">
+    <strong>KACA 數據的意義：</strong>91% 的甲醛去除率是在標準化條件下的測試結果，雖非 CADR 值，但至少提供了一個量化參考。這是目前唯一可查證的甲醛去除量化數據。
+  </div>
+
+  <h3>甲醛 CADR 與其他數據</h3>
+  <table>
+    <tr><th>項目</th><th>數據</th></tr>
+    <tr><td>顆粒物 CADR</td><td>510 m&sup3;/h（AHAM 認證）</td></tr>
+    <tr><td>甲醛 CADR</td><td class="unverified">官方未公布具體數值</td></tr>
+    <tr><td>甲醛去除率宣稱</td><td>列入「300+ 種可過濾污染物」清單中，但無單獨百分比</td></tr>
+    <tr><td>KACA 甲醛去除率</td><td>91%（30 分鐘，8 m&sup3; 密閉空間）</td></tr>
+  </table>
+
+  <div class="callout callout-warn">
+    <strong>重要提醒：</strong>AHAM 認證的 CADR 值（300 cfm / 510 m&sup3;/h）僅針對<strong>顆粒物</strong>（煙霧、粉塵、花粉）。安麗<strong>從未公布甲醛專項 CADR 數值</strong>。在中國市場，依 GB/T 18801-2015 新國標，甲醛 CADR 是必測項目，但台灣市場販售的版本未見此項數據公開。
+  </div>
+
+  <h3>第三方測試情況</h3>
+  <table>
+    <tr><th>測試方</th><th>甲醛測試結果</th><th>驗證狀態</th></tr>
+    <tr><td>韓國 KACA</td><td>甲醛去除率 91%（SPS-KACA002-132:2018）</td><td><span class="badge badge-partial">部分驗證</span></td></tr>
+    <tr><td>電小二（applianceinsight.com.tw）</td><td>實測以 Dylos DC1100 pro 測顆粒物清除速率，<strong>未針對甲醛做獨立測試</strong></td><td>--</td></tr>
+    <tr><td>3C 達人廖阿輝</td><td>業配性質開箱文，引用官方數據，<strong>無獨立甲醛測試</strong></td><td>--</td></tr>
+    <tr><td>Allergy UK</td><td>認證清單含 formaldehyde 為可移除化學刺激物，但<strong>未公布具體去除率數據</strong></td><td><span class="badge badge-verified">已驗證</span>（認證存在）</td></tr>
+    <tr><td>消費者實測</td><td>PTT / Mobile01 討論中<strong>無人提供甲醛實測數據</strong></td><td>--</td></tr>
+  </table>
+
+  <h3>「0.0024 微米」宣稱與甲醛的關係</h3>
+  <p>安麗宣稱「可過濾小至 0.0024 微米（2.4 奈米）的懸浮微粒」。需要釐清：</p>
+  <ul>
+    <li>0.0024&mu;m 的宣稱是針對<strong>顆粒物</strong>，不是氣態甲醛</li>
+    <li>甲醛是<strong>氣態分子</strong>（分子大小約 0.0001&mu;m），不能靠 HEPA 濾網過濾</li>
+    <li>甲醛去除依賴的是<strong>活性碳濾網</strong>的化學吸附/分解能力</li>
+  </ul>
+
+  <h3>碳濾網甲醛去除的飽和時間軸</h3>
+  <p>官方建議碳濾網更換週期為 4-12 個月。根據一般活性碳特性：</p>
+  <ul>
+    <li>高甲醛環境（新裝修）：碳濾網可能 3-4 個月即顯著降低效能</li>
+    <li>一般居家環境：約 6-8 個月仍有一定效果</li>
+    <li>安麗的專利塗層（催化分解）理論上比純吸附持久，但缺乏量化驗證</li>
+  </ul>
+
+  <div class="callout callout-danger">
+    <strong>結論：</strong>安麗在甲醛去除方面有三項美國專利技術支撐（US10688468 / US11000824 / US10773235），技術路線合理。韓國 KACA 測試提供了 91% 去除率的參考數據。但仍缺乏關鍵指標：<strong>無甲醛 CADR、無 CCM-F 公開數據</strong>，消費者難以全面評估其甲醛去除的實際效能與持續性。
+  </div>
+</section>
+
+<!-- Section 3 -->
+<section id="sec3">
+  <h2>3. 除異味能力分析</h2>
+
+  <h3>活性碳濾網規格</h3>
+  <table>
+    <tr><th>項目</th><th>數值 / 說明</th></tr>
+    <tr><td>碳材質</td><td>椰殼顆粒活性碳（Coconut Shell Granular Activated Carbon）</td></tr>
+    <tr><td>碳重量（Sky 第三代）</td><td>約 2 kg（含框架），電小二實測數據</td></tr>
+    <tr><td>碳重量（第二代對比）</td><td>1.315 kg（電小二實測 / 日本數據佐證）</td></tr>
+    <tr><td>專利塗層</td><td>有機胺浸漬處理 + 雙催化劑（US10688468 / US11000824）</td></tr>
+    <tr><td>宣稱吸附總表面積</td><td>安麗台灣官網：126 萬平方公尺<br>廖阿輝開箱文：151 萬平方公尺<br>安麗美國官網：等同 220 個足球場（&asymp; 157 萬 m&sup2;）</td></tr>
+    <tr><td>碳濾網結構</td><td>顆粒狀活性碳填充於框架內</td></tr>
+  </table>
+
+  <div class="callout callout-info">
+    <strong>表面積數字解讀：</strong>椰殼活性碳的比表面積（BET）通常為 800-1,200 m&sup2;/g。以 Sky 約 1.5-1.8 kg 純碳計算：1,500g &times; 1,000 m&sup2;/g = 150 萬 m&sup2;，大致吻合官方宣稱的 126-157 萬 m&sup2; 範圍。此數字在化學上合理。
+  </div>
+
+  <h3>韓國 KACA 異味氣體去除實測 <span class="badge badge-partial">部分驗證</span></h3>
+  <table>
+    <tr><th>有害氣體</th><th>化學式</th><th>去除率</th><th>異味相關性</th></tr>
+    <tr><td>醋酸（Acetic acid）</td><td>CH&sub3;COOH</td><td class="num"><strong>96%</strong></td><td>酸臭味、汗味</td></tr>
+    <tr><td>氨（Ammonia）</td><td>NH&sub3;</td><td class="num"><strong>94%</strong></td><td>尿騷味、寵物異味</td></tr>
+    <tr><td>乙醛（Acetaldehyde）</td><td>CH&sub3;CHO</td><td class="num"><strong>90%</strong></td><td>菸味、腐敗水果味</td></tr>
+    <tr><td colspan="2"><strong>測試條件</strong></td><td colspan="2">密閉 8 m&sup3;，21&deg;C，45% RH，30 分鐘</td></tr>
+  </table>
+
+  <div class="callout callout-success">
+    <strong>數據評價：</strong>KACA 測試的三種異味相關氣體去除率均超過 90%，尤其醋酸 96% 的表現相當優異。結合使用者社群的正面回饋，Atmosphere Sky 在除異味方面有實測數據支撐。
+  </div>
+
+  <h3>安麗專利碳塗層技術</h3>
+  <p>根據相關美國專利文件，安麗的碳濾網塗層涉及：</p>
+  <ul>
+    <li><strong>有機胺浸漬</strong>：增強對甲醛等醛類的化學反應性去除</li>
+    <li><strong>表面酸性基團去活化</strong>：提高胺類在碳表面的穩定性</li>
+    <li><strong>雙催化劑系統</strong>：不僅吸附，還催化分解有害氣體</li>
+  </ul>
+
+  <h3>已測試的異味 / 氣體種類</h3>
+  <table>
+    <tr><th>類別</th><th>具體項目</th></tr>
+    <tr><td>居家異味</td><td>烹飪油煙味、寵物異味、菸味</td></tr>
+    <tr><td>化學氣體</td><td>甲醛、臭氧、二噁英（戴奧辛）、揮發性有機化合物</td></tr>
+    <tr><td>KACA 測試氣體</td><td>醋酸 96%、氨 94%、乙醛 90%、甲苯 99.5%+、甲醛 91%</td></tr>
+    <tr><td>官方宣稱</td><td>可過濾「13 種以上化學物質」</td></tr>
+  </table>
+
+  <h3>使用者對除異味的回饋</h3>
+  <ul>
+    <li>PTT / Mobile01 使用者多數肯定其異味去除效果，特別是菸味和烹飪味</li>
+    <li>過敏使用者反映室內空氣品質有感改善</li>
+    <li>碳濾網的重量（約 2kg）在同級產品中屬於較為充足的用料</li>
+  </ul>
+
+  <h3>碳濾網有效除味壽命</h3>
+  <table>
+    <tr><th>使用環境</th><th>預估有效期</th></tr>
+    <tr><td>低污染（一般住家、無寵物）</td><td>8-12 個月</td></tr>
+    <tr><td>中污染（有寵物、偶爾烹飪）</td><td>6-8 個月</td></tr>
+    <tr><td>高污染（重油煙、抽菸環境）</td><td>4-6 個月</td></tr>
+  </table>
+  <p>官方建議更換週期：4-12 個月（依使用環境調整）。</p>
+</section>
+
+<!-- Section 4 -->
+<section id="sec4">
+  <h2>4. TVOC 降低能力</h2>
+
+  <h3>TVOC 感測器</h3>
+  <table>
+    <tr><th>項目</th><th>說明</th></tr>
+    <tr><td>是否內建 TVOC 感測器</td><td>Atmosphere Sky <strong>內建粒子感測器</strong>（每分鐘偵測 1,200 次，具專利自動校準設計），但<strong>是否同時具備獨立 TVOC/VOC 感測器，官方未明確說明</strong></td></tr>
+    <tr><td>APP 顯示</td><td>Atmosphere Connect APP 顯示空氣品質指標，但未確認是否包含 TVOC 讀數</td></tr>
+  </table>
+
+  <h3>韓國 KACA 甲苯 / 乙醛去除實測 <span class="badge badge-partial">部分驗證</span></h3>
+  <table>
+    <tr><th>VOC 種類</th><th>去除率</th><th>測試標準</th></tr>
+    <tr><td>甲苯（Toluene）</td><td class="num"><strong>99.5% 以上</strong></td><td>SPS-KACA002-132:2018</td></tr>
+    <tr><td>乙醛（Acetaldehyde）</td><td class="num"><strong>90%</strong></td><td>SPS-KACA002-132:2018</td></tr>
+    <tr><td>五項氣體平均</td><td class="num"><strong>94%</strong></td><td>SPS-KACA002-132:2018</td></tr>
+  </table>
+
+  <div class="callout callout-success">
+    <strong>KACA 數據的價值：</strong>甲苯去除率 99.5% 以上、乙醛 90% 的測試結果提供了 VOC 去除的量化參考。但需注意這是在標準化測試條件（密閉 8 m&sup3;，30 分鐘）下的結果，實際開放居家環境的表現會不同。
+  </div>
+
+  <h3>可去除的 VOC 種類</h3>
+  <table>
+    <tr><th>VOC 種類</th><th>是否列入可去除清單</th><th>KACA 實測數據</th></tr>
+    <tr><td>甲醛（Formaldehyde）</td><td><span class="badge badge-green">是</span></td><td>91%</td></tr>
+    <tr><td>苯（Benzene）</td><td><span class="badge badge-green">是</span>（Allergy UK 認證清單）</td><td>未獨立測試</td></tr>
+    <tr><td>甲苯（Toluene）</td><td><span class="badge badge-green">是</span>（KACA 實測）</td><td><strong>99.5%+</strong></td></tr>
+    <tr><td>乙醛（Acetaldehyde）</td><td><span class="badge badge-green">是</span>（KACA 實測）</td><td><strong>90%</strong></td></tr>
+    <tr><td>臭氧（Ozone）</td><td><span class="badge badge-green">是</span></td><td>--</td></tr>
+    <tr><td>氨（Ammonia）</td><td><span class="badge badge-green">是</span></td><td><strong>94%</strong></td></tr>
+    <tr><td>二噁英（Dioxin）</td><td><span class="badge badge-green">是</span></td><td>--</td></tr>
+    <tr><td>二甲苯（Xylene）</td><td><span class="badge badge-gray">未明確列出</span></td><td>未測試</td></tr>
+  </table>
+
+  <h3>VOC 去除能力的限制 <span class="badge badge-unverified">待驗證</span></h3>
+  <div class="callout callout-danger">
+    <strong>關鍵揭露：</strong>Amway 內部文件曾承認<strong>「cannot make a VOC claim」（無法對 VOC 做出全面宣稱）</strong>。原因包括：
+    <ul>
+      <li>活性碳濾網對 VOC 的吸附容量有限</li>
+      <li>在高濕度環境下，活性碳吸附容量更低</li>
+      <li>無法長期大幅降低室內 VOC 濃度（除非使用數百公斤的活性碳）</li>
+    </ul>
+    <strong>這不代表產品無效</strong>，而是表示安麗自己認識到活性碳技術的固有限制，無法對「全面降低 VOC」做出行銷宣稱。個別 VOC 的短期去除效果（如 KACA 測試的甲苯 99.5%+）與長期全面 VOC 控制是不同的概念。
+  </div>
+
+  <div class="callout callout-warn">
+    <strong>TVOC CADR：</strong>安麗<strong>未公布 TVOC CADR 數據</strong>，僅公布顆粒物 CADR（510 m&sup3;/h）。雖然 KACA 測試提供了個別 VOC 的去除率，但這些是在標準化密閉空間中的數據，不等同於 CADR。
+  </div>
+</section>
+
+<!-- Section 5 -->
+<section id="sec5">
+  <h2>5. PM2.5 / 顆粒物降低能力</h2>
+
+  <h3>AHAM 認證 CADR 詳細分項 <span class="badge badge-verified">已驗證</span></h3>
+  <p>以下數據來自美國 EPA ENERGY STAR Product Finder 公開資料庫，為 AHAM 認證數據：</p>
+  <table>
+    <tr><th>污染物類型</th><th>CADR (cfm)</th><th>CADR (m&sup3;/h 換算)</th></tr>
+    <tr><td>Smoke（煙霧）</td><td class="num"><strong>316.0</strong></td><td class="num">~537</td></tr>
+    <tr><td>Dust（灰塵）</td><td class="num"><strong>304.0</strong></td><td class="num">~517</td></tr>
+    <tr><td>Pollen（花粉）</td><td class="num"><strong>319.0</strong></td><td class="num">~542</td></tr>
+    <tr><td>PM2.5</td><td class="num"><strong>310.0</strong></td><td class="num">~527</td></tr>
+  </table>
+  <p><strong>認證適用面積：</strong>490 sq.ft.（約 45.5 m&sup2; / 13.8 坪）</p>
+  <p><strong>測試標準：</strong>ANSI/AHAM AC-1-2015，測試於 Speed 5（最高速）</p>
+
+  <div class="callout callout-info">
+    <strong>數據差異說明：</strong>安麗官方經常概括宣稱「CADR 300 cfm 以上」或「510 m&sup3;/h」。實際 AHAM 認證的三項 CADR 值分別為 316（煙霧）、304（灰塵）、319（花粉）cfm，均超過 300 cfm。韓國 Danawa 列出 CADR 510 m&sup3;/h，可能是使用不同測試標準或取不同數值換算所致。
+  </div>
+
+  <h3>HEPA 濾網等級分析</h3>
+  <table>
+    <tr><th>宣稱項目</th><th>分析</th></tr>
+    <tr>
+      <td>安麗宣稱</td>
+      <td>「高效能 HEPA 濾網」，可過濾小至 0.0024&mu;m 的微粒，效率 99.99%</td>
+    </tr>
+    <tr>
+      <td>HEPA 等級</td>
+      <td>副廠濾網（RENZA、綠綠好日）標示為 <strong>H13 HEPA</strong>；安麗官方<strong>未在產品頁面明確標示 H13 或 H14 等級</strong></td>
+    </tr>
+    <tr>
+      <td>韓國數據</td>
+      <td>Single Pass Efficiency 99.99%，測試標準 EN 1822（氯化鉀粒子），Speed 5 風速</td>
+    </tr>
+    <tr>
+      <td>H13 標準定義</td>
+      <td>EN 1822 標準：在 MPPS（最難捕捉粒徑，通常 0.1-0.3&mu;m）下，過濾效率 &ge; 99.95%</td>
+    </tr>
+    <tr>
+      <td>H14 標準定義</td>
+      <td>EN 1822 標準：在 MPPS 下，過濾效率 &ge; 99.995%</td>
+    </tr>
+  </table>
+
+  <h3>「99.99% at 0.0024&mu;m」宣稱的批判性分析 <span class="badge badge-unverified">待驗證</span></h3>
+  <div class="callout callout-danger">
+    <strong>此宣稱需要嚴肅審視：</strong>
+    <ol>
+      <li><strong>標準 HEPA 測試在 0.3&mu;m：</strong>HEPA 標準（EN 1822）在最難捕捉粒徑（MPPS，通常 0.1-0.3&mu;m）測試。0.0024&mu;m 遠小於 MPPS，理論上更容易被捕捉（因布朗運動/擴散效應），所以在此粒徑達 99.99% 並不代表在 MPPS 也能達到同等效率。</li>
+      <li><strong>測試條件不明：</strong>安麗宣稱 "Single Pass Efficiency of 99.99% against the most penetrating particle size and all particles &ge; 0.0024&mu;m"。但未公開測試的氣溶膠種類、流速、測試標準、測試機構。</li>
+      <li><strong>2.4 奈米的測量挑戰：</strong>2.4 nm 屬於分子/奈米粒子範圍，此尺度的粒子行為接近氣態分子，常規粒子計數器難以準確測量。可能使用了特殊的縮合粒子計數器（CPC）或其他方法。</li>
+      <li><strong>數字演變：</strong>早期 Amway 文件（2018 年新聞稿）使用的數字是 0.007 &mu;m，後來更新為 0.0024 &mu;m，數字變更的原因未說明。</li>
+      <li><strong>實際意義有限：</strong>室內空氣中 &lt; 10 nm 的粒子數量極少。PM2.5 的定義是 &le; 2.5&mu;m，比 0.0024&mu;m 大了 1,000 倍。對一般消費者而言，0.3&mu;m 的 MPPS 效率才是最關鍵的指標。</li>
+      <li><strong>缺乏獨立驗證：</strong>此極小粒徑的去除率數據來自 Amway 委託測試，<strong>未見獨立第三方驗證報告</strong>。</li>
+    </ol>
+  </div>
+
+  <h3>電小二實測：顆粒物清除速率</h3>
+  <table>
+    <tr><th>測試項目</th><th>結果</th></tr>
+    <tr><td>測試儀器</td><td>Dylos DC1100 pro</td></tr>
+    <tr><td>起始讀數</td><td>~50,000</td></tr>
+    <tr><td>清除速率（最高風速）</td><td>約 26,000 / 10 分鐘</td></tr>
+    <tr><td>降至 4,000 所需時間</td><td>約 18 分鐘</td></tr>
+    <tr><td>評價</td><td>清除速率表現優異，與 CADR 510 m&sup3;/h 的宣稱一致</td></tr>
+  </table>
+
+  <h3>各風速估算 CADR</h3>
+  <table>
+    <tr><th>風速</th><th>風速 (m/s)</th><th>佔最大 %</th><th>估算 CADR</th></tr>
+    <tr><td>5（最高）</td><td>5.2</td><td>100%</td><td>~510 m&sup3;/h</td></tr>
+    <tr><td>4</td><td>4.1</td><td>79%</td><td>~402 m&sup3;/h</td></tr>
+    <tr><td>3</td><td>3.1</td><td>60%</td><td>~304 m&sup3;/h</td></tr>
+    <tr><td>2</td><td>2.2</td><td>42%</td><td>~216 m&sup3;/h</td></tr>
+    <tr><td>1（最低）</td><td>1.4</td><td>27%</td><td>~137 m&sup3;/h</td></tr>
+  </table>
+
+  <div class="callout callout-warn">
+    <strong>低速效能警示：</strong>Consumer Reports 明確指出在低風速下 Atmosphere 的表現「not very effective」（不太有效）。所有 AHAM CADR 認證數據均在最高速（Speed 5）下測試，日常使用的中低風速效能會顯著下降。
+  </div>
+
+  <div class="callout callout-success">
+    <strong>結論：</strong>顆粒物 CADR 有 AHAM 認證的詳細分項數據（Smoke 316 / Dust 304 / Pollen 319 / PM2.5 310 cfm），電小二實測結果也支持此數據。在顆粒物（PM2.5）過濾能力上，Atmosphere Sky 表現確實優異。但「0.0024&mu;m / 99.99%」的宣稱缺乏獨立驗證。
+  </div>
+</section>
+
+<!-- Section 6 -->
+<section id="sec6">
+  <h2>6. CCM 累積淨化量分析</h2>
+
+  <h3>中國新國標 GB/T 18801-2015 說明</h3>
+  <p>CCM（Cumulative Clean Mass，累積淨化量）是中國空氣清淨機新國標（GB/T 18801-2015）的核心指標之一，衡量濾網在其壽命期間能累積淨化多少污染物質量。</p>
+  <table>
+    <tr><th>等級</th><th>CCM-P（顆粒物）</th><th>CCM-F（甲醛）</th></tr>
+    <tr><td>P1 / F1</td><td>3,000-5,000 mg</td><td>300-600 mg</td></tr>
+    <tr><td>P2 / F2</td><td>5,000-8,000 mg</td><td>600-1,000 mg</td></tr>
+    <tr><td>P3 / F3</td><td>8,000-12,000 mg</td><td>1,000-1,500 mg</td></tr>
+    <tr><td><strong>P4 / F4（最高）</strong></td><td><strong>&ge; 12,000 mg</strong></td><td><strong>&ge; 1,500 mg</strong></td></tr>
+  </table>
+
+  <h3>安麗 Atmosphere Sky 的 CCM 狀態</h3>
+  <table>
+    <tr><th>項目</th><th>狀態</th></tr>
+    <tr><td>CCM-P（顆粒物）</td><td class="unverified">安麗官方台灣 / 全球網站<strong>未公布</strong>CCM 數據</td></tr>
+    <tr><td>CCM-F（甲醛）</td><td class="unverified">安麗官方台灣 / 全球網站<strong>未公布</strong>CCM 數據</td></tr>
+    <tr><td>中國市場版本</td><td>部分來源宣稱達 F4/P4 等級，但<strong>無法從安麗官方網站驗證</strong></td></tr>
+    <tr><td>第三方 CCM 測試</td><td><strong>未搜尋到</strong>任何獨立第三方的 CCM 測試報告</td></tr>
+  </table>
+
+  <h3>基於濾網規格的 CCM 推估</h3>
+  <div class="callout callout-info">
+    <strong>CCM-P 推估：</strong>Sky 的 HEPA 濾網面積大、更換週期長（官方建議 3-5 年），且電小二實測第二代濾網面積達 27,500 cm&sup2;。大面積 HEPA 濾網通常對應高 CCM-P。以同級產品比較，<strong>推估 CCM-P 有機會達到 P4 等級</strong>，但無實測數據佐證。
+  </div>
+  <div class="callout callout-info">
+    <strong>CCM-F 推估：</strong>Sky 的活性碳約 2 kg（含框架），碳量在家用機中屬較充足。加上專利塗層的催化分解能力（理論上可延長有效壽命），<strong>推估 CCM-F 有機會達到 F4 等級</strong>，但同樣缺乏實測驗證。
+  </div>
+
+  <div class="callout callout-warn">
+    <strong>重要注意：</strong>上述為推估而非實測結果。安麗作為美國品牌，主要以 AHAM/CADR 標準行銷，不採用中國新國標體系。台灣市場亦不強制要求 CCM 標示。消費者如重視 CCM 指標，建議考慮主動公布 CCM 數據的品牌。
+  </div>
+</section>
+
+<!-- Section 7 -->
+<section id="sec7">
+  <h2>7. 活性碳吸附處理面積</h2>
+
+  <h3>碳濾網詳細規格</h3>
+  <table>
+    <tr><th>項目</th><th>數值 / 說明</th></tr>
+    <tr><td>碳材質</td><td>椰殼顆粒活性碳（Coconut Shell Granular AC）</td></tr>
+    <tr><td>碳濾網總重（含框架）</td><td>約 2 kg（電小二實測）</td></tr>
+    <tr><td>估算純碳重量</td><td>約 1.5-1.8 kg（扣除框架與外殼重量）</td></tr>
+    <tr><td>碳結構</td><td>顆粒狀填充</td></tr>
+    <tr><td>專利塗層</td><td>有機胺浸漬 + 雙催化劑（US10688468 / US11000824 / US10773235）</td></tr>
+    <tr><td>宣稱總吸附表面積</td><td>126 萬 - 157 萬 m&sup2;（安麗各地區官網數字略有不同）</td></tr>
+    <tr><td>足球場換算</td><td>約 220 個美式足球場（安麗美國官網）</td></tr>
+  </table>
+
+  <h3>專利技術細節</h3>
+  <table>
+    <tr><th>專利號</th><th>名稱</th><th>技術內容</th></tr>
+    <tr>
+      <td>US 10,688,468</td>
+      <td>Treated activated carbon for removal of airborne organic and inorganic contaminants</td>
+      <td>經處理的活性碳濾材，可不可逆地去除環境中的甲醛等有機及無機氣態污染物</td>
+    </tr>
+    <tr>
+      <td>US 11,000,824</td>
+      <td>同上之延續案</td>
+      <td>延續發明的進一步改良</td>
+    </tr>
+    <tr>
+      <td>US 10,773,235</td>
+      <td>Modified activated carbon for adsorption of airborne formaldehyde</td>
+      <td>針對甲醛吸附改質的活性碳技術</td>
+    </tr>
+  </table>
+
+  <h3>表面積計算驗證</h3>
+  <table>
+    <tr><th>參數</th><th>計算</th></tr>
+    <tr><td>椰殼活性碳 BET 比表面積</td><td>一般 800-1,200 m&sup2;/g</td></tr>
+    <tr><td>以 1,500g 純碳 x 1,000 m&sup2;/g</td><td>= 150 萬 m&sup2;</td></tr>
+    <tr><td>以 1,800g 純碳 x 800 m&sup2;/g</td><td>= 144 萬 m&sup2;</td></tr>
+    <tr><td>官方宣稱</td><td>126-157 萬 m&sup2;</td></tr>
+    <tr><td>驗證結論</td><td><span class="badge badge-green">合理範圍</span></td></tr>
+  </table>
+
+  <h3>與業界標竿比較</h3>
+  <table>
+    <tr><th>產品</th><th>碳量</th><th>碳類型</th><th>估算表面積</th></tr>
+    <tr><td><strong>Amway Atmosphere Sky</strong></td><td><strong>~1.5-1.8 kg</strong></td><td><strong>椰殼顆粒 + 專利塗層</strong></td><td><strong>~126-157 萬 m&sup2;</strong></td></tr>
+    <tr><td>IQAir HealthPro Plus（V5-Cell）</td><td>2.5 kg</td><td>顆粒活性碳 + 氧化鋁</td><td>~200-250 萬 m&sup2;</td></tr>
+    <tr><td>Blueair 480i</td><td>~0.5 kg（碳布）</td><td>椰殼碳纖維布</td><td>~40-50 萬 m&sup2;</td></tr>
+    <tr><td>一般萬元級清淨機</td><td>~0.2-0.5 kg</td><td>碳布/薄碳層</td><td>~16-50 萬 m&sup2;</td></tr>
+  </table>
+
+  <div class="callout callout-success">
+    <strong>結論：</strong>Atmosphere Sky 的活性碳用量（~1.5-1.8 kg 純碳）在家用空氣清淨機中屬於<strong>中高水準</strong>，僅次於 IQAir V5-Cell 等頂級產品。加上三項美國專利的塗層技術，其氣態污染物去除能力的硬體基礎扎實。不過 IQAir V5-Cell 的 2.5 kg 碳量仍有明顯優勢。
+  </div>
+</section>
+
+<!-- Section 8 -->
+<section id="sec8">
+  <h2>8. 濾網系統深度分析</h2>
+
+  <h3>三層濾網完整規格</h3>
+  <table>
+    <tr><th>層</th><th>前置濾網</th><th>HEPA 濾網</th><th>活性碳濾網</th></tr>
+    <tr><td>功能</td><td>攔截大顆粒（毛髮、灰塵、塵蟎）</td><td>過濾微細顆粒物</td><td>吸附/分解氣態污染物與異味</td></tr>
+    <tr><td>材質</td><td>可水洗濾材</td><td>HEPA 濾材（推測 H13 等級）</td><td>椰殼顆粒活性碳 + 專利塗層</td></tr>
+    <tr><td>更換週期</td><td>免更換（定期水洗）</td><td>3-5 年（官方建議）<br>電小二建議約 2 年</td><td>4-12 個月</td></tr>
+    <tr><td>更換頻率（實務）</td><td>每 1-2 個月水洗一次</td><td>約 2 年</td><td>約 1 年</td></tr>
+    <tr><td>原廠價格</td><td>免費</td><td>NT$5,200</td><td>NT$3,450</td></tr>
+    <tr><td>原廠訂貨代碼</td><td>N/A</td><td>2075</td><td>2076</td></tr>
+    <tr><td>型號（替換用）</td><td>N/A</td><td>120540</td><td>120541</td></tr>
+    <tr><td>RFID 晶片</td><td>無</td><td>有</td><td>有</td></tr>
+  </table>
+
+  <h3>年均耗材成本計算</h3>
+  <table>
+    <tr><th>方案</th><th>HEPA（年化）</th><th>碳濾網（年）</th><th>年均總計</th></tr>
+    <tr>
+      <td><strong>原廠濾網</strong></td>
+      <td>$5,200 &div; 2 = $2,600</td>
+      <td>$3,450</td>
+      <td><strong>$6,050 / 年</strong></td>
+    </tr>
+    <tr>
+      <td><strong>副廠濾網（RENZA 套組）</strong></td>
+      <td colspan="2">HEPA + 活性碳套組 約 $3,580</td>
+      <td><strong>~$3,580 / 年</strong>（若每年整組換）</td>
+    </tr>
+  </table>
+
+  <h3>副廠濾網選擇</h3>
+  <table>
+    <tr><th>品牌</th><th>規格</th><th>參考價格</th><th>備註</th></tr>
+    <tr><td>RENZA 瑞薩</td><td>H13 HEPA + 椰殼活性碳套組</td><td>~$3,580</td><td>含 RFID 晶片，機器可辨識</td></tr>
+    <tr><td>綠綠好日</td><td>抗敏版 HEPA + 蜂巢活性碳</td><td>~$3,000-3,500</td><td>含 RFID</td></tr>
+    <tr><td>蟎著媽</td><td>HEPA + 活性碳套組</td><td>~$3,000-3,500</td><td>含 RFID</td></tr>
+    <tr><td>濾森活</td><td>HEPA + 活性碳套組</td><td>~$3,000-3,500</td><td>含 RFID</td></tr>
+  </table>
+
+  <div class="callout callout-warn">
+    <strong>RFID 鎖定機制：</strong>Atmosphere Sky 的 HEPA 和碳濾網均內建 RFID 晶片，機器會讀取晶片以追蹤濾網壽命。早期副廠濾網因缺乏 RFID 會導致機器警示或功能限制。目前主流副廠濾網已跟進內建 RFID 晶片，基本解決此問題。但使用副廠濾網可能影響原廠保固。
+  </div>
+
+  <h3>五年使用總成本估算</h3>
+  <table>
+    <tr><th>項目</th><th>原廠方案</th><th>副廠方案</th></tr>
+    <tr><td>主機</td><td>$41,000</td><td>$41,000</td></tr>
+    <tr><td>濾網（5年）</td><td>$6,050 &times; 5 = $30,250</td><td>$3,580 &times; 5 = $17,900</td></tr>
+    <tr><td>電費（5年）</td><td>$484 &times; 5 = $2,420</td><td>$2,420</td></tr>
+    <tr><td><strong>五年總計</strong></td><td><strong>$73,670</strong></td><td><strong>$61,320</strong></td></tr>
+    <tr><td><strong>年均擁有成本</strong></td><td><strong>$14,734 / 年</strong></td><td><strong>$12,264 / 年</strong></td></tr>
+  </table>
+</section>
+
+<!-- Section 9 -->
+<section id="sec9">
+  <h2>9. 實際使用者評價與第三方測試</h2>
+
+  <h3>第三方專業測試</h3>
+  <table>
+    <tr><th>測試者</th><th>關鍵發現</th><th>評價</th><th>驗證狀態</th></tr>
+    <tr>
+      <td><strong>電小二</strong><br>(applianceinsight.com.tw)</td>
+      <td>
+        <ul>
+          <li>CADR 510 m&sup3;/h 經實測驗證</li>
+          <li>顆粒物清除速率優異（18 分鐘從 50,000 降至 4,000）</li>
+          <li>低速音量極低（第 1 速無法偵測）</li>
+          <li>最高速 65 dB，偏高</li>
+          <li>碳濾網用料扎實（約 2 kg）</li>
+          <li>年均耗材 ~$6,050</li>
+        </ul>
+      </td>
+      <td><span class="badge badge-green">正面</span><br>「扎實的濾網、有效的風機」但價格是重點</td>
+      <td><span class="badge badge-verified">已驗證</span></td>
+    </tr>
+    <tr>
+      <td><strong>Consumer Reports</strong><br>(美國消費者報告)</td>
+      <td>
+        <ul>
+          <li>高速除塵、除煙、除花粉表現「令人印象深刻」(impressive)</li>
+          <li>低速效果「不太有效」(not very effective)</li>
+          <li>測試型號：101076（前代，非 Sky 120539）</li>
+          <li>功能：濾網指示器、可程式定時器、遙控器、5 段風速</li>
+        </ul>
+      </td>
+      <td><span class="badge badge-yellow">中性偏正</span></td>
+      <td><span class="badge badge-verified">已驗證</span></td>
+    </tr>
+  </table>
+
+  <div class="callout callout-warn">
+    <strong>Consumer Reports 注意：</strong>測試型號為 101076（Atmosphere 前代），非最新的 Atmosphere Sky 120539。兩者為同系列但規格有所不同。完整數值評分需要 Consumer Reports 付費會員才能查看。此外，Wirecutter 與 RTINGS 兩大主流評測網站均未收錄 Atmosphere Sky。
+  </div>
+
+  <h3>SleepScore Labs 睡眠品質研究 <span class="badge badge-verified">已驗證</span></h3>
+
+  <h4>研究設計</h4>
+  <table>
+    <tr><th>項目</th><th>資料</th></tr>
+    <tr><td>研究類型</td><td>8 週前後測場域研究（pre-post field study）</td></tr>
+    <tr><td>受試者</td><td>31 位健康美國成人（68% 女性，平均年齡 50 歲）</td></tr>
+    <tr><td>總收集夜數</td><td>1,284 晚</td></tr>
+    <tr><td>基線期</td><td>前 4 週（不使用清淨機，正常追蹤睡眠）</td></tr>
+    <tr><td>介入期</td><td>後 4 週（每晚睡前 20 分鐘開啟清淨機）</td></tr>
+    <tr><td>客觀測量工具</td><td>SleepScore Max（驗證過的非接觸式生物動態裝置）</td></tr>
+    <tr><td>統計分析</td><td>Multilevel regression（多層次迴歸分析）</td></tr>
+  </table>
+
+  <h4>客觀睡眠指標變化</h4>
+  <table>
+    <tr><th>指標</th><th>變化</th><th>百分比</th><th>統計顯著性</th></tr>
+    <tr><td>深層睡眠</td><td class="num">+6 分鐘/晚</td><td class="num">+7%</td><td class="num"><strong>p &lt; .001</strong></td></tr>
+    <tr><td>深層睡眠比例</td><td class="num">增加</td><td class="num">+6%</td><td class="num">p = .009</td></tr>
+    <tr><td>睡眠時長</td><td class="num">+6 分鐘/晚</td><td class="num">+2%</td><td class="num">p = .043</td></tr>
+    <tr><td>睡眠效率</td><td class="num">增加</td><td class="num">+1%</td><td class="num">p = .022</td></tr>
+    <tr><td>SleepScore</td><td class="num">增加</td><td class="num">+1%</td><td class="num">p = .048</td></tr>
+    <tr><td>BodyScore</td><td class="num">增加</td><td class="num">+3%</td><td class="num">p &lt; .001</td></tr>
+  </table>
+
+  <h4>主觀感受指標</h4>
+  <table>
+    <tr><th>指標</th><th>改善幅度</th><th>統計顯著性</th></tr>
+    <tr><td>主觀睡眠品質</td><td class="num">+11%</td><td class="num">p &lt; .001</td></tr>
+    <tr><td>早晨清醒感</td><td class="num">+11%</td><td class="num">p &lt; .001</td></tr>
+    <tr><td>覺得睡眠改善的受試者比例</td><td class="num">81%</td><td>--</td></tr>
+    <tr><td>覺得整晚更舒適的比例</td><td class="num">81%</td><td>--</td></tr>
+  </table>
+
+  <div class="callout callout-warn">
+    <strong>研究限制：</strong>
+    <ul>
+      <li><strong>資助方：</strong>研究由 Amway 資助（Supported by Amway）</li>
+      <li><strong>設計限制：</strong>前後測設計（非隨機對照試驗），無安慰劑組或假機組</li>
+      <li><strong>樣本量：</strong>31 人，為小型研究</li>
+      <li><strong>發表狀態：</strong>以會議摘要形式刊登於 SLEEP 期刊增刊（Abstract #1392），非完整同儕審查論文</li>
+      <li>改善幅度雖具統計顯著性，但實際改善量較小（深層睡眠僅增加 6 分鐘）</li>
+    </ul>
+  </div>
+
+  <h3>噪音實測 vs 官方數據</h3>
+  <table>
+    <tr><th>風速</th><th>官方宣稱</th><th>電小二實測</th><th>差異</th></tr>
+    <tr><td>1（最低）</td><td>26 dB</td><td>無法偵測（低於環境噪音）</td><td>--</td></tr>
+    <tr><td>2</td><td>--</td><td>51.5 dB</td><td>--</td></tr>
+    <tr><td>3</td><td>--</td><td>57.5 dB</td><td>--</td></tr>
+    <tr><td>4</td><td>--</td><td>61.5 dB</td><td>--</td></tr>
+    <tr><td>5（最高）</td><td>52-53 dB</td><td><strong>65 dB</strong></td><td class="unverified"><strong>差距 ~12 dB</strong></td></tr>
+    <tr><td>夜間模式</td><td>25.2 dB(A)</td><td>--</td><td>韓國 Amway 本社規格試驗</td></tr>
+  </table>
+
+  <div class="callout callout-danger">
+    <strong>噪音差異分析：</strong>安麗官方宣稱最高噪音為 52-53 dB，但電小二實測為 65 dB，差距顯著。可能原因：
+    <ol>
+      <li>官方測試可能在消音室、固定距離（如 1.5m）測量</li>
+      <li>電小二測試距離可能較近或在一般室內環境</li>
+      <li>測量方法（A 加權 vs 未加權）可能不同</li>
+    </ol>
+    65 dB 約等於正常交談聲量，長時間使用最高速會有明顯感受。但日常使用多在 1-3 速，噪音問題不大。
+  </div>
+
+  <h3>耗電實測</h3>
+  <table>
+    <tr><th>風速</th><th>功耗</th></tr>
+    <tr><td>1</td><td>5.5 W</td></tr>
+    <tr><td>2</td><td>10 W</td></tr>
+    <tr><td>3</td><td>15.5 W</td></tr>
+    <tr><td>4</td><td>25.5 W</td></tr>
+    <tr><td>5</td><td>47 W</td></tr>
+    <tr><td>年度電費估算</td><td>~$484（24 小時運轉，混合風速）</td></tr>
+    <tr><td>ENERGY STAR 年耗電</td><td>298 kWh/yr</td></tr>
+  </table>
+
+  <h3>使用者社群評價彙整</h3>
+
+  <h4>PTT（E-appliance 板）</h4>
+  <table>
+    <tr><th>觀點</th><th>頻率</th><th>典型評論</th></tr>
+    <tr><td>價格太高</td><td><span class="badge badge-red">高頻</span></td><td>「一台快四萬，濾網換一次七千多」</td></tr>
+    <tr><td>品質確實不錯</td><td><span class="badge badge-green">中頻</span></td><td>「濾淨效能還不錯，有過敏認證」</td></tr>
+    <tr><td>CP 值低</td><td><span class="badge badge-red">高頻</span></td><td>「同級 CADR 有更便宜的選擇」</td></tr>
+    <tr><td>直銷觀感不佳</td><td><span class="badge badge-yellow">中頻</span></td><td>「機器不錯但不想碰直銷」</td></tr>
+    <tr><td>建議買 IQAir</td><td><span class="badge badge-yellow">中頻</span></td><td>「預算夠直接買 IQAir」</td></tr>
+  </table>
+
+  <h4>Mobile01</h4>
+  <ul>
+    <li>開箱文多為正面體驗分享（部分疑似經銷商發文）</li>
+    <li>討論串中常見「機器好但貴」的共識</li>
+    <li>有使用者反映過敏症狀確有改善</li>
+  </ul>
+
+  <h4>Facebook / Threads</h4>
+  <ul>
+    <li>有使用者建議改買 Dyson BP04，認為功能類似但更便宜</li>
+    <li>過敏族群的正面回饋較多</li>
+    <li>美甲店業者認為不是最理想的商用選擇（活性碳量不足以應付高濃度化學氣體）</li>
+  </ul>
+</section>
+
+<!-- Section 10 -->
+<section id="sec10">
+  <h2>10. 爭議與注意事項</h2>
+
+  <h3>直銷定價模式分析</h3>
+  <table>
+    <tr><th>比較項目</th><th>Amway Sky</th><th>同級 CADR 產品</th></tr>
+    <tr><td>CADR</td><td>510 m&sup3;/h</td><td>500-550 m&sup3;/h</td></tr>
+    <tr><td>主機價格</td><td>$41,000</td><td>$10,000-$20,000（一般品牌）<br>$30,000-$50,000（IQAir 等級）</td></tr>
+    <tr><td>年均濾網</td><td>$6,050（原廠）</td><td>$2,000-$4,000</td></tr>
+    <tr><td>估計溢價</td><td colspan="2">相較一般同 CADR 產品，主機溢價約 100-150%；但與 IQAir 等頂級品牌相比，價位相當</td></tr>
+  </table>
+
+  <div class="callout callout-warn">
+    <strong>直銷定價的本質：</strong>安麗的定價包含了多層經銷商利潤、服務費用（到府安裝、90 天試用、5 年保固）。若純以硬體規格 / CADR 值計算，確實較一般通路品牌昂貴。但安麗的售後服務體系（到府安裝、定期追蹤、90 天全額退款保證）是多數一般品牌不提供的。消費者需自行判斷這些附加服務是否值得溢價。
+  </div>
+
+  <h3>行銷宣稱檢視</h3>
+  <table>
+    <tr><th>宣稱</th><th>真實性評估</th><th>評級</th></tr>
+    <tr>
+      <td>「可過濾 0.0024&mu;m 微粒」</td>
+      <td>技術上可能為真（布朗運動效應），但<strong>對消費者意義有限</strong>。MPPS（0.1-0.3&mu;m）的效率才是關鍵。此宣稱容易造成「比其他 HEPA 更強」的誤解。早期數字為 0.007&mu;m，後更改為 0.0024&mu;m，原因未說明。</td>
+      <td><span class="badge badge-yellow">誤導性</span></td>
+    </tr>
+    <tr>
+      <td>「99.99% 濾淨效能」</td>
+      <td>在特定測試條件下可能為真，但<strong>未公開測試標準和條件</strong>。H13 HEPA 在 MPPS 的標準是 99.95%，99.99% 需要 H14 等級。</td>
+      <td><span class="badge badge-yellow">需更多佐證</span></td>
+    </tr>
+    <tr>
+      <td>「可過濾 300+ 種污染物」</td>
+      <td>Allergy UK 認證確認 102 種，其他來自內部測試。數字龐大，但<strong>未逐一公開測試報告</strong>。</td>
+      <td><span class="badge badge-yellow">部分可驗證</span></td>
+    </tr>
+    <tr>
+      <td>「CADR 510 m&sup3;/h」</td>
+      <td>有 AHAM 認證（Smoke 316 / Dust 304 / Pollen 319 cfm），電小二實測支持。</td>
+      <td><span class="badge badge-green">可信</span></td>
+    </tr>
+    <tr>
+      <td>「分解甲醛」（非僅吸附）</td>
+      <td>有三項美國專利技術支撐（US10688468 / US11000824 / US10773235），化學機制合理。KACA 測試甲醛去除率 91%。但<strong>缺乏長期效能的量化數據</strong>。</td>
+      <td><span class="badge badge-blue">有依據但缺量化</span></td>
+    </tr>
+    <tr>
+      <td>「噪音 26-53 dB」</td>
+      <td>低速 26 dB 可信，但電小二實測最高速為 65 dB，遠超官方 52-53 dB。</td>
+      <td><span class="badge badge-red">數據不一致</span></td>
+    </tr>
+  </table>
+
+  <h3>病毒/細菌去除聲明的限制 <span class="badge badge-unverified">待驗證</span></h3>
+  <div class="callout callout-danger">
+    <strong>Amway 官方已揭露：</strong>「Amway did not actually use any viruses to conduct product performance testing.」（Amway 並未實際使用任何病毒進行產品性能測試）
+    <p>102 種污染物的去除聲明是基於 <strong>proxy testing（代理測試）</strong>——使用各種尺寸的替代粒子進行測試後，以推算方式（extrapolation）聲明可去除特定病原體。這是業界標準做法，但並非直接以病毒/細菌進行的實測。消費者容易將 Allergy UK 認證的 102 種污染物清單（含冠狀病毒、流感病毒等）誤解為直接實測結果。</p>
+  </div>
+
+  <h3>VOC 去除能力限制揭露 <span class="badge badge-unverified">待驗證</span></h3>
+  <div class="callout callout-danger">
+    <strong>Amway 內部文件揭露：</strong>「cannot make a VOC claim」（無法對 VOC 做出全面宣稱）
+    <p>原因：活性碳濾網對 VOC 的吸附容量有限，在高濕度環境下容量更低，無法長期大幅降低室內 VOC 濃度（除非使用數百公斤的活性碳）。韓國 KACA 測試同一頁面另有一組數據顯示較低的平均去除率（86%：醋酸 99%、氨 68%、乙醛 73%、甲苯 99.5%+、甲醛 90%），不同測試條件下結果差異顯著。</p>
+  </div>
+
+  <h3>濾網更換成本鎖定</h3>
+  <ul>
+    <li>原廠濾網年均 $6,050，五年耗材成本 $30,250（幾乎等於主機價格）</li>
+    <li>RFID 晶片機制曾限制消費者只能購買原廠濾網</li>
+    <li>目前副廠濾網（RENZA、綠綠好日等）已提供含 RFID 的替代方案，可節省約 40%</li>
+    <li>使用副廠濾網<strong>可能影響原廠保固</strong>，需自行評估風險</li>
+  </ul>
+
+  <h3>已知品質問題</h3>
+  <ul>
+    <li>搜尋範圍內<strong>未發現重大品質問題或召回紀錄</strong></li>
+    <li>Atmosphere Connect APP 評價兩極：部分使用者反映新版 APP 比舊版差</li>
+    <li>WiFi 連線偶有不穩定的回饋</li>
+  </ul>
+</section>
+
+<!-- Section 11 -->
+<section id="sec11">
+  <h2>11. 適用場景建議</h2>
+
+  <h3>最適合 Atmosphere Sky 的使用場景</h3>
+  <table>
+    <tr><th>場景</th><th>適合度</th><th>原因</th></tr>
+    <tr>
+      <td>過敏家庭（塵蟎、花粉、寵物皮屑）</td>
+      <td><span class="badge badge-green">非常適合</span></td>
+      <td>Allergy UK 全 22 類認證、H13 HEPA、高 CADR、ECARF 認證</td>
+    </tr>
+    <tr>
+      <td>10-15 坪客廳 / 主臥</td>
+      <td><span class="badge badge-green">非常適合</span></td>
+      <td>CADR 510 m&sup3;/h 在此空間可高效換氣（AHAM 認證適用 45.5 m&sup2;）</td>
+    </tr>
+    <tr>
+      <td>重視售後服務的使用者</td>
+      <td><span class="badge badge-green">非常適合</span></td>
+      <td>90 天無條件退款、5 年保固、到府安裝</td>
+    </tr>
+    <tr>
+      <td>重視睡眠品質的使用者</td>
+      <td><span class="badge badge-green">適合</span></td>
+      <td>SleepScore Labs 研究顯示深層睡眠增加 6 分鐘（p&lt;.001），低速噪音極低（25-26 dB）</td>
+    </tr>
+    <tr>
+      <td>新裝修空間（甲醛去除）</td>
+      <td><span class="badge badge-yellow">有幫助但不夠</span></td>
+      <td>KACA 測試甲醛 91%，專利催化技術，但碳濾網會快速飽和需頻繁更換</td>
+    </tr>
+    <tr>
+      <td>開放式廚房（油煙異味）</td>
+      <td><span class="badge badge-yellow">有幫助</span></td>
+      <td>KACA 醋酸 96%、氨 94%，碳量 ~2 kg 可應對一般烹飪異味，但不能替代抽油煙機</td>
+    </tr>
+    <tr>
+      <td>20 坪以上大空間</td>
+      <td><span class="badge badge-red">效果有限</span></td>
+      <td>CADR 510 m&sup3;/h 在 20 坪以上空間換氣效率會明顯下降</td>
+    </tr>
+    <tr>
+      <td>需安靜睡眠且需高風速</td>
+      <td><span class="badge badge-red">不建議</span></td>
+      <td>高速 65 dB 會影響睡眠；低速（26 dB）安靜但 CADR 僅 ~137 m&sup3;/h</td>
+    </tr>
+    <tr>
+      <td>預算敏感型消費者</td>
+      <td><span class="badge badge-red">不建議</span></td>
+      <td>主機 $41,000 + 年均耗材 $6,050，CP 值偏低</td>
+    </tr>
+    <tr>
+      <td>高化學氣體環境（美甲店/實驗室）</td>
+      <td><span class="badge badge-red">不建議</span></td>
+      <td>Amway 自承 VOC 能力有限，碳量不足以應付高濃度化學氣體</td>
+    </tr>
+  </table>
+
+  <h3>替代方案建議</h3>
+  <table>
+    <tr><th>需求情境</th><th>建議替代產品</th><th>原因</th></tr>
+    <tr>
+      <td>同等 CADR、追求 CP 值</td>
+      <td>Blueair 490i / 680i、Honeywell HPA-300</td>
+      <td>CADR 相近，價格約 $10,000-$20,000</td>
+    </tr>
+    <tr>
+      <td>頂級氣態污染物去除</td>
+      <td>IQAir HealthPro Plus（V5-Cell）</td>
+      <td>2.5 kg 碳量、醫療級 HyperHEPA、更詳細的技術數據</td>
+    </tr>
+    <tr>
+      <td>新裝修甲醛嚴重超標</td>
+      <td>專業甲醛治理 + 通風 + 輔助清淨機</td>
+      <td>任何家用清淨機都不能替代源頭治理</td>
+    </tr>
+    <tr>
+      <td>小坪數/臥室用</td>
+      <td>Amway Atmosphere Mini 或其他小型機</td>
+      <td>Sky 在小空間性能過剩，浪費成本</td>
+    </tr>
+  </table>
+</section>
+
+<!-- Section 12 - Verdict -->
+<div class="verdict" id="sec12">
+  <h2>12. 最終評價</h2>
+
+  <div class="rating-box">
+    <div class="rating-item">
+      <div class="label">顆粒物（PM2.5）淨化</div>
+      <div class="score" style="color:#27ae60;">8.5/10</div>
+      <div class="label">AHAM 四項 CADR 認證、電小二實測驗證</div>
+    </div>
+    <div class="rating-item">
+      <div class="label">甲醛去除</div>
+      <div class="score" style="color:#f39c12;">6.5/10</div>
+      <div class="label">三項專利 + KACA 91%，但缺甲醛 CADR</div>
+    </div>
+    <div class="rating-item">
+      <div class="label">異味去除</div>
+      <div class="score" style="color:#2ecc71;">7.5/10</div>
+      <div class="label">KACA 醋酸 96%/氨 94%、用戶回饋正面</div>
+    </div>
+    <div class="rating-item">
+      <div class="label">TVOC 去除</div>
+      <div class="score" style="color:#f39c12;">6/10</div>
+      <div class="label">KACA 甲苯 99.5%+，但 Amway 自承 VOC 限制</div>
+    </div>
+    <div class="rating-item">
+      <div class="label">噪音表現</div>
+      <div class="score" style="color:#f39c12;">6.5/10</div>
+      <div class="label">低速優異、高速偏吵（65 dB 實測）</div>
+    </div>
+    <div class="rating-item">
+      <div class="label">性價比</div>
+      <div class="score" style="color:#e74c3c;">4.5/10</div>
+      <div class="label">直銷溢價顯著，五年持有 $73,670</div>
+    </div>
+  </div>
+
+  <h3 style="color:#fff; margin-top:20px;">總結</h3>
+  <p>Amway Atmosphere Sky 是一台<strong>硬體扎實、濾網用料充足、國際認證齊全</strong>的空氣清淨機。整合深度分析與國際檢測數據後，可以得出以下結論：</p>
+
+  <p><strong>確認的強項：</strong></p>
+  <ul style="margin-left:20px;">
+    <li>顆粒物（PM2.5）過濾有 AHAM 四項 CADR 詳細認證（Smoke 316 / Dust 304 / Pollen 319 / PM2.5 310 cfm），且有電小二獨立實測佐證</li>
+    <li>四大國際認證齊全（AHAM + ENERGY STAR + Allergy UK + ECARF），涵蓋美國、英國、歐洲市場</li>
+    <li>韓國 KACA 測試提供五種有害氣體的量化去除率（甲苯 99.5%+、醋酸 96%、氨 94%、甲醛 91%、乙醛 90%）</li>
+    <li>SleepScore Labs 研究以摘要形式發表於 SLEEP 期刊，31 人 8 週研究顯示深層睡眠增加 6 分鐘（p&lt;.001）</li>
+    <li>活性碳用量（~1.5-1.8 kg 純碳）在同級產品中屬中高水準，加上三項美國專利的催化塗層技術</li>
+  </ul>
+
+  <p><strong>需要注意的問題：</strong></p>
+  <ul style="margin-left:20px;">
+    <li>未公布甲醛 CADR、TVOC CADR、CCM 等關鍵量化指標</li>
+    <li>「0.0024&mu;m / 99.99%」的宣稱缺乏獨立第三方驗證，且數字曾從 0.007&mu;m 變更</li>
+    <li>病毒/細菌去除為 proxy testing 推算而非實測（Amway 已揭露）</li>
+    <li>Amway 內部承認無法對 VOC 做出全面宣稱</li>
+    <li>噪音數據（官方 52 dB vs 實測 65 dB）存在明顯差異</li>
+    <li>低速效能顯著下降（Consumer Reports 指出 "not very effective"）</li>
+  </ul>
+
+  <p><strong>定價方面</strong>，$41,000 的主機價加上年均 $6,050 的濾網費用，五年持有成本超過 $73,000。若純以硬體規格衡量，同 CADR 級距的產品價格僅為其 1/2 至 1/3。安麗的溢價來自直銷體系利潤和優質售後服務（90 天退款、5 年保固、到府安裝），消費者需自行判斷這些附加價值是否值得。</p>
+
+  <p style="font-size:1.1em; margin-top:16px; border-top:1px solid rgba(255,255,255,0.3); padding-top:16px;">
+    <strong>最終建議：</strong>如果你重視過敏防護（Allergy UK + ECARF 雙認證）、願意為售後服務買單、且使用空間在 15 坪以內，Atmosphere Sky 是一台可靠的選擇。但如果你追求性價比、重視氣態污染物的量化數據、或需要更大空間的淨化能力，市場上有更具競爭力的選擇。
+  </p>
+</div>
+
+<!-- Section 13 - Certification Overview -->
+<section id="sec13">
+  <h2>13. 國際認證總覽</h2>
+
+  <h3>認證與檢測狀態彙整</h3>
+  <table>
+    <tr>
+      <th>認證/檢測機構</th>
+      <th>認證項目</th>
+      <th>關鍵數據</th>
+      <th>驗證狀態</th>
+    </tr>
+    <tr>
+      <td>AHAM（美國家電製造商協會）</td>
+      <td>CADR 認證</td>
+      <td>Smoke 316 / Dust 304 / Pollen 319 / PM2.5 310 cfm</td>
+      <td><span class="badge badge-verified">已驗證</span></td>
+    </tr>
+    <tr>
+      <td>ENERGY STAR（美國 EPA）</td>
+      <td>能源效率認證</td>
+      <td>6.1 cfm/Watt，298 kWh/yr</td>
+      <td><span class="badge badge-verified">已驗證</span></td>
+    </tr>
+    <tr>
+      <td>Allergy UK（英國過敏協會）</td>
+      <td>Seal of Approval</td>
+      <td>全部 22 類、102 種污染物</td>
+      <td><span class="badge badge-verified">已驗證</span></td>
+    </tr>
+    <tr>
+      <td>ECARF（歐洲過敏研究基金會）</td>
+      <td>Quality Seal</td>
+      <td>證書 #8314，2017 首發、2025 展延</td>
+      <td><span class="badge badge-verified">已驗證</span></td>
+    </tr>
+    <tr>
+      <td>KACA（韓國空氣清淨協會）</td>
+      <td>有害氣體去除</td>
+      <td>甲苯 99.5%+ / 醋酸 96% / 氨 94% / 甲醛 91% / 乙醛 90%</td>
+      <td><span class="badge badge-partial">部分驗證</span></td>
+    </tr>
+    <tr>
+      <td>SleepScore Labs（美國）</td>
+      <td>睡眠品質改善</td>
+      <td>深層睡眠 +6 min（p&lt;.001），n=31，8 週</td>
+      <td><span class="badge badge-verified">已驗證</span></td>
+    </tr>
+    <tr>
+      <td>Consumer Reports（美國）</td>
+      <td>獨立消費者評測</td>
+      <td>高速佳、低速差（前代 101076 型號）</td>
+      <td><span class="badge badge-verified">已驗證</span></td>
+    </tr>
+    <tr>
+      <td>電小二（台灣）</td>
+      <td>獨立實測</td>
+      <td>CADR 實測驗證、噪音 65 dB、碳量 ~2 kg</td>
+      <td><span class="badge badge-verified">已驗證</span></td>
+    </tr>
+    <tr>
+      <td>USPTO（美國專利局）</td>
+      <td>活性碳技術專利</td>
+      <td>US10688468 / US11000824 / US10773235</td>
+      <td><span class="badge badge-verified">已驗證</span></td>
+    </tr>
+    <tr>
+      <td>CARB（加州空氣資源委員會）</td>
+      <td>臭氧排放合規</td>
+      <td>在美銷售推測已取得，但公開清單未確認</td>
+      <td><span class="badge badge-unverified">待驗證</span></td>
+    </tr>
+    <tr>
+      <td>Airmid Healthgroup（愛爾蘭）</td>
+      <td>病毒/細菌測試</td>
+      <td>未找到委託測試記錄</td>
+      <td><span class="badge badge-unverified">待驗證</span></td>
+    </tr>
+    <tr>
+      <td>IBR / Intertek / SGS / TUV</td>
+      <td>獨立實驗室報告</td>
+      <td>未找到公開報告</td>
+      <td><span class="badge badge-unverified">待驗證</span></td>
+    </tr>
+    <tr>
+      <td>Wirecutter / RTINGS</td>
+      <td>主流評測</td>
+      <td>均未收錄此產品</td>
+      <td><span class="badge badge-unverified">待驗證</span></td>
+    </tr>
+    <tr>
+      <td>獨立學術研究</td>
+      <td>同儕審查論文</td>
+      <td>除 Amway 資助的 SleepScore 摘要外，無獨立研究</td>
+      <td><span class="badge badge-partial">部分驗證</span></td>
+    </tr>
+  </table>
+
+  <h3>與台灣市場的關聯性</h3>
+  <div class="callout callout-info">
+    <ul>
+      <li>AHAM 的 CADR 認證是全球統一標準，適用於台灣市場的產品效能參考</li>
+      <li>韓國 KACA 標準（SPS-KACA002-132）的有害氣體去除數據比台灣 CNS 標準更詳細</li>
+      <li>ENERGY STAR 的年耗電 298 kWh/yr 可作為台灣電費評估依據</li>
+      <li>台灣販售型號為 120539T，電壓規格需確認是否與韓國版（100-240V）一致</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Sources -->
+<section id="sources">
+  <h2>資料來源</h2>
+  <div class="source-list">
+
+    <h3>官方來源</h3>
+    <ul>
+      <li><a href="https://www.amway.com.tw/sky/sky.html" target="_blank">安麗台灣官網 - Atmosphere Sky 產品頁</a></li>
+      <li><a href="https://shop.amway.com.tw/products/2070" target="_blank">安麗台灣電商 - 逸新空氣清淨機</a></li>
+      <li><a href="https://shop.amway.com.tw/products/2075" target="_blank">安麗台灣電商 - HEPA 濾網</a></li>
+      <li><a href="https://shop.amway.com.tw/products/2076" target="_blank">安麗台灣電商 - 活性碳濾網</a></li>
+      <li><a href="https://amwayapps.amway2u.com/hometech_brandsite/en/sky-product.html" target="_blank">Amway 國際官網 - Sky Product Page</a></li>
+      <li><a href="https://www.amway.com/en_US/Atmosphere-Sky%E2%84%A2-Air-Treatment-System-p-120539" target="_blank">Amway USA - Atmosphere Sky</a></li>
+      <li><a href="https://www.amway.com/en_US/Atmosphere-Sky%E2%84%A2-Replacement-Carbon-(Odor)-Filter-p-120541" target="_blank">Amway USA - Carbon Filter</a></li>
+      <li><a href="https://corp.amway.com.hk/en/atmosphere-sky" target="_blank">Amway Hong Kong - Atmosphere Sky</a></li>
+      <li><a href="https://www.amway.co.kr/shop/home/air-treatment/atmosphere-sky/p/120539K" target="_blank">Amway Korea - Atmosphere Sky 產品頁</a></li>
+      <li><a href="https://www.amway.co.kr/about-amway/atmosphere/purification" target="_blank">Amway Korea - 淨化力頁面（KACA 數據）</a></li>
+      <li><a href="https://www.amwayhome.jp/electronics/atmosphere/features/index.html" target="_blank">Amway Japan - Atmosphere 除去性能</a></li>
+      <li><a href="https://www.amwayglobal.com/newsroom/amway-atmosphere-sky-air-treatment-system-certified-allergy-friendly/" target="_blank">Amway Global Newsroom - Certified Allergy-Friendly</a></li>
+      <li><a href="https://www.amwayglobal.com/newsroom/amway-atmosphere-sky-and-atmosphere-mini-earn-sleepscore-labs-validation-seal-for-supporting-better-sleep/" target="_blank">Amway Global Newsroom - SleepScore Labs Validation</a></li>
+      <li><a href="https://www.amwayglobal.com/answers/amway-covid-19-faq/" target="_blank">Amway COVID-19 FAQ（揭露未以病毒實測）</a></li>
+      <li><a href="https://www.manualslib.com/manual/1325339/Amway-Atmosphere-Sky.html" target="_blank">ManualsLib - Atmosphere Sky Owner's Manual</a></li>
+    </ul>
+
+    <h3>認證機構</h3>
+    <ul>
+      <li><a href="https://www.energystar.gov/productfinder/product/certified-room-air-cleaners/" target="_blank">EPA ENERGY STAR Product Finder - Certified Room Air Cleaners</a></li>
+      <li><a href="https://ahamverifide.org/directory-of-air-cleaners/" target="_blank">AHAM Verifide - Directory of Air Cleaners</a></li>
+      <li><a href="https://www.allergyuk.org/our-services/allergyuk-products/amway-atmosphere-sky-air-purifier/" target="_blank">Allergy UK - Amway Atmosphere Sky Air Purifier</a></li>
+      <li><a href="https://contenthub.amway.id/media/pdf/Atmosphere-Sky-Allergy-UK-Certificate.pdf" target="_blank">Allergy UK Seal of Approval 證書 PDF</a></li>
+      <li><a href="https://www.ecarf-institute.org/en/products/atmosphere-sky-en/" target="_blank">ECARF Institute - Atmosphere Sky</a></li>
+      <li><a href="https://contenthub.amway.id/media/pdf/ECARF-Atmosphere-SKY.pdf" target="_blank">ECARF 證書 PDF</a></li>
+      <li><a href="https://ww2.arb.ca.gov/list-carb-certified-air-cleaning-devices" target="_blank">CARB - List of Certified Air Cleaning Devices</a></li>
+    </ul>
+
+    <h3>第三方測試與評測</h3>
+    <ul>
+      <li><a href="https://applianceinsight.com.tw/blog/post/amway-atmosphere-sky" target="_blank">電小二 - Atmosphere Sky 開箱實測（PART 55）</a></li>
+      <li><a href="https://applianceinsight.com.tw/blog/post/250473964" target="_blank">電小二 - 安麗第二代空氣清淨機客觀分析</a></li>
+      <li><a href="https://applianceinsight.com.tw/blog/post/306084535" target="_blank">電小二 - 安麗第二代開箱實測（PART 12）</a></li>
+      <li><a href="https://www.consumerreports.org/appliances/air-purifiers/amway-atmosphere-101076/m91798/" target="_blank">Consumer Reports - Amway Atmosphere Review</a></li>
+      <li><a href="https://prod.danawa.com/info/?pcode=6790990" target="_blank">Danawa 價格比較 - Atmosphere Sky</a></li>
+    </ul>
+
+    <h3>學術研究</h3>
+    <ul>
+      <li><a href="https://academic.oup.com/sleep/article/48/Supplement_1/A598/8136179" target="_blank">SLEEP 期刊 (Oxford Academic) - Abstract #1392：SleepScore Labs 研究</a></li>
+    </ul>
+
+    <h3>使用者社群討論</h3>
+    <ul>
+      <li><a href="https://www.ptt.cc/bbs/E-appliance/M.1577247383.A.95A.html" target="_blank">PTT E-appliance - Poiema ultra vs 安麗 SKY</a></li>
+      <li><a href="https://www.ptt.cc/bbs/E-appliance/M.1547026580.A.14A.html" target="_blank">PTT E-appliance - 安麗逸新清淨機開箱分享</a></li>
+      <li><a href="https://www.ptt.cc/bbs/E-appliance/M.1575970742.A.146.html" target="_blank">PTT E-appliance - Blueair 480i vs 安麗 SKY</a></li>
+      <li><a href="https://www.mobile01.com/topicdetail.php?f=731&t=5939131" target="_blank">Mobile01 - 安麗空氣清淨機評價如何</a></li>
+      <li><a href="https://www.mobile01.com/topicdetail.php?f=731&t=784994" target="_blank">Mobile01 - 安麗第二代空氣清淨機開箱</a></li>
+    </ul>
+
+    <h3>部落客評測</h3>
+    <ul>
+      <li><a href="https://ahui3c.com/33872/atmosphere-sky" target="_blank">3C 達人廖阿輝 - Atmosphere Sky 開箱</a></li>
+      <li><a href="https://nurseilife.cc/atmosphere-sky/" target="_blank">爆肝護士 - Atmosphere Sky 使用心得</a></li>
+      <li><a href="https://jr-note.blogspot.com/2021/02/amway-atmosphere-skyamway.html" target="_blank">樹葉有專供 - 安麗 Atmosphere Sky 使用心得</a></li>
+    </ul>
+
+    <h3>專利文件</h3>
+    <ul>
+      <li><a href="https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/10688468" target="_blank">US10688468 - Treated activated carbon for removal of airborne contaminants</a></li>
+      <li><a href="https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/11000824" target="_blank">US11000824 - Treated activated carbon for removal of airborne contaminants</a></li>
+      <li><a href="https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/10773235" target="_blank">US10773235 - Modified activated carbon for adsorption of airborne formaldehyde</a></li>
+      <li><a href="https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/5462908" target="_blank">US5462908 - Organic amine impregnated activated carbon</a></li>
+    </ul>
+
+    <h3>副廠濾網</h3>
+    <ul>
+      <li><a href="https://24h.pchome.com.tw/prod/DMAUAX-A900FQ9TC" target="_blank">PChome - RENZA 副廠 HEPA+活性碳套組</a></li>
+      <li><a href="https://www.havegreendays.com/products/air-purifier-filters-for-amway-with-rfid-atmosphere-3th-sky-mini-antibacterial-h13-hepa-have-green-days" target="_blank">綠綠好日 - 安麗三代 Sky 副廠濾網</a></li>
+    </ul>
+
+    <h3>HEPA / 空氣淨化標準參考</h3>
+    <ul>
+      <li><a href="https://cleanairtechnology.ie/en1822-hepa-filter-testing-standard/" target="_blank">EN1822 HEPA Filter Testing Standard</a></li>
+      <li><a href="https://smartairfilters.com/en/blog/en1822-hepa-filter-standard/" target="_blank">Smart Air - EN1822 HEPA Standard Explained</a></li>
+      <li><a href="https://www.quora.com/Amway-has-an-air-purifier-claiming-removes-99-99-of-airborne-particles-as-small-as-0024-microns-Is-this-possible-or-accurate" target="_blank">Quora - 0.0024 micron claim analysis</a></li>
+    </ul>
+  </div>
+
+  <div class="callout callout-info" style="margin-top:20px;">
+    <strong>資料驗證聲明：</strong>本報告整合兩份獨立報告（深度產品分析 + 國際第三方檢測數據），盡力交叉比對多方來源。凡官方未公布或無法驗證的數據，已明確標註驗證狀態（已驗證 / 部分驗證 / 待驗證）。推估數值已標明為推估而非實測。報告日期 2026-05-22，數據可能隨時間變化，建議重大購買決策前向安麗官方確認最新資訊。
+  </div>
+</section>
+
+<footer style="text-align:center; padding:24px; color:#95a5a6; font-size:0.8em;">
+  報告產出：2026-05-22 | 版本 v1.0 | 本報告僅供參考，不構成購買建議<br>
+  如菓室內裝修 -- 賈維斯製表
+</footer>
+
+</div>
+</body>
+</html>
