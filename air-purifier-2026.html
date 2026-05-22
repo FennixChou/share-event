@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>空氣清淨機競品分析：安麗 Atmosphere Sky vs 五大品牌 (2026)</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft JhengHei", sans-serif;
+            background: #f0f2f5;
+            color: #1a1a2e;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        .container { max-width: 1400px; margin: 0 auto; }
+        h1 {
+            text-align: center;
+            font-size: 1.8rem;
+            color: #1a1a2e;
+            margin-bottom: 8px;
+            padding: 30px 20px 5px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+        }
+        .section-title {
+            font-size: 1.4rem;
+            color: #16213e;
+            margin: 30px 0 15px;
+            padding-bottom: 8px;
+            border-bottom: 3px solid #0f3460;
+        }
+        .sub-section-title {
+            font-size: 1.15rem;
+            color: #0f3460;
+            margin: 25px 0 12px;
+        }
+
+        /* Main comparison table */
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: 12px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            font-size: 0.88rem;
+        }
+        table th {
+            background: #16213e;
+            color: #fff;
+            padding: 12px 10px;
+            text-align: center;
+            font-weight: 600;
+            white-space: nowrap;
+            position: sticky;
+            top: 0;
+        }
+        table th:first-child {
+            background: #0f3460;
+            text-align: left;
+            min-width: 150px;
+            position: sticky;
+            left: 0;
+            z-index: 2;
+        }
+        table td {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            text-align: center;
+            vertical-align: middle;
+        }
+        table td:first-child {
+            text-align: left;
+            font-weight: 600;
+            background: #f8f9fa;
+            position: sticky;
+            left: 0;
+            z-index: 1;
+            white-space: nowrap;
+        }
+        table tr:hover td { background: #f0f7ff; }
+        table tr:hover td:first-child { background: #e8f0fe; }
+
+        /* Highlight columns */
+        .col-amway { background: #fff8e1 !important; }
+        table tr:hover .col-amway { background: #fff3c4 !important; }
+
+        /* Rating badges */
+        .badge-best {
+            display: inline-block; background: #27ae60; color: #fff;
+            padding: 2px 8px; border-radius: 10px; font-size: 0.75rem; font-weight: 600;
+        }
+        .badge-good {
+            display: inline-block; background: #2980b9; color: #fff;
+            padding: 2px 8px; border-radius: 10px; font-size: 0.75rem; font-weight: 600;
+        }
+        .badge-warn {
+            display: inline-block; background: #e67e22; color: #fff;
+            padding: 2px 8px; border-radius: 10px; font-size: 0.75rem; font-weight: 600;
+        }
+        .badge-bad {
+            display: inline-block; background: #c0392b; color: #fff;
+            padding: 2px 8px; border-radius: 10px; font-size: 0.75rem; font-weight: 600;
+        }
+
+        /* Pros/Cons cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+        }
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #eee;
+        }
+        .card .brand-tag {
+            display: inline-block;
+            background: #16213e;
+            color: #fff;
+            padding: 2px 10px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            margin-bottom: 8px;
+        }
+        .card .amway-tag { background: #d4a017; }
+        .pros { color: #27ae60; }
+        .cons { color: #c0392b; }
+        .card ul { padding-left: 20px; margin: 8px 0; }
+        .card li { margin: 4px 0; font-size: 0.9rem; }
+
+        /* Recommendation section */
+        .recommendation {
+            background: linear-gradient(135deg, #16213e 0%, #0f3460 100%);
+            color: #fff;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+        .recommendation h2 { font-size: 1.3rem; margin-bottom: 15px; }
+        .recommendation p { margin: 8px 0; line-height: 1.7; }
+        .recommendation .highlight { color: #ffd700; font-weight: 600; }
+
+        /* Cost analysis */
+        .cost-table td, .cost-table th { font-size: 0.85rem; }
+        .total-row { background: #f8f9fa; font-weight: 700; }
+        .total-row td { border-top: 2px solid #16213e; }
+
+        /* Source section */
+        .sources {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 30px;
+            font-size: 0.82rem;
+        }
+        .sources a { color: #2980b9; text-decoration: none; }
+        .sources a:hover { text-decoration: underline; }
+        .sources li { margin: 4px 0; }
+
+        .note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 12px 16px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.9rem;
+        }
+        .warning {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 12px 16px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 1.3rem; }
+            .cards-grid { grid-template-columns: 1fr; }
+            table { font-size: 0.78rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+<h1>空氣清淨機競品分析報告</h1>
+<p class="subtitle">安麗 Atmosphere Sky vs 五大品牌｜台灣市場 2026 年 5 月</p>
+
+<!-- ============================================ -->
+<h2 class="section-title">一、核心規格比較總表</h2>
+
+<div class="table-wrapper">
+<table>
+<thead>
+<tr>
+    <th>比較項目</th>
+    <th style="background:#8B6914;">安麗 Atmosphere Sky</th>
+    <th>Dyson BP04</th>
+    <th>Blueair CP9i</th>
+    <th>IQAir HealthPro 250</th>
+    <th>Coway AP-1512HHW</th>
+    <th>LG PuriCare 360<br>AS651DSS0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td>產地</td>
+    <td class="col-amway">韓國</td>
+    <td>馬來西亞</td>
+    <td>中國</td>
+    <td>瑞士</td>
+    <td>韓國</td>
+    <td>韓國</td>
+</tr>
+<tr>
+    <td>台灣售價 (NT$)</td>
+    <td class="col-amway"><strong>41,000</strong></td>
+    <td><strong>34,990</strong><br><small>（促銷約27,900~29,900）</small></td>
+    <td><strong>30,900</strong><br><small>（促銷約24,990~26,900）</small></td>
+    <td><strong>60,000</strong></td>
+    <td><strong>9,900</strong><br><small>（實售約7,000~9,900）</small></td>
+    <td><strong>26,800</strong><br><small>（實售約16,500~21,500）</small></td>
+</tr>
+<tr>
+    <td>CADR (m&sup3;/h)</td>
+    <td class="col-amway"><strong>510</strong></td>
+    <td>未公布<br><small>（Dyson 採用 POLAR 測試法，不使用傳統 CADR）</small></td>
+    <td><strong>850</strong> <span class="badge-best">最高</span></td>
+    <td><strong>510</strong><br><small>（最大風速）</small></td>
+    <td><strong>394</strong></td>
+    <td><strong>483</strong></td>
+</tr>
+<tr>
+    <td>適用坪數</td>
+    <td class="col-amway">~13 坪</td>
+    <td>~30 坪 <span class="badge-best">最大</span></td>
+    <td>22~41 坪 <span class="badge-best">最大</span></td>
+    <td>~22.6 坪</td>
+    <td>~18 坪</td>
+    <td>~19 坪</td>
+</tr>
+<tr>
+    <td>HEPA 等級</td>
+    <td class="col-amway">HEPA<br><small>（官方標示可過濾至 0.0024&mu;m，99.99%）</small></td>
+    <td>HEPA H13<br><small>（99.95% @ 0.1&mu;m）</small></td>
+    <td>HEPASilent<br><small>（99.97% @ 0.1&mu;m）</small></td>
+    <td>HyperHEPA H12/H13<br><small>（99.5% @ 0.003&mu;m）</small> <span class="badge-best">醫療級</span></td>
+    <td>Green HEPA (True HEPA)<br><small>（99.97% @ 0.3&mu;m）</small></td>
+    <td>HEPA H13<br><small>（醫療級）</small></td>
+</tr>
+<tr>
+    <td>濾網結構</td>
+    <td class="col-amway">三重：<br>1. 前置濾網（可水洗）<br>2. HEPA 濾網<br>3. 活性碳濾網（專利塗層）</td>
+    <td>三重：<br>1. HEPA H13 濾網<br>2. 富鉀碳濾網<br>3. 催化甲醛分解濾網（永久免換）</td>
+    <td>五層 HEPASilent：<br>1. 前置濾網<br>2. 靜電過濾<br>3. 顆粒濾網<br>4. 活性碳複合濾網<br>5. HINS 紫藍光抑菌</td>
+    <td>三重：<br>1. PreMax F8 前置<br>2. V5-Cell 氣味濾網<br>3. HyperHEPA 超效濾網</td>
+    <td>三層：<br>1. 前置濾網（可水洗）<br>2. 活性碳除臭濾網<br>3. Green HEPA 濾網</td>
+    <td>多重：<br>1. 毛髮專用濾網（可洗）<br>2. 光觸媒除臭濾網<br>3. HEPA H13 濾網</td>
+</tr>
+<tr>
+    <td>噪音 (dB)</td>
+    <td class="col-amway">26~53 dB<br><small>（實測最大 65 dB）</small></td>
+    <td>最大 56 dB<br><small>（低速幾乎無感）</small></td>
+    <td>26~58 dB</td>
+    <td>32~67 dB <span class="badge-warn">最吵</span></td>
+    <td>24.4~53.8 dB <span class="badge-good">安靜</span></td>
+    <td>26~51 dB <span class="badge-good">安靜</span></td>
+</tr>
+<tr>
+    <td>功率 (W)</td>
+    <td class="col-amway">6~50W</td>
+    <td>20~50W</td>
+    <td>8~92W</td>
+    <td>20~135W <span class="badge-warn">最耗電</span></td>
+    <td>~77W</td>
+    <td>~48W</td>
+</tr>
+<tr>
+    <td>尺寸 (mm)</td>
+    <td class="col-amway">747 &times; 411 &times; 301</td>
+    <td>830 &times; 434 &times; 415</td>
+    <td>900 &times; 500 &times; 250</td>
+    <td>710 &times; 380 &times; 410</td>
+    <td>430 &times; 465 &times; 250</td>
+    <td>360 &times; 597 &times; 360</td>
+</tr>
+<tr>
+    <td>重量 (kg)</td>
+    <td class="col-amway">12.6</td>
+    <td>11.9</td>
+    <td>20.3 <span class="badge-warn">最重</span></td>
+    <td>16.0</td>
+    <td>5.9 <span class="badge-best">最輕</span></td>
+    <td>11.6</td>
+</tr>
+<tr>
+    <td>智慧功能</td>
+    <td class="col-amway">WiFi + 藍牙<br>專屬 App 監控<br>感應觸控面板<br>每分鐘 1,200 次偵測<br>多機管理</td>
+    <td>WiFi<br>MyDyson App<br>CO&sub2; 偵測<br>LCD 即時顯示<br>Auto 模式<br>語音控制</td>
+    <td>WiFi<br>App 遠端操控<br>空氣品質指示燈<br>自動/睡眠模式<br>兒童安全鎖</td>
+    <td>LCD 面板（6 段風速）<br><span class="badge-warn">無 WiFi / 無 App</span></td>
+    <td>空氣品質偵測指示燈<br>自動風速<br>負離子功能<br><span class="badge-warn">無 WiFi / 無 App</span></td>
+    <td>WiFi<br>ThinQ App<br>PM2.5 即時顯示<br>睡眠定時器<br>寵物模式<br>濾網更換提醒</td>
+</tr>
+<tr>
+    <td>國際認證</td>
+    <td class="col-amway">AHAM (美國家電協會)<br>英國過敏基金會 (BAF)<br>美國 Energy Star<br>ECARF (歐洲過敏基金會)<br><span class="badge-best">四大認證</span></td>
+    <td>HEPA H13 標準<br>一級能效</td>
+    <td>一級能效</td>
+    <td>EN1822 歐洲標準<br>PTPA 認證</td>
+    <td>長庚病毒實驗室認證<br>抑制 A/B 流感 99.99%</td>
+    <td>一級能效</td>
+</tr>
+<tr>
+    <td>保固</td>
+    <td class="col-amway"><strong>5 年</strong> <span class="badge-best">最長</span><br>+ 90 天滿意保證</td>
+    <td><strong>2 年</strong></td>
+    <td><strong>2 年</strong>（註冊）<br>馬達 5 年</td>
+    <td><strong>3 年</strong>（家用）<br>1 年（商用）</td>
+    <td>未明確公告<br><small>（建議確認）</small></td>
+    <td><strong>2 年</strong><br>馬達 10 年</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<!-- ============================================ -->
+<h2 class="section-title">二、年度耗材成本比較（5 年持有成本分析）</h2>
+
+<div class="note">
+    <strong>說明：</strong>以下計算基於官方建議更換週期與台灣官方/經銷商售價。實際更換頻率視使用環境而定。電費以台電均價 NT$3.5/kWh、每日使用 12 小時估算。
+</div>
+
+<div class="table-wrapper">
+<table class="cost-table">
+<thead>
+<tr>
+    <th>成本項目</th>
+    <th style="background:#8B6914;">安麗 Sky</th>
+    <th>Dyson BP04</th>
+    <th>Blueair CP9i</th>
+    <th>IQAir HP250</th>
+    <th>Coway 1512HHW</th>
+    <th>LG AS651DSS0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td>機器售價</td>
+    <td class="col-amway">41,000</td>
+    <td>29,900<br><small>（促銷價）</small></td>
+    <td>26,900<br><small>（促銷價）</small></td>
+    <td>60,000</td>
+    <td>9,900</td>
+    <td>21,500<br><small>（促銷價）</small></td>
+</tr>
+<tr>
+    <td>HEPA 濾網</td>
+    <td class="col-amway">5,200<br><small>（2 年/次）</small></td>
+    <td>6,000<br><small>（5 年/次）</small></td>
+    <td>~6,490<br><small>（9~12 月/次，3 片裝）</small></td>
+    <td>10,500<br><small>（~4 年/次）</small></td>
+    <td>~2,500<br><small>（含於濾網組）</small></td>
+    <td>~2,400<br><small>（1 年/次）</small></td>
+</tr>
+<tr>
+    <td>活性碳濾網</td>
+    <td class="col-amway">3,450<br><small>（1 年/次）</small></td>
+    <td>4,000<br><small>（2 年/次）</small></td>
+    <td>含於複合濾網</td>
+    <td>6,700<br><small>（~2 年/次）</small></td>
+    <td>含於濾網組</td>
+    <td>含於三合一濾網</td>
+</tr>
+<tr>
+    <td>其他濾網</td>
+    <td class="col-amway">—</td>
+    <td>甲醛分解濾網<br><small>（永久免換）</small></td>
+    <td>—</td>
+    <td>PreMax 4,500<br><small>（18 月/次）</small></td>
+    <td>—</td>
+    <td>毛髮濾網（可洗）</td>
+</tr>
+<tr>
+    <td>年化濾網費用</td>
+    <td class="col-amway"><strong>~6,050</strong></td>
+    <td><strong>~3,200</strong> <span class="badge-best">最低</span></td>
+    <td><strong>~7,800</strong> <span class="badge-bad">最高</span></td>
+    <td><strong>~6,625</strong></td>
+    <td><strong>~1,800</strong> <span class="badge-best">最低</span></td>
+    <td><strong>~2,400</strong></td>
+</tr>
+<tr>
+    <td>年電費估算</td>
+    <td class="col-amway">~484</td>
+    <td>~550</td>
+    <td>~700</td>
+    <td>~1,050</td>
+    <td>~600</td>
+    <td>~500</td>
+</tr>
+<tr class="total-row">
+    <td>5 年總持有成本</td>
+    <td class="col-amway"><strong>~73,670</strong></td>
+    <td><strong>~48,650</strong></td>
+    <td><strong>~69,400</strong></td>
+    <td><strong>~98,375</strong> <span class="badge-bad">最貴</span></td>
+    <td><strong>~21,900</strong> <span class="badge-best">最省</span></td>
+    <td><strong>~36,000</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="note">
+    <strong>計算公式：</strong>5 年總持有成本 = 機器售價 + (年化濾網費 &times; 5) + (年電費 &times; 5)。Dyson、Blueair、LG 以促銷常見價計算；IQAir、安麗以官方定價計算。Coway 以實售價計算。
+</div>
+
+<!-- ============================================ -->
+<h2 class="section-title">三、各品牌優缺點分析</h2>
+
+<div class="cards-grid">
+
+<!-- Amway -->
+<div class="card">
+    <span class="brand-tag amway-tag">安麗 Atmosphere Sky</span>
+    <h3>NT$41,000 ｜ CADR 510 m&sup3;/h ｜ ~13 坪</h3>
+    <p class="pros"><strong>優點：</strong></p>
+    <ul>
+        <li>四大國際認證（AHAM、BAF、Energy Star、ECARF），認證數量業界最多</li>
+        <li>活性碳濾網有專利塗層，除甲醛/VOC 能力強</li>
+        <li>五年保固 + 90 天滿意保證，售後服務完善</li>
+        <li>最低風速僅 26 dB，比圖書館安靜</li>
+        <li>App 可遠端監控、每分鐘 1,200 次空氣品質偵測</li>
+        <li>到府安裝、換濾網服務（安麗直銷體系）</li>
+    </ul>
+    <p class="cons" style="margin-top:10px;"><strong>缺點：</strong></p>
+    <ul>
+        <li><strong>定價偏高</strong>，NT$41,000 為同 CADR 等級中最貴之一</li>
+        <li><strong>年化耗材費 ~6,050 元</strong>，偏高</li>
+        <li>適用坪數僅 13 坪，<strong>CADR/價格比（CP 值）偏低</strong></li>
+        <li>實測最大風速噪音達 65 dB，<strong>官方標示 53 dB 與實測有落差</strong></li>
+        <li>感測器過於敏感，容易頻繁升速</li>
+        <li>直銷通路購買，<strong>無法在一般電商比價</strong></li>
+        <li>5 年持有成本約 73,670 元</li>
+    </ul>
+</div>
+
+<!-- Dyson BP04 -->
+<div class="card">
+    <span class="brand-tag" style="background:#6c3483;">Dyson BP04</span>
+    <h3>NT$34,990（促銷~29,900）｜ 30 坪 ｜ HEPA H13</h3>
+    <p class="pros"><strong>優點：</strong></p>
+    <ul>
+        <li>適用面積達 30 坪，<strong>大空間首選</strong></li>
+        <li>催化甲醛分解濾網永久免換，長期省錢</li>
+        <li>HEPA H13 濾網壽命長達 5 年，<strong>年化耗材費最低</strong></li>
+        <li>CO&sub2; 偵測 + LCD 即時顯示 + MyDyson App，智慧功能豐富</li>
+        <li>送風距離超過 10 公尺，循環效果佳</li>
+        <li>低速幾乎無聲，最大 56 dB 也在合理範圍</li>
+        <li>設計美觀，品牌形象高端</li>
+    </ul>
+    <p class="cons" style="margin-top:10px;"><strong>缺點：</strong></p>
+    <ul>
+        <li><strong>不公布 CADR 值</strong>，難以直接與其他品牌比較</li>
+        <li>定價 34,990 仍屬高價位（但促銷常見 29,900 以下）</li>
+        <li>保固僅 2 年，相對安麗 5 年較短</li>
+        <li>體積偏大（高 830mm），佔空間</li>
+        <li>Dyson 專用濾網價格較貴（HEPA 單片約 6,000）</li>
+    </ul>
+</div>
+
+<!-- Blueair CP9i -->
+<div class="card">
+    <span class="brand-tag" style="background:#2471a3;">Blueair CP9i</span>
+    <h3>NT$30,900（促銷~26,900）｜ CADR 850 ｜ 22~41 坪</h3>
+    <p class="pros"><strong>優點：</strong></p>
+    <ul>
+        <li><strong>CADR 850 m&sup3;/h，六款中最高</strong>，淨化速度最快</li>
+        <li>適用面積最大達 41 坪，大坪數客廳/辦公室首選</li>
+        <li>HEPASilent 專利靜電+機械雙軌過濾，效率與安靜兼顧</li>
+        <li>HINS 紫藍光抑菌技術，在濾網端消滅病菌</li>
+        <li>馬達保固 5 年</li>
+        <li>鍍鋅鋼殼設計，耐用度高</li>
+    </ul>
+    <p class="cons" style="margin-top:10px;"><strong>缺點：</strong></p>
+    <ul>
+        <li><strong>重量 20.3 kg</strong>，移動不便</li>
+        <li><strong>年化濾網費約 7,800 元，六款中最高</strong></li>
+        <li>濾網建議 6~12 個月更換，頻率高</li>
+        <li>保固僅 2 年（需註冊），相對較短</li>
+        <li>最大噪音 58 dB</li>
+        <li>5 年持有成本約 69,400 元，偏高</li>
+    </ul>
+</div>
+
+<!-- IQAir -->
+<div class="card">
+    <span class="brand-tag" style="background:#c0392b;">IQAir HealthPro 250</span>
+    <h3>NT$60,000 ｜ CADR 510 ｜ ~22.6 坪</h3>
+    <p class="pros"><strong>優點：</strong></p>
+    <ul>
+        <li><strong>瑞士製造</strong>，醫療等級品質，加護病房同款</li>
+        <li>HyperHEPA 可過濾至 0.003&mu;m，<strong>過濾精度最高</strong></li>
+        <li>6 段風速，適應不同場景</li>
+        <li>三重高規格濾淨系統，V5-Cell 除氣味能力強</li>
+        <li>保固 3 年（家用），優於多數品牌</li>
+        <li>過敏/氣喘患者的專業級選擇</li>
+    </ul>
+    <p class="cons" style="margin-top:10px;"><strong>缺點：</strong></p>
+    <ul>
+        <li><strong>NT$60,000 為六款中最貴</strong></li>
+        <li><strong>無 WiFi、無 App</strong>，僅有實體面板操控</li>
+        <li>最大噪音 67 dB，<strong>六款中最吵</strong></li>
+        <li>最大功耗 135W，<strong>最耗電</strong></li>
+        <li>年化濾網費 ~6,625 元（三支濾網都要定期換）</li>
+        <li><strong>5 年持有成本近 10 萬元</strong></li>
+        <li>外型較傳統，設計感較低</li>
+    </ul>
+</div>
+
+<!-- Coway -->
+<div class="card">
+    <span class="brand-tag" style="background:#27ae60;">Coway AP-1512HHW</span>
+    <h3>NT$9,900 ｜ CADR 394 ｜ ~18 坪</h3>
+    <p class="pros"><strong>優點：</strong></p>
+    <ul>
+        <li><strong>NT$9,900，六款中價格最親民</strong></li>
+        <li><strong>5 年持有成本僅 ~21,900 元，遠低於其他品牌</strong></li>
+        <li>年化濾網費僅 ~1,800 元，<strong>耗材最省</strong></li>
+        <li>CADR 394 搭配 18 坪覆蓋，性價比極高</li>
+        <li>機身僅 5.9 kg，47 cm 高，<strong>最輕巧</strong></li>
+        <li>最低噪音 24.4 dB，非常安靜</li>
+        <li>Green HEPA 專利抗敏塗層，長庚認證抑制病毒 99.99%</li>
+        <li>美國 Consumer Reports、Wirecutter 長年推薦</li>
+    </ul>
+    <p class="cons" style="margin-top:10px;"><strong>缺點：</strong></p>
+    <ul>
+        <li><strong>無 WiFi、無 App</strong>（僅有指示燈和基本自動模式）</li>
+        <li>功能較陽春，無甲醛偵測/分解</li>
+        <li>高速時噪音達 53.8 dB</li>
+        <li>台灣保固資訊不夠透明（需向經銷商確認）</li>
+        <li>CADR 394 對 18 坪以上空間可能不足</li>
+    </ul>
+</div>
+
+<!-- LG -->
+<div class="card">
+    <span class="brand-tag" style="background:#e67e22;">LG PuriCare 360 AS651DSS0</span>
+    <h3>NT$26,800（促銷~21,500）｜ CADR 483 ｜ ~19 坪</h3>
+    <p class="pros"><strong>優點：</strong></p>
+    <ul>
+        <li>360 度環形進出風設計，淨化效率均勻</li>
+        <li><strong>馬達保固 10 年</strong>，業界最長</li>
+        <li>HEPA H13 醫療級濾網 + 光觸媒除臭</li>
+        <li>ThinQ App 遠端控制、PM2.5 即時顯示</li>
+        <li>寵物模式（強化地面吸力），<strong>養寵家庭首選</strong></li>
+        <li>促銷時實售約 16,500~21,500，<strong>性價比突出</strong></li>
+        <li>5 年持有成本約 36,000 元，中等偏低</li>
+    </ul>
+    <p class="cons" style="margin-top:10px;"><strong>缺點：</strong></p>
+    <ul>
+        <li>高速/寵物模式噪音明顯偏大</li>
+        <li>原廠三合一濾網每年更換，費用 ~2,400 元</li>
+        <li>保固僅 2 年（馬達 10 年另計）</li>
+        <li>適用坪數標示 19 坪，實際大空間效率可能不足</li>
+        <li>外型較占空間（圓柱體設計）</li>
+    </ul>
+</div>
+
+</div>
+
+<!-- ============================================ -->
+<h2 class="section-title">四、安麗 Atmosphere Sky 第三方評測與用戶反饋</h2>
+
+<div class="card" style="margin-bottom:20px;">
+    <h3 class="sub-section-title">專業評測摘要（電小二實測）</h3>
+    <ul>
+        <li><strong>實測 CADR 表現：</strong>各風速 CADR 分別為 137 / 216 / 304 / 402 / 510 m&sup3;/h</li>
+        <li><strong>實測噪音：</strong>風速 2 即達 51.5 dB，風速 5 達 65 dB（官方標示最大 53 dB 有落差）</li>
+        <li><strong>正面評價：</strong>濾網扎實、風機有效、活性碳容量大、BAF 全項認證是亮點</li>
+        <li><strong>負面評價：</strong>感測器過於敏感，容易無故升速；中高速噪音偏高；價格是最大障礙</li>
+        <li><strong>結論：</strong>「如果你對安麗的服務很有好感，且本身對價格較不敏感，放在 15 坪左右確實是優秀的機器」</li>
+    </ul>
+</div>
+
+<div class="card" style="margin-bottom:20px;">
+    <h3 class="sub-section-title">PTT / Mobile01 用戶反饋整理</h3>
+    <ul>
+        <li><strong>正面：</strong>機器本身品質優良、用料扎實、售後服務到位（直銷體系的到府維護）</li>
+        <li><strong>負面：</strong>
+            <ul>
+                <li>「撇除直銷人的問題，機器確實有品質」── 多數討論都圍繞在直銷通路的爭議</li>
+                <li>價格被認為偏高，同 CADR 級別可以買到更多選擇</li>
+                <li>有用戶指出台灣高溫多濕環境下，HEPA 濾網未做抗菌處理可能滋生微生物</li>
+                <li>無法在一般電商通路購買，比價困難</li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<div class="warning">
+    <strong>直銷通路爭議：</strong>安麗作為直銷品牌，產品定價包含多層行銷費用，這是造成其售價高於同級產品的主因。建議評估時以「產品規格 vs 價格」而非「品牌故事」為判斷基準。機器本身品質受到肯定，但 CP 值在客觀比較中確實偏低。
+</div>
+
+<!-- ============================================ -->
+<h2 class="section-title">五、綜合推薦建議</h2>
+
+<div class="recommendation">
+    <h2>分場景推薦</h2>
+
+    <p><span class="highlight">【CP 值之王】Coway AP-1512HHW</span><br>
+    萬元以下、5 年持有成本僅 2 萬出頭，CADR 394 覆蓋 18 坪。適合預算有限但需要穩定淨化效果的家庭。美國多家權威媒體長年推薦。</p>
+
+    <p><span class="highlight">【大坪數首選】Blueair CP9i</span><br>
+    CADR 850 為六款最高，適用 22~41 坪。適合大客廳、開放式空間或商業空間。注意耗材費用偏高。</p>
+
+    <p><span class="highlight">【綜合表現最佳】LG PuriCare 360 AS651DSS0</span><br>
+    促銷實售約 16,500~21,500，CADR 483 覆蓋 19 坪，WiFi + App + 寵物模式，馬達保固 10 年。是功能、價格、耗材費用最均衡的選擇。養寵家庭尤其推薦。</p>
+
+    <p><span class="highlight">【設計與科技】Dyson BP04</span><br>
+    大空間適用、甲醛分解永久免換、5 年 HEPA 壽命。年化耗材最低，但機器價格偏高。適合重視設計感、追求低維護成本的使用者。</p>
+
+    <p><span class="highlight">【醫療級淨化】IQAir HealthPro 250</span><br>
+    過濾精度 0.003&mu;m 冠絕全場，加護病房同款。適合嚴重過敏、氣喘患者或對空氣品質有極致要求者。但代價是最貴的價格和最高的持有成本。</p>
+
+    <p><span class="highlight">【安麗 Atmosphere Sky 定位】</span><br>
+    產品品質確實優良，四大國際認證、五年保固、到府服務是亮點。但以 CADR 510 / 13 坪的效能來看，NT$41,000 的定價與 5 年約 7.4 萬的持有成本，在同級產品中偏高。適合<strong>認同安麗服務體系、重視售後維護便利性、對價格較不敏感</strong>的消費者。若純粹以規格/價格比評估，其他品牌有更經濟的選擇。</p>
+</div>
+
+<!-- ============================================ -->
+<h2 class="section-title">六、資料來源</h2>
+
+<div class="sources">
+<h3 style="margin-bottom:10px;">官方產品頁面</h3>
+<ul>
+    <li><a href="https://www.amway.com.tw/sky/sky.html" target="_blank">安麗 Atmosphere Sky 官方產品頁</a></li>
+    <li><a href="https://shop.amway.com.tw/products/2070" target="_blank">安麗電商 - Atmosphere Sky 售價</a></li>
+    <li><a href="https://shop.dyson.tw/fans-and-heaters/purifiers/dyson-purifier-big-quiet-formaldehyde-prussian-blue-gold-410623-01" target="_blank">Dyson Taiwan - BP04 官方商城</a></li>
+    <li><a href="https://shop.dyson.tw/accessories/fans-and-heaters/dyson-k-carbon-fiber-filter-972133-02" target="_blank">Dyson Taiwan - BP04 富鉀碳濾網價格</a></li>
+    <li><a href="https://www.fuchia.tw/v2/shop/item/3338/2/16/4/Blueair-CP9i" target="_blank">甫佳電器 - Blueair CP9i 規格與價格</a></li>
+    <li><a href="https://www.iqair.tw/products_detail/89.htm" target="_blank">IQAir 台灣官網 - HealthPro 250</a></li>
+    <li><a href="https://www.fuchia.tw/v2/shop/index/1/6/15/131/173" target="_blank">甫佳電器 - IQAir 濾網價格</a></li>
+    <li><a href="https://www.coway-tw.com/product-detail/AP-1019C" target="_blank">Coway 台灣總代理 - AP-1019C</a></li>
+    <li><a href="https://playsmarthome.com/coway-air-purifier-comparison/" target="_blank">Play 智慧家庭 - Coway 空氣清淨機比較</a></li>
+    <li><a href="https://www.lg.com/tw/air-care/air-purifiers/as651dss0/" target="_blank">LG 台灣 - PuriCare 360 AS651DSS0</a></li>
+    <li><a href="https://www.lg.com/tw/care-accessories/air-purifiers/filter/adq75801766/" target="_blank">LG 台灣 - HEPA13 三合一濾網</a></li>
+</ul>
+
+<h3 style="margin:15px 0 10px;">第三方評測與比較</h3>
+<ul>
+    <li><a href="https://applianceinsight.com.tw/blog/post/amway-atmosphere-sky" target="_blank">電小二 - Amway Atmosphere Sky 開箱實測 (PART55)</a></li>
+    <li><a href="https://alvinist.com/tech_appliance/dyson-purifier-bp03-bp04-review/" target="_blank">Alvinist - Dyson BP03/BP04 評測</a></li>
+    <li><a href="https://lanrenpick.com/lg-puricare-360-weakness/" target="_blank">懶人精選 - LG PuriCare 360 缺點揭密</a></li>
+    <li><a href="https://twstay.tw/yunsselect/air-purifier.html" target="_blank">YUNS SELECT - 2026 居家 12 款空氣清淨機實測評比</a></li>
+    <li><a href="https://www.newspie.com.tw/blueair-20260423/" target="_blank">News Pie - Blueair CP9i / SP4i 2026 上市報導</a></li>
+</ul>
+
+<h3 style="margin:15px 0 10px;">社群討論</h3>
+<ul>
+    <li><a href="https://www.ptt.cc/bbs/E-appliance/M.1575970742.A.146.html" target="_blank">PTT E-appliance - Blueair 480i vs 安麗 SKY</a></li>
+    <li><a href="https://www.mobile01.com/topicdetail.php?f=731&t=5939131" target="_blank">Mobile01 - 安麗的空氣清淨機評價如何</a></li>
+    <li><a href="https://www.mobile01.com/topicdetail.php?f=731&t=7136917" target="_blank">Mobile01 - 不用換濾網的空氣清淨機 Dyson BP04</a></li>
+    <li><a href="https://www.ptt.cc/bbs/E-appliance/M.1765964841.A.43A.html" target="_blank">PTT E-appliance - Dyson BP02/BP04 挑選</a></li>
+</ul>
+
+<p style="margin-top:15px; color:#888; font-size:0.8rem;">
+    報告製作日期：2026-05-22｜資料查詢時間：2026 年 5 月｜價格以查詢當日為準，可能因促銷活動異動<br>
+    部分規格數據來自官方網站，部分來自第三方評測實測。如有出入以官方公告為準。
+</p>
+</div>
+
+</div>
+</body>
+</html>
