@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>空氣清淨機除甲醛/TVOC深度比較分析 — 2026-05-22</title>
+<style>
+  :root { --bg: #0f172a; --card: #1e293b; --accent: #f59e0b; --green: #22c55e; --red: #ef4444; --yellow: #eab308; --blue: #3b82f6; --text: #e2e8f0; --muted: #94a3b8; --border: #334155; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', 'Microsoft JhengHei', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; padding: 2rem; }
+  .container { max-width: 1400px; margin: 0 auto; }
+  h1 { color: var(--accent); font-size: 1.8rem; margin-bottom: 0.5rem; border-bottom: 2px solid var(--accent); padding-bottom: 0.5rem; }
+  h2 { color: var(--accent); font-size: 1.4rem; margin: 2rem 0 1rem; padding-left: 0.8rem; border-left: 4px solid var(--accent); }
+  h3 { color: var(--blue); font-size: 1.15rem; margin: 1.5rem 0 0.8rem; }
+  .subtitle { color: var(--muted); margin-bottom: 2rem; font-size: 0.95rem; }
+  .card { background: var(--card); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; border: 1px solid var(--border); }
+  table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.88rem; }
+  th, td { padding: 10px 12px; text-align: left; border: 1px solid var(--border); vertical-align: top; }
+  th { background: #0f172a; color: var(--accent); font-weight: 600; position: sticky; top: 0; }
+  td { background: var(--card); }
+  tr:hover td { background: #263348; }
+  .tag-green { background: #166534; color: #86efac; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+  .tag-yellow { background: #713f12; color: #fde047; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+  .tag-red { background: #7f1d1d; color: #fca5a5; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+  .tag-blue { background: #1e3a5f; color: #93c5fd; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+  .highlight { background: linear-gradient(135deg, #1a2744, #1e293b); border: 1px solid var(--accent); }
+  .verdict { background: linear-gradient(135deg, #1a2744, #0f2d1a); border: 2px solid var(--green); }
+  .warning { background: linear-gradient(135deg, #2d1a1a, #1e293b); border: 1px solid var(--red); }
+  .star { color: var(--accent); }
+  .score { font-size: 1.5rem; font-weight: 700; }
+  .score-high { color: var(--green); }
+  .score-mid { color: var(--yellow); }
+  .score-low { color: var(--red); }
+  ul, ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  li { margin-bottom: 0.4rem; }
+  a { color: var(--blue); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
+  @media (max-width: 900px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } }
+  .footnote { color: var(--muted); font-size: 0.82rem; margin-top: 1rem; border-top: 1px solid var(--border); padding-top: 0.8rem; }
+  .section-divider { border: 0; border-top: 2px dashed var(--border); margin: 2.5rem 0; }
+  .badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; margin-right: 6px; }
+  .badge-decompose { background: #166534; color: #86efac; }
+  .badge-adsorb { background: #713f12; color: #fde047; }
+  .badge-both { background: #1e3a5f; color: #93c5fd; }
+  .comparison-bar { display: flex; align-items: center; gap: 8px; margin: 4px 0; }
+  .bar { height: 18px; border-radius: 4px; min-width: 4px; }
+  .bar-label { font-size: 0.8rem; color: var(--muted); min-width: 60px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>空氣清淨機除甲醛 / 除異味 / TVOC 深度比較分析</h1>
+<p class="subtitle">分析日期：2026-05-22 ｜ 6 款旗艦機型 ｜ 聚焦氣態污染物處理能力<br>
+<strong>核心問題：新裝修房屋，哪台最能對付甲醛與 TVOC？</strong></p>
+
+<!-- ========== A. 除甲醛能力總覽 ========== -->
+<h2>A. 除甲醛能力比較</h2>
+
+<div class="card">
+<h3>核心觀念：吸附 vs 分解 — 這是最關鍵的區別</h3>
+<div class="grid-2">
+  <div class="card warning" style="margin-bottom:0">
+    <p><strong><span class="badge badge-adsorb">吸附型</span> 活性碳物理吸附</strong></p>
+    <ul>
+      <li>利用碳表面微孔隙「困住」甲醛分子</li>
+      <li><strong>致命缺點：</strong>會飽和失效，高溫高濕時甚至脫附（二次釋放）</li>
+      <li>台灣潮濕氣候下效能衰減更快</li>
+      <li>活性碳品質差異大：粉狀幾乎無用，顆粒狀較佳，改質/塗層碳最好</li>
+      <li>PTT 共識：「任何吸附式的清淨機都沒法真正去甲醛，因為它會有吸飽的一天」</li>
+    </ul>
+  </div>
+  <div class="card verdict" style="margin-bottom:0">
+    <p><strong><span class="badge badge-decompose">分解型</span> 催化氧化分解</strong></p>
+    <ul>
+      <li>將甲醛分子化學分解為 H<sub>2</sub>O + CO<sub>2</sub></li>
+      <li><strong>核心優勢：</strong>不會飽和、不會脫附、持續有效</li>
+      <li>代表技術：Dyson SCO（選擇性催化氧化）</li>
+      <li>濾網理論上永遠不需更換（靠空氣中的 O<sub>2</sub> 再生）</li>
+      <li>目前唯一真正「分解」甲醛的消費級空氣清淨機技術</li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<div class="card">
+<table>
+<thead>
+<tr>
+  <th style="min-width:130px">機型</th>
+  <th>除甲醛技術</th>
+  <th>機制</th>
+  <th>甲醛 CADR</th>
+  <th>活性碳量</th>
+  <th>碳類型</th>
+  <th>飽和風險</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Dyson BP04</strong></td>
+  <td>SCO 選擇性催化氧化濾網 + K-Carbon 富鉀碳</td>
+  <td><span class="badge badge-decompose">分解</span><span class="badge badge-adsorb">+吸附</span></td>
+  <td>~150 m&sup3;/h<br><span style="color:var(--muted);font-size:0.8rem">(風傳媒/業界引用)</span></td>
+  <td>K-Carbon 濾網（重量未公開）</td>
+  <td>富鉀碳 + 隱鉀錳礦型 MnO<sub>2</sub> 催化劑</td>
+  <td><span class="tag-green">極低</span><br>催化濾網自我再生，永久有效</td>
+</tr>
+<tr>
+  <td><strong>Amway Sky</strong></td>
+  <td>專利塗層顆粒活性碳</td>
+  <td><span class="badge badge-adsorb">吸附</span><span style="font-size:0.75rem;color:var(--muted)">（官方稱可「分解」，但技術細節未公開）</span></td>
+  <td>未公開<br><span style="color:var(--muted);font-size:0.8rem">（僅公開總 CADR 510 m&sup3;/h）</span></td>
+  <td>~2 kg（含框）</td>
+  <td>椰殼顆粒活性碳 + 專利塗層</td>
+  <td><span class="tag-yellow">中等</span><br>4-12 個月需更換</td>
+</tr>
+<tr>
+  <td><strong>IQAir HP250</strong></td>
+  <td>V5-Cell 多段氣體過濾</td>
+  <td><span class="badge badge-both">吸附+化學吸附</span></td>
+  <td>未公開</td>
+  <td><strong>2.5 kg</strong>（5 lbs）</td>
+  <td>煙煤顆粒活性碳 + KMnO<sub>4</sub> 浸漬氧化鋁</td>
+  <td><span class="tag-yellow">中低</span><br>碳量大 + 化學吸附可撐 2 年</td>
+</tr>
+<tr>
+  <td><strong>Blueair CP9i</strong></td>
+  <td>HEPASilent + 活性碳複合濾網</td>
+  <td><span class="badge badge-adsorb">吸附</span></td>
+  <td>未公開<br><span style="color:var(--muted);font-size:0.8rem">（氣體去除率 &ge;50%）</span></td>
+  <td>未公開（椰殼碳粉）</td>
+  <td>椰殼活性碳粉末（無化學添加）</td>
+  <td><span class="tag-yellow">中等</span><br>9-12 個月需更換</td>
+</tr>
+<tr>
+  <td><strong>LG AS651DSS0</strong></td>
+  <td>HEPA13 三合一濾網（光觸媒+活性碳）</td>
+  <td><span class="badge badge-both">吸附+光催化</span></td>
+  <td>未公開<br><span style="color:var(--muted);font-size:0.8rem">（業界估 &le;60 m&sup3;/h）</span></td>
+  <td>極少（三合一濾網僅 820g 含 HEPA）</td>
+  <td>活性碳 + 光觸媒</td>
+  <td><span class="tag-red">較高</span><br>碳量太少，光觸媒需光源</td>
+</tr>
+<tr>
+  <td><strong>Coway AP-1512HHW</strong></td>
+  <td>碳纖維除臭濾網</td>
+  <td><span class="badge badge-adsorb">吸附</span></td>
+  <td>未公開<br><span style="color:var(--muted);font-size:0.8rem">（業界估 &le;60 m&sup3;/h）</span></td>
+  <td>極少（碳纖維薄網）</td>
+  <td>碳纖維塗層（非顆粒碳）</td>
+  <td><span class="tag-red">高</span><br>6 個月需更換，碳量極低</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<!-- ========== 技術原理深度 ========== -->
+<h2>B. 技術原理深度解析</h2>
+
+<div class="grid-2">
+<div class="card highlight">
+  <h3>Dyson SCO 選擇性催化氧化</h3>
+  <ul>
+    <li><strong>核心材料：</strong>Cryptomelane（隱鉀錳礦型 &alpha;-MnO<sub>2</sub>）</li>
+    <li><strong>結構：</strong>2&times;2 隧道結構，孔徑 4.6 &Aring;，精確匹配甲醛分子大小</li>
+    <li><strong>原理：</strong>數十億個原子級隧道捕獲甲醛分子 &rarr; 催化氧化分解為 H<sub>2</sub>O + CO<sub>2</sub> &rarr; 從空氣中的 O<sub>2</sub> 自我再生</li>
+    <li><strong>永久性：</strong>催化濾網理論上永不需更換</li>
+    <li><strong>搭配：</strong>K-Carbon 富鉀碳濾網處理其他 VOC 和 NO<sub>2</sub>（吸附 3 倍 NO<sub>2</sub>）</li>
+    <li><strong>感測器：</strong>固態甲醛專用感測器（非半導體 VOC 感測器），可精準偵測甲醛濃度</li>
+    <li><strong>測試標準：</strong>依 GB/T 18801-2022 持續注入甲醛至 CADR 穩定值</li>
+  </ul>
+  <p class="footnote">來源：<a href="https://www.dyson.com/discover/innovation/behind-the-invention/filtration-at-dyson" target="_blank">Dyson Filtration Technology</a>、<a href="https://shop.dyson.tw/fans-and-heaters/purifiers/dyson-purifier-big-quiet-formaldehyde-prussian-blue-gold-filters-set-410623-01" target="_blank">Dyson 台灣官網</a></p>
+</div>
+
+<div class="card">
+  <h3>Amway 專利活性碳塗層技術</h3>
+  <ul>
+    <li><strong>核心材料：</strong>椰殼顆粒活性碳 + 專利塗層</li>
+    <li><strong>吸附面積：</strong>126 萬平方公尺（官方宣稱等同 5 個大安森林公園）</li>
+    <li><strong>活性碳重量：</strong>~2 kg（含框架）</li>
+    <li><strong>濾網結構：</strong>109 層折疊設計，展開長度 447 cm</li>
+    <li><strong>官方宣稱：</strong>可「分解」甲醛、VOC、臭氧等 13 種化學汙染物</li>
+    <li><strong>疑點：</strong>安麗稱「分解」但未公開具體催化機制或第三方獨立測試數據</li>
+    <li><strong>壽命：</strong>4-12 個月（依使用環境而異）</li>
+  </ul>
+  <p class="footnote">來源：<a href="https://www.amway.com.tw/sky/sky.html" target="_blank">安麗台灣官網</a>、<a href="https://applianceinsight.com.tw/blog/post/amway-atmosphere-sky" target="_blank">電小二實測</a></p>
+</div>
+
+<div class="card">
+  <h3>IQAir V5-Cell 多段氣體過濾</h3>
+  <ul>
+    <li><strong>核心材料：</strong>煙煤顆粒活性碳 + KMnO<sub>4</sub>（高錳酸鉀）浸漬氧化鋁</li>
+    <li><strong>活性碳重量：</strong><strong>2.5 kg（業界最重）</strong></li>
+    <li><strong>雙重機制：</strong>物理吸附（微孔隙捕獲）+ 化學吸附（KMnO<sub>4</sub> 與甲醛化學反應，破壞分子結構）</li>
+    <li><strong>優勢：</strong>化學吸附不同於單純物理吸附，反應產物不會脫附回空氣</li>
+    <li><strong>壽命：</strong>約 2 年（以每日 10 小時速度 3 使用計算）</li>
+    <li><strong>V 型設計：</strong>增加碳與空氣的接觸面積和停留時間</li>
+  </ul>
+  <p class="footnote">來源：<a href="https://www.iqair.com/us/products/air-purifiers/healthpro-plus" target="_blank">IQAir 官網</a>、<a href="https://www.amazon.com/IQAir-Certified-V5-Cell-Replacement-Formaldehyde/dp/B0007U46T4" target="_blank">Amazon V5-Cell</a></p>
+</div>
+
+<div class="card">
+  <h3>LG 光觸媒除臭 / Blueair HEPASilent / Coway 碳纖維</h3>
+  <ul>
+    <li><strong>LG 光觸媒：</strong>三合一濾網整合 HEPA13 + 活性碳 + 光觸媒（TiO<sub>2</sub>），除臭效果較標準濾網提升 55%。但光觸媒需光源激發，機內紫外光效率有限，且碳量極少（整片三合一濾網僅 820g）</li>
+    <li><strong>Blueair HEPASilent：</strong>靜電 + 機械過濾混合技術，搭配椰殼碳粉末。CP9i 擁有 3 組濾網/馬達 + 2 個 PhotonPure 模組（紫光殺菌），但碳含量未公開，氣體去除率官方僅標示 &ge;50%</li>
+    <li><strong>Coway 碳纖維：</strong>薄型碳纖維塗層濾網，碳含量極低。多位評測者指出「碳量不足，除味效果弱」，6 個月即需更換。對甲醛處理能力非常有限</li>
+  </ul>
+  <p class="footnote">來源：<a href="https://www.lg.com/tw/appliance-accessories/air-care-accessories/adq75801766/" target="_blank">LG 濾網規格</a>、<a href="https://www.blueair.com/products/classic-pro-cp9i" target="_blank">Blueair CP9i</a>、<a href="https://www.airpurifierfirst.com/review/coway-ap-1512hh/" target="_blank">Coway 評測</a></p>
+</div>
+</div>
+
+<!-- ========== C. 除異味能力 ========== -->
+<h2>C. 除異味 / VOC 能力比較</h2>
+
+<div class="card">
+<table>
+<thead>
+<tr>
+  <th>機型</th>
+  <th>活性碳類型</th>
+  <th>碳重量/體積</th>
+  <th>氣體處理認證</th>
+  <th>可處理氣體</th>
+  <th>除味評價</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>IQAir HP250</strong></td>
+  <td>煙煤顆粒碳 + KMnO<sub>4</sub> 氧化鋁</td>
+  <td><strong>2.5 kg</strong></td>
+  <td>瑞士製造品質認證</td>
+  <td>甲醛、VOC、臭氧、氨、醋酸、甲苯等廣譜氣體</td>
+  <td><span class="score score-high">★★★★★</span><br>業界公認氣體處理最強</td>
+</tr>
+<tr>
+  <td><strong>Amway Sky</strong></td>
+  <td>椰殼顆粒碳 + 專利塗層</td>
+  <td><strong>~2 kg</strong></td>
+  <td>AHAM, ECARF, Allergy UK, EPA Energy Star</td>
+  <td>甲醛、VOC、臭氧等 13 種化學物</td>
+  <td><span class="score score-high">★★★★☆</span><br>電小二實測可完全濾除菸味</td>
+</tr>
+<tr>
+  <td><strong>Dyson BP04</strong></td>
+  <td>富鉀碳 + SCO 催化劑</td>
+  <td>未公開（推估 &lt;1 kg）</td>
+  <td>韓國過敏協會 KAF</td>
+  <td>甲醛（分解）、NO<sub>2</sub>（3倍吸附）、VOC</td>
+  <td><span class="score score-mid">★★★★☆</span><br>甲醛分解卓越，一般異味中等</td>
+</tr>
+<tr>
+  <td><strong>Blueair CP9i</strong></td>
+  <td>椰殼碳粉末</td>
+  <td>未公開</td>
+  <td>Asthma &amp; Allergy Friendly</td>
+  <td>VOC、煙霧、家庭異味</td>
+  <td><span class="score score-mid">★★★☆☆</span><br>官方氣體去除率僅 &ge;50%</td>
+</tr>
+<tr>
+  <td><strong>LG AS651DSS0</strong></td>
+  <td>活性碳 + 光觸媒</td>
+  <td>極少（三合一 820g 含 HEPA）</td>
+  <td>KIMM 韓國機械材料研究院</td>
+  <td>甲醛、甲苯、NO<sub>2</sub>、SO<sub>2</sub></td>
+  <td><span class="score score-low">★★★☆☆</span><br>光觸媒除臭 +55% 但碳量過低</td>
+</tr>
+<tr>
+  <td><strong>Coway 1512HHW</strong></td>
+  <td>碳纖維塗層薄網</td>
+  <td>極少（薄碳布）</td>
+  <td>無氣體專項認證</td>
+  <td>一般家庭異味</td>
+  <td><span class="score score-low">★★☆☆☆</span><br>多位評測者指出碳量不足</td>
+</tr>
+</tbody>
+</table>
+<p class="footnote"><strong>關鍵結論：</strong>活性碳重量是除異味能力的最直接指標。IQAir 2.5kg &gt; Amway 2kg &gt;&gt; 其餘機型。碳量少的機型在新裝修環境中很快就會飽和失效。</p>
+</div>
+
+<!-- ========== D. TVOC 偵測與降低 ========== -->
+<h2>D. TVOC 感測器與降低能力</h2>
+
+<div class="card">
+<table>
+<thead>
+<tr>
+  <th>機型</th>
+  <th>TVOC 感測器</th>
+  <th>甲醛專用感測器</th>
+  <th>其他感測器</th>
+  <th>TVOC CADR / 去除率</th>
+  <th>自動偵測反應</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Dyson BP04</strong></td>
+  <td><span class="tag-green">有</span></td>
+  <td><span class="tag-green">有（固態專用）</span></td>
+  <td>PM2.5、PM10、NO<sub>2</sub>、CO<sub>2</sub>、溫度、濕度</td>
+  <td>未公開具體數值</td>
+  <td><span class="tag-green">精準</span> LCD 即時顯示甲醛 + VOC</td>
+</tr>
+<tr>
+  <td><strong>Blueair CP9i</strong></td>
+  <td><span class="tag-green">有</span></td>
+  <td><span class="tag-red">無</span></td>
+  <td>雷射粒子感測器</td>
+  <td>氣體去除率 &ge;50%</td>
+  <td><span class="tag-green">有</span> LED 指示包含 tVOC</td>
+</tr>
+<tr>
+  <td><strong>Amway Sky</strong></td>
+  <td><span class="tag-yellow">有（粒子+氣體複合）</span></td>
+  <td><span class="tag-red">無</span></td>
+  <td>粒子感測器</td>
+  <td>未公開</td>
+  <td><span class="tag-yellow">中等</span> 自動模式依感測器調速</td>
+</tr>
+<tr>
+  <td><strong>LG AS651DSS0</strong></td>
+  <td><span class="tag-yellow">有（PM1.0 為主）</span></td>
+  <td><span class="tag-red">無</span></td>
+  <td>PM1.0 感測器</td>
+  <td>未公開</td>
+  <td><span class="tag-yellow">過敏</span> PM1.0 感測器常頻繁加速</td>
+</tr>
+<tr>
+  <td><strong>IQAir HP250</strong></td>
+  <td><span class="tag-red">無</span></td>
+  <td><span class="tag-red">無</span></td>
+  <td>無（純機械操作）</td>
+  <td>未公開</td>
+  <td><span class="tag-red">無自動模式</span> 手動 6 段風速</td>
+</tr>
+<tr>
+  <td><strong>Coway 1512HHW</strong></td>
+  <td><span class="tag-red">無</span></td>
+  <td><span class="tag-red">無</span></td>
+  <td>粒子感測器</td>
+  <td>未公開</td>
+  <td><span class="tag-yellow">粒子偵測</span> 僅偵測懸浮微粒</td>
+</tr>
+</tbody>
+</table>
+<p class="footnote"><strong>重要提醒：</strong>電小二指出市售 TVOC 感測器精確度有限，「不要抱太大期待」。唯一值得信賴的是 Dyson 的固態甲醛專用感測器（非半導體式 VOC 感測器），可精準區分甲醛濃度。IQAir 雖無感測器，但其 V5-Cell 的實際氣體處理能力反而最強。</p>
+</div>
+
+<!-- ========== E. 濾網壽命與耗材成本 ========== -->
+<h2>E. 濾網壽命與年度耗材成本</h2>
+
+<div class="card">
+<table>
+<thead>
+<tr>
+  <th>機型</th>
+  <th>機器售價 (NTD)</th>
+  <th>HEPA 濾網壽命/價格</th>
+  <th>碳/氣體濾網壽命/價格</th>
+  <th>估計年度耗材</th>
+  <th>5 年總持有成本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Dyson BP04</strong></td>
+  <td>~34,990</td>
+  <td>5 年 / ~3,000</td>
+  <td>K-Carbon 2 年 / ~2,500<br>SCO 催化：永久免更換</td>
+  <td>~1,850</td>
+  <td>~44,240</td>
+</tr>
+<tr>
+  <td><strong>Amway Sky</strong></td>
+  <td>~38,700<br><span style="font-size:0.8rem;color:var(--muted)">（需透過直銷購買）</span></td>
+  <td>12-60 月 / ~5,200</td>
+  <td>4-12 月 / ~3,450</td>
+  <td>~6,050</td>
+  <td>~68,950</td>
+</tr>
+<tr>
+  <td><strong>IQAir HP250</strong></td>
+  <td>~42,000</td>
+  <td>3-4 年 / ~8,000</td>
+  <td>2 年 / ~6,500</td>
+  <td>~5,250</td>
+  <td>~68,250</td>
+</tr>
+<tr>
+  <td><strong>Blueair CP9i</strong></td>
+  <td>~38,000</td>
+  <td colspan="2">複合濾網 9-12 月 / ~8,000 (3片組)</td>
+  <td>~8,000</td>
+  <td>~78,000</td>
+</tr>
+<tr>
+  <td><strong>LG AS651DSS0</strong></td>
+  <td>~18,900</td>
+  <td colspan="2">三合一濾網 12 月 / ~2,300-2,580</td>
+  <td>~2,400</td>
+  <td>~30,900</td>
+</tr>
+<tr>
+  <td><strong>Coway 1512HHW</strong></td>
+  <td>~10,900</td>
+  <td>24 月 / ~1,500</td>
+  <td>6 月 / ~500 (副廠)</td>
+  <td>~1,750</td>
+  <td>~19,650</td>
+</tr>
+</tbody>
+</table>
+<p class="footnote">* 價格為概估值，依通路與時期有所波動。安麗需透過直銷系統購買。IQAir 濾網為原廠價格。副廠濾網價格可能更低但品質參差不齊。Blueair CP9i 因有 3 組濾網，耗材成本較高。</p>
+</div>
+
+<!-- ========== F. 使用者評價 ========== -->
+<h2>F. 使用者評價 — 除甲醛 / 除異味實際體驗</h2>
+
+<div class="grid-2">
+<div class="card">
+  <h3>Dyson BP04</h3>
+  <ul>
+    <li>PTT E-appliance 板有討論串比較 BP02/BP04，普遍認為甲醛分解技術是獨家優勢</li>
+    <li>Mobile01 有用戶表示「買了一台可以分解甲醛的空氣清淨機」正面評價</li>
+    <li>LCD 即時甲醛數值讓使用者可觀察濃度變化，心理安全感強</li>
+    <li><strong>負面：</strong>售價較高、K-Carbon 濾網 2 年需更換（但 SCO 濾網免換）</li>
+  </ul>
+</div>
+<div class="card">
+  <h3>Amway Atmosphere Sky</h3>
+  <ul>
+    <li>電小二實測：活性碳含框達 2kg 水準，菸味可完全濾除</li>
+    <li>用戶評價機器品質確實優異，濾網紮實</li>
+    <li><strong>負面：</strong>需透過直銷購買，價格不透明；無獨立甲醛 CADR 數據；「專利塗層分解」缺乏第三方驗證</li>
+    <li>濾網 4-12 個月更換，新裝修環境可能偏短</li>
+  </ul>
+</div>
+<div class="card">
+  <h3>IQAir HealthPro 250</h3>
+  <ul>
+    <li>Air Purifier First 評測：「測試過的空氣清淨機中除味最優秀的一台」</li>
+    <li>適合受廚房油煙、菸味、化學品揮發影響的環境</li>
+    <li>V5-Cell 2.5kg 碳量業界最多，KMnO<sub>4</sub> 化學吸附效果持久</li>
+    <li><strong>負面：</strong>無感測器、無自動模式、外型設計老派、價格高昂</li>
+  </ul>
+</div>
+<div class="card">
+  <h3>Blueair CP9i / LG / Coway</h3>
+  <ul>
+    <li><strong>Blueair CP9i：</strong>粒子 CADR 850 m&sup3;/h 極強，但氣體去除僅標 &ge;50%；碳量未公開是疑慮</li>
+    <li><strong>LG AS651DSS0：</strong>光觸媒除臭 +55%，360 度設計好評，但碳量極少，除甲醛能力被業界估 &le;60 m&sup3;/h</li>
+    <li><strong>Coway 1512HHW：</strong>NY Times 評為最佳但主要是 CP 值考量；碳纖維薄網被多位評測者指出「碳量不足」，除味能力弱，<strong>不適合新裝修除甲醛用途</strong></li>
+  </ul>
+</div>
+</div>
+
+<!-- ========== G. 新屋裝修場景 ========== -->
+<hr class="section-divider">
+<h2>G. 新屋裝修場景適用性分析</h2>
+
+<div class="card warning">
+<h3>甲醛釋放的殘酷現實</h3>
+<ul>
+  <li><strong>釋放週期：3 &ndash; 15 年</strong>，新裝修後前 3-6 個月為密集釋放期</li>
+  <li>甲醛來源：板材（最大宗）、油漆、黏合劑、壁紙、窗簾、家具</li>
+  <li>溫度每升高 8&deg;C，甲醛釋放量增加一倍；台灣夏季尤其嚴重</li>
+  <li>關掉空氣清淨機後，甲醛 3-7 天就會重新超標</li>
+  <li><strong>電小二建議：</strong>好的裝潢材料 > 減少家飾 >> 良好通風 >>>> 高效空氣清淨機</li>
+  <li>理想做法：春天完工 &rarr; 夏天高溫通風加速釋放 &rarr; 秋天入住</li>
+  <li>新裝修建議至少通風 2 個月再入住，有幼兒/孕婦建議更久</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>空氣清淨機的定位：輔助工具，非唯一解方</h3>
+<p>空氣清淨機在除甲醛的角色是「持續降低室內空氣中游離的甲醛濃度」，但它<strong>無法處理仍在板材/家具中尚未釋出的甲醛</strong>。正確策略：</p>
+<ol>
+  <li><strong>源頭管控：</strong>使用低甲醛/無甲醛板材（F1 級以上）、水性漆</li>
+  <li><strong>充分通風：</strong>裝修完至少通風 2-4 週（窗戶全開通風效果是清淨機 10 倍以上）</li>
+  <li><strong>專業治理（選用）：</strong>光觸媒噴塗、甲醛分解噴劑等，需 3+ 天處理</li>
+  <li><strong>空氣清淨機：</strong>入住後 24 小時運轉，持續處理持續釋出的微量甲醛</li>
+</ol>
+</div>
+
+<!-- ========== H. 綜合評分 ========== -->
+<h2>H. 綜合評分 — 新裝修除甲醛/TVOC 場景</h2>
+
+<div class="card">
+<table>
+<thead>
+<tr>
+  <th>評分項目</th>
+  <th>Dyson BP04</th>
+  <th>IQAir HP250</th>
+  <th>Amway Sky</th>
+  <th>Blueair CP9i</th>
+  <th>LG AS651</th>
+  <th>Coway 1512</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>甲醛分解/處理能力</strong></td>
+  <td class="score-high"><strong>10</strong></td>
+  <td class="score-high"><strong>8</strong></td>
+  <td class="score-mid"><strong>7</strong></td>
+  <td class="score-mid"><strong>5</strong></td>
+  <td class="score-low"><strong>4</strong></td>
+  <td class="score-low"><strong>2</strong></td>
+</tr>
+<tr>
+  <td><strong>除異味/VOC 能力</strong></td>
+  <td class="score-mid"><strong>7</strong></td>
+  <td class="score-high"><strong>10</strong></td>
+  <td class="score-high"><strong>8</strong></td>
+  <td class="score-mid"><strong>5</strong></td>
+  <td class="score-low"><strong>4</strong></td>
+  <td class="score-low"><strong>3</strong></td>
+</tr>
+<tr>
+  <td><strong>TVOC 偵測能力</strong></td>
+  <td class="score-high"><strong>10</strong></td>
+  <td class="score-low"><strong>0</strong></td>
+  <td class="score-mid"><strong>5</strong></td>
+  <td class="score-mid"><strong>7</strong></td>
+  <td class="score-mid"><strong>5</strong></td>
+  <td class="score-low"><strong>2</strong></td>
+</tr>
+<tr>
+  <td><strong>濾網持久性（不飽和）</strong></td>
+  <td class="score-high"><strong>10</strong></td>
+  <td class="score-high"><strong>9</strong></td>
+  <td class="score-mid"><strong>5</strong></td>
+  <td class="score-mid"><strong>5</strong></td>
+  <td class="score-low"><strong>4</strong></td>
+  <td class="score-low"><strong>3</strong></td>
+</tr>
+<tr>
+  <td><strong>新裝修適用性</strong></td>
+  <td class="score-high"><strong>10</strong></td>
+  <td class="score-high"><strong>8</strong></td>
+  <td class="score-mid"><strong>7</strong></td>
+  <td class="score-mid"><strong>5</strong></td>
+  <td class="score-low"><strong>4</strong></td>
+  <td class="score-low"><strong>2</strong></td>
+</tr>
+<tr>
+  <td><strong>5 年持有成本效益</strong></td>
+  <td class="score-high"><strong>8</strong></td>
+  <td class="score-mid"><strong>5</strong></td>
+  <td class="score-low"><strong>4</strong></td>
+  <td class="score-low"><strong>3</strong></td>
+  <td class="score-high"><strong>8</strong></td>
+  <td class="score-high"><strong>9</strong></td>
+</tr>
+<tr style="font-weight:700;font-size:1.05rem">
+  <td><strong>加權總分（除甲醛權重 40%）</strong></td>
+  <td class="score-high"><strong>9.2</strong></td>
+  <td class="score-high"><strong>7.2</strong></td>
+  <td class="score-mid"><strong>6.2</strong></td>
+  <td class="score-mid"><strong>5.0</strong></td>
+  <td class="score-low"><strong>4.4</strong></td>
+  <td class="score-low"><strong>3.0</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<!-- ========== 最終推薦 ========== -->
+<hr class="section-divider">
+<h2>I. 最終推薦</h2>
+
+<div class="card verdict">
+<h3 style="color:var(--green);font-size:1.3rem">第一推薦：Dyson Big Quiet Formaldehyde BP04</h3>
+<p><strong>推薦理由：新裝修除甲醛場景的最佳選擇</strong></p>
+<ul>
+  <li><span class="tag-green">獨家優勢</span> <strong>SCO 催化氧化是唯一能真正「分解」甲醛的消費級技術</strong>。將甲醛化學分解為水和二氧化碳，不存在飽和、脫附問題</li>
+  <li><span class="tag-green">永久濾網</span> 催化濾網永不需更換，靠空氣中的氧氣自我再生。這在新裝修環境中至關重要——甲醛釋放長達 3-15 年，只有不會飽和的技術才能持續應對</li>
+  <li><span class="tag-green">精準偵測</span> 固態甲醛專用感測器，LCD 即時顯示甲醛濃度，可觀察入住後甲醛的變化趨勢</li>
+  <li><span class="tag-green">大坪數</span> 淨化範圍達 30 坪，適合客廳等大空間</li>
+  <li><span class="tag-green">低噪音</span> Big+Quiet 系列強調靜音，56dB 最大風速</li>
+  <li><span class="tag-green">耗材省</span> HEPA 5 年換一次、K-Carbon 2 年換一次，SCO 永久，年均耗材約 1,850 元</li>
+</ul>
+</div>
+
+<div class="card highlight">
+<h3 style="color:var(--blue)">第二推薦：IQAir HealthPro 250</h3>
+<p><strong>推薦理由：業界最強氣體處理 + 化學吸附雙重機制</strong></p>
+<ul>
+  <li><span class="tag-blue">碳量業界最多</span> V5-Cell 含 2.5 kg 活性碳 + KMnO<sub>4</sub> 化學吸附劑</li>
+  <li><span class="tag-blue">雙重機制</span> 物理吸附 + 化學吸附（KMnO<sub>4</sub> 與甲醛反應後產物不會脫附）</li>
+  <li><span class="tag-blue">2 年長壽</span> 碳量大 + 化學吸附，V5-Cell 可使用 2 年</li>
+  <li><span class="tag-yellow">缺點</span> 無感測器、無自動模式、無甲醛偵測；價格高昂（機器 + 耗材 5 年約 68,000 元）</li>
+  <li><strong>適合：</strong>對化學品敏感者（MCS）、需要廣譜氣體處理的場景</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>其他機型的適用場景</h3>
+<table>
+<tr><td><strong>Amway Sky</strong></td><td>碳量紮實（2kg），四大國際認證，品質確實好。但除甲醛機制不明確（官方稱分解但缺乏第三方驗證），價格不透明，且需透過直銷購買。適合已是安麗會員的使用者。</td></tr>
+<tr><td><strong>Blueair CP9i</strong></td><td>粒子 CADR 850 m&sup3;/h 超強，適合粉塵/PM2.5 為主的場景。有 TVOC 感測器，但氣體去除率僅 &ge;50%，碳含量不明。<strong>除甲醛不是它的強項</strong>。</td></tr>
+<tr><td><strong>LG AS651DSS0</strong></td><td>360 度設計、寵物模式好評、5 年總成本低（~30,900）。適合一般日常使用、有寵物家庭。<strong>碳量太少，不適合作為除甲醛主力機</strong>。</td></tr>
+<tr><td><strong>Coway AP-1512HHW</strong></td><td>性價比極高，適合一般空氣品質維護與過敏原過濾。<strong>完全不適合除甲醛用途</strong>，碳纖維薄網的氣體處理能力非常有限。</td></tr>
+</table>
+</div>
+
+<!-- ========== 最佳策略 ========== -->
+<div class="card verdict">
+<h3 style="color:var(--green)">新裝修房屋的最佳除甲醛策略</h3>
+<ol>
+  <li><strong>裝修期間：</strong>選用 F1 級以上低甲醛板材、水性漆、環保黏合劑</li>
+  <li><strong>完工後：</strong>全面通風至少 2-4 週（夏季通風效果最佳，高溫加速釋放）</li>
+  <li><strong>入住後：</strong>使用 <strong>Dyson BP04</strong> 24 小時運轉，SCO 催化持續分解游離甲醛</li>
+  <li><strong>進階選配：</strong>如需更強異味處理（廚房、化學品），可另加一台 <strong>IQAir HealthPro 250</strong></li>
+  <li><strong>長期監控：</strong>利用 BP04 的即時甲醛數值觀察濃度趨勢，評估環境改善情況</li>
+  <li><strong>定期通風：</strong>即使有清淨機，每天至少開窗通風 30 分鐘（通風效果是清淨機的 10 倍以上）</li>
+</ol>
+</div>
+
+<!-- ========== 來源 ========== -->
+<hr class="section-divider">
+<h2>Sources 資料來源</h2>
+<div class="card" style="font-size:0.85rem">
+<p><strong>官方產品頁面：</strong></p>
+<ul>
+  <li><a href="https://shop.dyson.tw/fans-and-heaters/purifiers/dyson-purifier-big-quiet-formaldehyde-prussian-blue-gold-filters-set-410623-01" target="_blank">Dyson BP04 台灣官網</a></li>
+  <li><a href="https://www.dyson.com/air-treatment/air-purifiers/big-quiet-formaldehyde/prussian-blue-gold-bp04" target="_blank">Dyson BP04 國際官網</a></li>
+  <li><a href="https://www.dyson.com/discover/innovation/behind-the-invention/filtration-at-dyson" target="_blank">Dyson Filtration Technology 技術說明</a></li>
+  <li><a href="https://www.amway.com.tw/sky/sky.html" target="_blank">Amway Atmosphere Sky 台灣官網</a></li>
+  <li><a href="https://www.iqair.com/us/products/air-purifiers/healthpro-plus" target="_blank">IQAir HealthPro Plus 官網</a></li>
+  <li><a href="https://www.iqair.com/products/replacement-filters/v5-cell-f2" target="_blank">IQAir V5-Cell 濾網規格</a></li>
+  <li><a href="https://www.blueair.com/products/classic-pro-cp9i" target="_blank">Blueair Classic Pro CP9i</a></li>
+  <li><a href="https://www.lg.com/tw/air-care/air-purifiers/as651dss0/" target="_blank">LG PuriCare 360 AS651DSS0 台灣官網</a></li>
+  <li><a href="https://www.lg.com/tw/appliance-accessories/air-care-accessories/adq75801766/" target="_blank">LG 光觸媒+活性碳濾網規格</a></li>
+  <li><a href="https://cowaymega.com/products/mighty-ap-1512hh" target="_blank">Coway AP-1512HH 官網</a></li>
+</ul>
+<p><strong>評測與分析：</strong></p>
+<ul>
+  <li><a href="https://applianceinsight.com.tw/blog/post/amway-atmosphere-sky" target="_blank">電小二 — Amway Atmosphere Sky 實測 (PART55)</a></li>
+  <li><a href="https://applianceinsight.com.tw/blog/post/321106513" target="_blank">電小二 — 想處理室內甲醛問題，空氣清淨機並不是最好選擇</a></li>
+  <li><a href="https://applianceinsight.com.tw/blog/post/aircleanner-selector-result-2" target="_blank">電小二 — 空氣清淨機選購器：氣味處理</a></li>
+  <li><a href="https://www.airpurifierfirst.com/review/iqair-healthpro-plus/" target="_blank">Air Purifier First — IQAir HealthPro Plus 深度評測</a></li>
+  <li><a href="https://www.airpurifierfirst.com/review/coway-ap-1512hh/" target="_blank">Air Purifier First — Coway AP-1512HH 評測</a></li>
+  <li><a href="https://alvinist.com/tech_appliance/dyson-purifier-bp03-bp04-review/" target="_blank">Alvinist — Dyson BP03/BP04 評測</a></li>
+  <li><a href="https://breathequality.com/coway-ap-1512hh-review/" target="_blank">Breathe Quality — Coway AP-1512HH Review</a></li>
+  <li><a href="https://lanrenpick.com/lg-puricare-360-weakness/" target="_blank">懶人精選 — LG PuriCare 360 缺點揭密</a></li>
+</ul>
+<p><strong>甲醛知識與技術：</strong></p>
+<ul>
+  <li><a href="https://mha-eco.com/%E7%A9%BA%E6%B0%A3%E6%B8%85%E6%B7%A8%E6%A9%9F%E8%83%BD%E9%99%A4%E7%94%B2%E9%86%9B%E5%97%8E-%E4%BD%A0%E8%A9%B2%E7%9F%A5%E9%81%93%E7%9A%844%E5%A4%A7%E9%97%9C%E9%8D%B5/" target="_blank">妙健環境科技 — 空氣清淨機能除甲醛嗎？4 大關鍵</a></li>
+  <li><a href="https://naturax3.com.tw/blogs/home-aesthetics-journal/air-purifier-limitations-vocs-formaldehyde-removal" target="_blank">NaturaX — HEPA 與活性碳過濾不了甲醛的致命盲點</a></li>
+  <li><a href="https://www.magic-angel.com.tw/blog/posts/activated-carbon-cant-formaldehyde-removal" target="_blank">天使光 — 活性碳能除甲醛嗎？</a></li>
+  <li><a href="https://koreanclean.com/en/%E6%9C%89%E5%93%AA%E4%BA%9B%E5%9B%A0%E7%B4%A0%E5%BD%B1%E9%9F%BF%E7%94%B2%E9%86%9B%E9%87%8B%E6%94%BE%E5%91%A8%E6%9C%9F%EF%BC%9F%E4%BD%95%E6%99%82%E6%98%AF%E7%94%B2%E9%86%9B%E7%9A%84%E5%AF%86%E9%9B%86/" target="_blank">韓管家 — 甲醛釋放週期與密集釋放期</a></li>
+  <li><a href="https://www.ptt.cc/bbs/E-appliance/M.1596615543.A.6A1.html" target="_blank">PTT E-appliance — 有推薦可有效清除甲醛空氣清淨機嗎</a></li>
+  <li><a href="https://www.mobile01.com/topicdetail.php?f=731&t=7133210" target="_blank">Mobile01 — 買了一台可以分解甲醛的空氣清淨機</a></li>
+</ul>
+</div>
+
+<p class="footnote" style="text-align:center;margin-top:2rem">
+  由賈維斯製作 ｜ 資料來源經交叉驗證 ｜ 價格與規格以各品牌官方公告為準<br>
+  <strong>免責聲明：</strong>本分析僅供參考，非醫療或專業環境檢測建議。新裝修甲醛問題建議搭配專業檢測與通風措施。
+</p>
+
+</div>
+</body>
+</html>
