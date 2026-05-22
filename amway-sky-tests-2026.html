@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amway Atmosphere Sky 國際第三方檢測數據彙整</title>
+<style>
+:root {
+  --primary: #1a5276;
+  --secondary: #2e86c1;
+  --accent: #e74c3c;
+  --success: #27ae60;
+  --warning: #f39c12;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #2c3e50;
+  --border: #dee2e6;
+  --verified: #27ae60;
+  --unverified: #e74c3c;
+  --partial: #f39c12;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft JhengHei", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  padding: 12px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+h1 {
+  font-size: 1.5em;
+  color: var(--primary);
+  padding: 16px 0;
+  border-bottom: 3px solid var(--secondary);
+  margin-bottom: 8px;
+}
+h2 {
+  font-size: 1.25em;
+  color: var(--primary);
+  padding: 12px 0 6px;
+  border-bottom: 2px solid var(--border);
+  margin-top: 20px;
+}
+h3 {
+  font-size: 1.1em;
+  color: var(--secondary);
+  margin: 12px 0 6px;
+}
+.meta {
+  color: #666;
+  font-size: 0.85em;
+  padding: 6px 0 16px;
+}
+.badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 0.78em;
+  font-weight: 600;
+  color: #fff;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+.badge-verified { background: var(--verified); }
+.badge-partial { background: var(--partial); }
+.badge-unverified { background: var(--unverified); }
+.badge-info { background: var(--secondary); }
+
+.card {
+  background: var(--card);
+  border-radius: 8px;
+  padding: 16px;
+  margin: 12px 0;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  border-left: 4px solid var(--secondary);
+}
+.card.warning {
+  border-left-color: var(--warning);
+  background: #fef9e7;
+}
+.card.danger {
+  border-left-color: var(--accent);
+  background: #fdedec;
+}
+.card.success {
+  border-left-color: var(--success);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0;
+  font-size: 0.88em;
+}
+th, td {
+  padding: 8px 10px;
+  text-align: left;
+  border: 1px solid var(--border);
+}
+th {
+  background: var(--primary);
+  color: #fff;
+  font-weight: 600;
+}
+tr:nth-child(even) { background: #f2f4f6; }
+td.num { text-align: center; font-family: "Consolas", monospace; }
+
+.source {
+  font-size: 0.8em;
+  color: #888;
+  margin-top: 6px;
+  word-break: break-all;
+}
+.source a { color: var(--secondary); text-decoration: none; }
+.source a:hover { text-decoration: underline; }
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 12px 0;
+}
+@media (max-width: 600px) {
+  .summary-grid { grid-template-columns: 1fr; }
+  table { font-size: 0.82em; }
+  th, td { padding: 6px; }
+}
+.summary-item {
+  background: var(--card);
+  border-radius: 8px;
+  padding: 12px;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.summary-item .label { font-size: 0.8em; color: #888; }
+.summary-item .value { font-size: 1.3em; font-weight: 700; color: var(--primary); }
+
+.disclaimer {
+  background: #fef3cd;
+  border: 1px solid #ffc107;
+  border-radius: 6px;
+  padding: 12px;
+  margin: 12px 0;
+  font-size: 0.85em;
+}
+.toc {
+  background: var(--card);
+  border-radius: 8px;
+  padding: 14px 20px;
+  margin: 12px 0;
+}
+.toc ol { padding-left: 20px; }
+.toc li { margin: 4px 0; }
+.toc a { color: var(--secondary); text-decoration: none; }
+.toc a:hover { text-decoration: underline; }
+
+details {
+  margin: 8px 0;
+}
+details summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--secondary);
+  padding: 4px 0;
+}
+.legend {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 8px 0;
+  font-size: 0.85em;
+}
+.status-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 4px;
+  vertical-align: middle;
+}
+.dot-green { background: var(--verified); }
+.dot-yellow { background: var(--partial); }
+.dot-red { background: var(--unverified); }
+</style>
+</head>
+<body>
+
+<h1>Amway Atmosphere Sky<br>國際第三方檢測數據彙整報告</h1>
+<p class="meta">製表日期：2026-05-22 ｜ 資料來源：國際認證機構、政府資料庫、學術期刊 ｜ 僅收錄可驗證之第三方數據</p>
+
+<div class="disclaimer">
+  <strong>重要聲明：</strong>本報告僅收錄可追溯至具名第三方機構或政府資料庫的檢測數據。行銷宣稱與第三方驗證數據已明確區分標示。標記為「<span class="badge badge-verified">已驗證</span>」者代表資料可從公開資料庫或認證機構網站查證；標記為「<span class="badge badge-partial">部分驗證</span>」者代表認證存在但具體數據未完全公開；標記為「<span class="badge badge-unverified">待驗證</span>」者代表宣稱存在但無法從公開管道獨立確認。
+</div>
+
+<div class="legend">
+  <span><span class="status-dot dot-green"></span> 已驗證 (可從公開資料庫查證)</span>
+  <span><span class="status-dot dot-yellow"></span> 部分驗證 (認證存在但細節未公開)</span>
+  <span><span class="status-dot dot-red"></span> 待驗證 (宣稱存在但無法獨立確認)</span>
+</div>
+
+<!-- ===== 總覽表 ===== -->
+<h2>認證與檢測總覽</h2>
+
+<table>
+<tr>
+  <th>認證/檢測機構</th>
+  <th>認證項目</th>
+  <th>驗證狀態</th>
+</tr>
+<tr>
+  <td>AHAM (美國家電製造商協會)</td>
+  <td>CADR 認證 (煙霧/灰塵/花粉)</td>
+  <td><span class="badge badge-verified">已驗證</span></td>
+</tr>
+<tr>
+  <td>ENERGY STAR (美國 EPA)</td>
+  <td>能源效率認證</td>
+  <td><span class="badge badge-verified">已驗證</span></td>
+</tr>
+<tr>
+  <td>Allergy UK (英國過敏協會)</td>
+  <td>Seal of Approval 過敏友善認證</td>
+  <td><span class="badge badge-verified">已驗證</span></td>
+</tr>
+<tr>
+  <td>ECARF (歐洲過敏研究基金會)</td>
+  <td>Quality Seal 過敏友善品質認證</td>
+  <td><span class="badge badge-verified">已驗證</span></td>
+</tr>
+<tr>
+  <td>KACA (韓國空氣清淨協會)</td>
+  <td>SPS-KACA002-132:2018 有害氣體去除</td>
+  <td><span class="badge badge-partial">部分驗證</span></td>
+</tr>
+<tr>
+  <td>SleepScore Labs (美國)</td>
+  <td>睡眠品質改善驗證</td>
+  <td><span class="badge badge-verified">已驗證</span></td>
+</tr>
+<tr>
+  <td>Consumer Reports (美國)</td>
+  <td>獨立消費者評測</td>
+  <td><span class="badge badge-verified">已驗證</span></td>
+</tr>
+<tr>
+  <td>CARB (加州空氣資源委員會)</td>
+  <td>臭氧排放合規</td>
+  <td><span class="badge badge-unverified">待驗證</span></td>
+</tr>
+<tr>
+  <td>Airmid Healthgroup (愛爾蘭)</td>
+  <td>病毒/細菌去除測試</td>
+  <td><span class="badge badge-unverified">待驗證</span></td>
+</tr>
+<tr>
+  <td>IBR Laboratories / Intertek / SGS / TUV</td>
+  <td>獨立實驗室報告</td>
+  <td><span class="badge badge-unverified">待驗證</span></td>
+</tr>
+<tr>
+  <td>學術論文 (同儕審查)</td>
+  <td>獨立學術研究</td>
+  <td><span class="badge badge-partial">部分驗證</span></td>
+</tr>
+</table>
+
+<!-- ===== 產品規格 ===== -->
+<h2>產品基本規格</h2>
+
+<div class="summary-grid">
+  <div class="summary-item">
+    <div class="label">型號</div>
+    <div class="value">120539</div>
+  </div>
+  <div class="summary-item">
+    <div class="label">額定功率</div>
+    <div class="value">65W</div>
+  </div>
+  <div class="summary-item">
+    <div class="label">噪音範圍</div>
+    <div class="value">26~52 dB(A)</div>
+  </div>
+  <div class="summary-item">
+    <div class="label">適用面積</div>
+    <div class="value">43.2 m&sup2;</div>
+  </div>
+  <div class="summary-item">
+    <div class="label">尺寸 (H&times;W&times;D)</div>
+    <div class="value" style="font-size:1em;">74.7&times;41.1&times;30.1 cm</div>
+  </div>
+  <div class="summary-item">
+    <div class="label">重量</div>
+    <div class="value">12.6 kg</div>
+  </div>
+  <div class="summary-item">
+    <div class="label">電壓</div>
+    <div class="value">100-240V~</div>
+  </div>
+  <div class="summary-item">
+    <div class="label">濾網系統</div>
+    <div class="value" style="font-size:0.9em;">三段式</div>
+  </div>
+</div>
+
+<div class="card">
+  <h3>濾網系統</h3>
+  <table>
+    <tr><th>層級</th><th>濾網類型</th><th>功能</th><th>壽命</th></tr>
+    <tr><td>第一層</td><td>可水洗前置濾網</td><td>攔截大型纖維、毛髮</td><td>每 2-12 個月清洗</td></tr>
+    <tr><td>第二層</td><td>HEPA 集塵濾網</td><td>去除微粒污染物</td><td>3 個月至 5 年 (依環境)</td></tr>
+    <tr><td>第三層</td><td>活性碳脫臭濾網</td><td>去除甲醛、臭氧、異味等</td><td>4-12 個月 (建議至少每年更換)</td></tr>
+  </table>
+  <p class="source">來源：Amway 官方產品頁 (amway.my, amway.co.kr)、使用者手冊</p>
+</div>
+
+<!-- ===== 目錄 ===== -->
+<div class="toc">
+  <strong>目錄</strong>
+  <ol>
+    <li><a href="#aham">AHAM 認證 (美國家電製造商協會)</a></li>
+    <li><a href="#energystar">ENERGY STAR 認證 (美國 EPA)</a></li>
+    <li><a href="#allergyuk">Allergy UK 認證 (英國過敏協會)</a></li>
+    <li><a href="#ecarf">ECARF 認證 (歐洲過敏研究基金會)</a></li>
+    <li><a href="#kaca">韓國 KACA 檢測數據</a></li>
+    <li><a href="#sleepscore">SleepScore Labs 睡眠研究</a></li>
+    <li><a href="#consumerreports">Consumer Reports 評測</a></li>
+    <li><a href="#gasremoval">有害氣體去除檢測</a></li>
+    <li><a href="#particle">微粒去除性能</a></li>
+    <li><a href="#patent">專利技術</a></li>
+    <li><a href="#notfound">未能查證的項目</a></li>
+    <li><a href="#critical">關鍵發現與注意事項</a></li>
+  </ol>
+</div>
+
+<!-- ===== 1. AHAM ===== -->
+<h2 id="aham">1. AHAM 認證 (美國家電製造商協會) <span class="badge badge-verified">已驗證</span></h2>
+
+<div class="card success">
+  <h3>CADR 數據 (Clean Air Delivery Rate)</h3>
+  <p>以下數據來自美國 EPA ENERGY STAR Product Finder 公開資料庫，該資料庫收錄 AHAM 認證數據：</p>
+  <table>
+    <tr><th>污染物類型</th><th>CADR (cfm)</th><th>CADR (m&sup3;/h 換算)</th></tr>
+    <tr><td>Smoke (煙霧)</td><td class="num">316.0</td><td class="num">~537</td></tr>
+    <tr><td>Dust (灰塵)</td><td class="num">304.0</td><td class="num">~517</td></tr>
+    <tr><td>Pollen (花粉)</td><td class="num">319.0</td><td class="num">~542</td></tr>
+    <tr><td>PM2.5</td><td class="num">310.0</td><td class="num">~527</td></tr>
+  </table>
+  <p><strong>認證適用面積：</strong>490 sq.ft. (約 45.5 m&sup2;)</p>
+  <p><strong>測試標準：</strong>ANSI/AHAM AC-1-2015</p>
+  <p><strong>測試條件：</strong>風速 Speed 5 (最高速)</p>
+  <p><strong>技術類型：</strong>Fan and Filter (風扇 + 濾網)</p>
+  <p><strong>自動模式：</strong>Air Quality Sensor (空氣品質感測器)</p>
+  <p class="source">來源：<a href="https://www.energystar.gov/productfinder/product/certified-room-air-cleaners/" target="_blank">EPA ENERGY STAR Product Finder - Certified Room Air Cleaners</a> (搜尋 "Atmosphere")</p>
+</div>
+
+<div class="card warning">
+  <h3>注意事項</h3>
+  <ul>
+    <li>Amway 官方文件經常宣稱「CADR 300 cfm 以上」，這是概括描述。實際 AHAM 認證的三項 CADR 值分別為 316 (煙霧)、304 (灰塵)、319 (花粉)。</li>
+    <li>韓國 Danawa (다나와) 列出 CADR 510 m&sup3;/h，與 ENERGY STAR 資料庫的 Smoke CADR 316 cfm (約 537 m&sup3;/h) 有差異，可能是使用不同測試標準或測試條件所致。</li>
+    <li>AHAM 的 CADR 數據是在最高風速 (Speed 5) 下測試，實際使用較低風速時效能會顯著降低。</li>
+  </ul>
+</div>
+
+<!-- ===== 2. ENERGY STAR ===== -->
+<h2 id="energystar">2. ENERGY STAR 認證 (美國 EPA) <span class="badge badge-verified">已驗證</span></h2>
+
+<div class="card success">
+  <h3>能源效率數據</h3>
+  <table>
+    <tr><th>項目</th><th>數據</th></tr>
+    <tr><td>Energy Factor (能效因數)</td><td class="num">6.1 cfm/Watt</td></tr>
+    <tr><td>Integrated Energy Factor (整合能效因數)</td><td class="num">6.1 cfm/Watt</td></tr>
+    <tr><td>Annual Energy Use (年耗電量)</td><td class="num">298 kWh/yr</td></tr>
+    <tr><td>額定功率</td><td class="num">65W (韓國 Amway)</td></tr>
+    <tr><td>低速功耗</td><td class="num">&lt; 5W</td></tr>
+    <tr><td>高速功耗</td><td class="num">&lt; 50W</td></tr>
+    <tr><td>每平方公尺功耗</td><td class="num">0.74 W/m&sup2; (韓國數據)</td></tr>
+    <tr><td>韓國能效等級</td><td class="num">3等級</td></tr>
+  </table>
+  <p><strong>能效計算方式：</strong>CADR (Smoke) / Watt = CADR/Watt ratio</p>
+  <p class="source">來源：<a href="https://www.energystar.gov/productfinder/product/certified-room-air-cleaners/" target="_blank">EPA ENERGY STAR Product Finder</a>、<a href="https://www.amway.co.kr/shop/home/air-treatment/atmosphere-sky/p/120539K" target="_blank">Amway Korea</a></p>
+</div>
+
+<!-- ===== 3. Allergy UK ===== -->
+<h2 id="allergyuk">3. Allergy UK 認證 (英國過敏協會) <span class="badge badge-verified">已驗證</span></h2>
+
+<div class="card success">
+  <h3>Seal of Approval (認可標章)</h3>
+  <p><strong>認證狀態：</strong>有效</p>
+  <p><strong>認證亮點：</strong>全球首台在 Allergy UK 全部 22 個過敏觸發類別中取得認證的空氣清淨機</p>
+  <p><strong>認證涵蓋：</strong>102 種空氣污染物的有效去除</p>
+  <p><strong>認證意義：</strong>經第三方實驗室科學測試，證實可減少或去除通過濾網的空氣中的過敏原，適合過敏患者使用</p>
+  <p class="source">來源：<a href="https://www.allergyuk.org/our-services/allergyuk-products/amway-atmosphere-sky-air-purifier/" target="_blank">Allergy UK 官方認證頁面</a></p>
+</div>
+
+<div class="card">
+  <h3>102 種認證污染物分類</h3>
+  <table>
+    <tr><th>類別</th><th>數量</th><th>主要項目</th></tr>
+    <tr>
+      <td>動物過敏原</td>
+      <td class="num">多項</td>
+      <td>貓過敏原、狗過敏原、蟑螂過敏原、乳膠、蠶蛾碎片</td>
+    </tr>
+    <tr>
+      <td>塵蟎抗原</td>
+      <td class="num">多項</td>
+      <td>Der p1、Der f1 抗原及碎屑</td>
+    </tr>
+    <tr>
+      <td>真菌孢子</td>
+      <td class="num">15 種</td>
+      <td>Aspergillus (麴菌)、Penicillium (青黴菌)、Cladosporium、Alternaria alternata、Mucor plumbeus、Paecilomyces、Histoplasma capsulatum 等</td>
+    </tr>
+    <tr>
+      <td>花粉</td>
+      <td class="num">22-23 種</td>
+      <td>草花粉、樺樹花粉、杉木花粉、豚草花粉等</td>
+    </tr>
+    <tr>
+      <td>細菌</td>
+      <td class="num">12 種</td>
+      <td>Legionella pneumophila (退伍軍人菌)、Mycobacterium tuberculosis (結核桿菌)、Bordetella pertussis (百日咳桿菌) 等</td>
+    </tr>
+    <tr>
+      <td>病毒</td>
+      <td class="num">17 種</td>
+      <td>Coronavirus SARS (冠狀病毒)、Influenza (流感病毒)、Measles (麻疹)、Rhinovirus (鼻病毒)、RSV (呼吸道融合病毒) 等</td>
+    </tr>
+    <tr>
+      <td>化學刺激物</td>
+      <td class="num">多項</td>
+      <td>Formaldehyde (甲醛)、Benzene (苯)、Radon decay products (氡衰變產物)、Ozone (臭氧)、Ammonia (氨)、Asbestos (石棉)、Tobacco smoke (菸煙) 等</td>
+    </tr>
+  </table>
+  <p class="source">來源：<a href="https://www.allergyuk.org/our-services/allergyuk-products/amway-atmosphere-sky-air-purifier/" target="_blank">Allergy UK</a>、<a href="https://contenthub.amway.id/media/pdf/Atmosphere-Sky-Allergy-UK-Certificate.pdf" target="_blank">Allergy UK Seal of Approval 證書 PDF</a></p>
+</div>
+
+<div class="card danger">
+  <h3>關鍵注意：病毒/細菌去除聲明的限制</h3>
+  <p><strong>Amway 官方已揭露：</strong>「Amway did not actually use any viruses to conduct product performance testing.」(Amway 並未實際使用任何病毒進行產品性能測試)</p>
+  <p>102 種污染物的去除聲明是基於 <strong>proxy testing (代理測試)</strong>——使用各種尺寸的替代粒子進行測試後，以推算方式 (extrapolation) 聲明可去除特定病原體。這是業界標準做法，但並非直接以病毒/細菌進行的實測。</p>
+  <p class="source">來源：<a href="https://www.amwayglobal.com/answers/amway-covid-19-faq/" target="_blank">Amway COVID-19 FAQ</a>、Atmosphere Sky Contaminants List 官方文件聲明</p>
+</div>
+
+<!-- ===== 4. ECARF ===== -->
+<h2 id="ecarf">4. ECARF 認證 (歐洲過敏研究基金會) <span class="badge badge-verified">已驗證</span></h2>
+
+<div class="card success">
+  <h3>Quality Seal (品質標章)</h3>
+  <table>
+    <tr><th>項目</th><th>資料</th></tr>
+    <tr><td>認證狀態</td><td>有效</td></tr>
+    <tr><td>首次認證日期</td><td>2017 年 10 月 31 日</td></tr>
+    <tr><td>公告日期</td><td>2018 年 3 月 20 日</td></tr>
+    <tr><td>證書編號</td><td>8314</td></tr>
+    <tr><td>最新展延</td><td>2025 年 10 月 20 日 (Teresa Hartung 簽署)</td></tr>
+    <tr><td>申請公司</td><td>Amway GmbH, Benzstr. 11 b-c, 82178 Puchheim, Germany</td></tr>
+  </table>
+  <p><strong>測試項目：</strong>Particle reduction (微粒減少)、Noise (噪音)、Odor (氣味)、Temperature (溫度)</p>
+  <p><strong>測試要求：</strong>由認可的第三方實驗室進行嚴格科學測試，測試標準定期更新以反映最新研究</p>
+  <p class="source">來源：<a href="https://www.ecarf-institute.org/en/products/atmosphere-sky-en/" target="_blank">ECARF Institute 官方產品頁</a>、<a href="https://contenthub.amway.id/media/pdf/ECARF-Atmosphere-SKY.pdf" target="_blank">ECARF 證書 PDF</a></p>
+</div>
+
+<div class="card warning">
+  <h3>限制</h3>
+  <p>ECARF 確認了認證有效性與測試項目類別，但具體的數值測試結果（如微粒去除率%、噪音分貝值等）未在公開資訊中揭露。ECARF 的認證表示產品符合其標準，但不等同於公開完整測試報告。</p>
+</div>
+
+<!-- ===== 5. 韓國 KACA ===== -->
+<h2 id="kaca">5. 韓國 KACA 檢測數據 <span class="badge badge-partial">部分驗證</span></h2>
+
+<div class="card">
+  <h3>韓國市場規格 (Amway Korea 公布)</h3>
+  <table>
+    <tr><th>項目</th><th>數據</th></tr>
+    <tr><td>型號</td><td>120539K</td></tr>
+    <tr><td>額定功率</td><td>65W</td></tr>
+    <tr><td>電壓</td><td>100-240V~, 50/60Hz</td></tr>
+    <tr><td>CADR</td><td>510 m&sup3;/h (韓國標準) / 8.5 m&sup3;/min (AHAM)</td></tr>
+    <tr><td>適用面積</td><td>43.2 m&sup2; (約 20.7 坪)</td></tr>
+    <tr><td>夜間模式噪音</td><td>25.2 dB(A) (Amway 本社規格試驗)</td></tr>
+    <tr><td>噪音範圍</td><td>26 ~ 52 dB(A)</td></tr>
+    <tr><td>能效等級</td><td>3 等級</td></tr>
+    <tr><td>每平方公尺功耗</td><td>0.74 W/m&sup2;</td></tr>
+    <tr><td>保固</td><td>5 年 (濾網除外)</td></tr>
+    <tr><td>製造商</td><td>Technocom Systems / 中國 Amway 有限責任公司</td></tr>
+  </table>
+  <p class="source">來源：<a href="https://www.amway.co.kr/shop/home/air-treatment/atmosphere-sky/p/120539K" target="_blank">Amway Korea 官方產品頁</a>、<a href="https://prod.danawa.com/info/?pcode=6790990" target="_blank">Danawa 價格比較</a></p>
+</div>
+
+<div class="card warning">
+  <h3>KACA 標準說明</h3>
+  <p>韓國空氣清淨協會 (KACA) 依據 SPS-KACA002-132:2018 標準進行認證。此為韓國國內室內空氣清淨機團體標準。但本次搜尋未找到具體的 KC 認證編號、電磁波適合性報告等官方認證細節。</p>
+  <p><strong>測試標準：</strong>SPS-KACA002-132:2018 (室內空氣清淨機規格)</p>
+</div>
+
+<!-- ===== 6. SleepScore Labs ===== -->
+<h2 id="sleepscore">6. SleepScore Labs 睡眠研究 <span class="badge badge-verified">已驗證</span></h2>
+
+<div class="card success">
+  <h3>研究設計</h3>
+  <table>
+    <tr><th>項目</th><th>資料</th></tr>
+    <tr><td>研究類型</td><td>8 週前後測場域研究 (pre-post field study)</td></tr>
+    <tr><td>受試者</td><td>31 位健康美國成人 (68% 女性，平均年齡 50 歲)</td></tr>
+    <tr><td>總收集夜數</td><td>1,284 晚</td></tr>
+    <tr><td>基線期</td><td>前 4 週 (不使用清淨機，正常追蹤睡眠)</td></tr>
+    <tr><td>介入期</td><td>後 4 週 (每晚睡前 20 分鐘開啟清淨機)</td></tr>
+    <tr><td>客觀測量工具</td><td>SleepScore Max (驗證過的非接觸式生物動態裝置)</td></tr>
+    <tr><td>統計分析</td><td>Multilevel regression (多層次迴歸分析)</td></tr>
+  </table>
+</div>
+
+<div class="card success">
+  <h3>客觀睡眠指標變化</h3>
+  <table>
+    <tr><th>指標</th><th>變化</th><th>百分比</th><th>統計顯著性</th></tr>
+    <tr><td>深層睡眠</td><td class="num">+6 分鐘/晚</td><td class="num">+7%</td><td class="num">p &lt; .001</td></tr>
+    <tr><td>深層睡眠比例</td><td class="num">增加</td><td class="num">+6%</td><td class="num">p = .009</td></tr>
+    <tr><td>睡眠時長</td><td class="num">+6 分鐘/晚</td><td class="num">+2%</td><td class="num">p = .043</td></tr>
+    <tr><td>睡眠效率</td><td class="num">增加</td><td class="num">+1%</td><td class="num">p = .022</td></tr>
+    <tr><td>SleepScore</td><td class="num">增加</td><td class="num">+1%</td><td class="num">p = .048</td></tr>
+    <tr><td>BodyScore</td><td class="num">增加</td><td class="num">+3%</td><td class="num">p &lt; .001</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <h3>主觀感受指標</h3>
+  <table>
+    <tr><th>指標</th><th>改善幅度</th><th>統計顯著性</th></tr>
+    <tr><td>主觀睡眠品質 (Perceived sleep quality)</td><td class="num">+11%</td><td class="num">p &lt; .001</td></tr>
+    <tr><td>早晨清醒感 (Morning restfulness)</td><td class="num">+11%</td><td class="num">p &lt; .001</td></tr>
+    <tr><td>覺得睡眠改善的受試者比例</td><td class="num">81%</td><td>-</td></tr>
+    <tr><td>覺得整晚更舒適的比例</td><td class="num">81%</td><td>-</td></tr>
+  </table>
+  <p class="source">來源：<a href="https://academic.oup.com/sleep/article/48/Supplement_1/A598/8136179" target="_blank">SLEEP 期刊 (Oxford Academic) - Abstract #1392</a>、<a href="https://www.amwayglobal.com/newsroom/amway-atmosphere-sky-and-atmosphere-mini-earn-sleepscore-labs-validation-seal-for-supporting-better-sleep/" target="_blank">Amway Global Newsroom</a></p>
+</div>
+
+<div class="card warning">
+  <h3>研究限制</h3>
+  <ul>
+    <li><strong>資助方：</strong>研究由 Amway 資助 (Supported by Amway)</li>
+    <li><strong>設計限制：</strong>前後測設計 (非隨機對照試驗)，無安慰劑組或假機組</li>
+    <li><strong>樣本量：</strong>31 人，為小型研究</li>
+    <li><strong>發表狀態：</strong>以會議摘要形式刊登於 SLEEP 期刊增刊，非完整同儕審查論文</li>
+    <li>改善幅度雖具統計顯著性，但實際改善量較小 (深層睡眠僅增加 6 分鐘)</li>
+  </ul>
+</div>
+
+<!-- ===== 7. Consumer Reports ===== -->
+<h2 id="consumerreports">7. Consumer Reports 評測 <span class="badge badge-verified">已驗證</span></h2>
+
+<div class="card">
+  <h3>評測摘要</h3>
+  <p>Consumer Reports 對 Amway Atmosphere (型號 101076，為 Sky 前代或同系列型號) 進行了實驗室測試：</p>
+  <ul>
+    <li><strong>高速表現：</strong>在最高風速下，去除灰塵、煙霧和花粉的表現「令人印象深刻」(impressive)</li>
+    <li><strong>低速表現：</strong>在低風速下效果「不太有效」(not very effective)</li>
+    <li><strong>產品類型：</strong>以濾網為主的便攜式空氣清淨機</li>
+    <li><strong>功能：</strong>濾網指示器、可程式定時器、遙控器、5 段風速</li>
+  </ul>
+  <p class="source">來源：<a href="https://www.consumerreports.org/appliances/air-purifiers/amway-atmosphere-101076/m91798/" target="_blank">Consumer Reports - Amway Atmosphere 101076</a> (完整評分需付費會員)</p>
+</div>
+
+<div class="card warning">
+  <h3>注意</h3>
+  <p>Consumer Reports 測試的型號為 101076 (Atmosphere 前代)，非最新的 Atmosphere Sky 120539。兩者為同系列但規格有所不同。完整數值評分需要 Consumer Reports 付費會員才能查看。</p>
+</div>
+
+<!-- ===== 8. 有害氣體去除 ===== -->
+<h2 id="gasremoval">8. 有害氣體去除檢測 <span class="badge badge-partial">部分驗證</span></h2>
+
+<div class="card">
+  <h3>韓國 KACA 標準測試結果 (SPS-KACA002-132:2018)</h3>
+  <p><strong>測試條件：</strong></p>
+  <ul>
+    <li>密閉空間：8.0 &plusmn; 0.2 m&sup3;</li>
+    <li>溫度：21 &plusmn; 1&deg;C</li>
+    <li>相對濕度：45 &plusmn; 5%</li>
+    <li>運轉時間：30 分鐘，額定風量</li>
+    <li>測量方式：比較初始氣體濃度與運轉 30 分鐘後的殘留濃度</li>
+  </ul>
+
+  <table>
+    <tr><th>有害氣體</th><th>化學式</th><th>去除率</th></tr>
+    <tr><td>醋酸 (Acetic acid)</td><td>CH&sub3;COOH</td><td class="num">96%</td></tr>
+    <tr><td>氨 (Ammonia)</td><td>NH&sub3;</td><td class="num">94%</td></tr>
+    <tr><td>乙醛 (Acetaldehyde)</td><td>CH&sub3;CHO</td><td class="num">90%</td></tr>
+    <tr><td>甲苯 (Toluene)</td><td>C&sub7;H&sub8;</td><td class="num">99.5% 以上</td></tr>
+    <tr><td>甲醛 (Formaldehyde)</td><td>HCHO</td><td class="num">91%</td></tr>
+    <tr><td colspan="2"><strong>五項平均</strong></td><td class="num"><strong>94%</strong></td></tr>
+  </table>
+  <p class="source">來源：<a href="https://www.amway.co.kr/about-amway/atmosphere/purification" target="_blank">Amway Korea 淨化力頁面</a> (引用國內試驗機構 SPS-KACA002-132:2018 結果)</p>
+</div>
+
+<div class="card warning">
+  <h3>數據差異說明</h3>
+  <p>同一頁面另有一組數據顯示平均 86% 的去除率（醋酸 99%、氨 68%、乙醛 73%、甲苯 99.5%+、甲醛 90%），推測為不同測試條件下的結果。兩組數據之間的差異可能來自：</p>
+  <ul>
+    <li>不同風速設定</li>
+    <li>不同的初始濃度</li>
+    <li>不同的測試時間或空間大小</li>
+  </ul>
+  <p><strong>VOC 去除限制：</strong>Amway 內部文件曾揭露，活性碳濾網對 VOC 的吸附容量有限，在高濕度環境下容量更低，無法長期大幅降低室內 VOC 濃度（除非使用數百公斤的活性碳）。</p>
+</div>
+
+<!-- ===== 9. 微粒去除 ===== -->
+<h2 id="particle">9. 微粒去除性能 <span class="badge badge-partial">部分驗證</span></h2>
+
+<div class="card">
+  <h3>官方宣稱之微粒去除數據</h3>
+  <table>
+    <tr><th>項目</th><th>數據</th><th>測試標準</th><th>來源</th></tr>
+    <tr>
+      <td>Single Pass Efficiency (單次通過效率)</td>
+      <td class="num">99.99%</td>
+      <td>EN 1822 (氯化鉀粒子)</td>
+      <td>Amway Korea</td>
+    </tr>
+    <tr>
+      <td>最小可去除粒徑</td>
+      <td class="num">0.0024 &mu;m (2.4 nm)</td>
+      <td>-</td>
+      <td>全球官方宣稱</td>
+    </tr>
+    <tr>
+      <td>HEPA 標準效率 (&ge;0.3 &mu;m)</td>
+      <td class="num">&ge;99.97%</td>
+      <td>HEPA 標準定義</td>
+      <td>使用者手冊</td>
+    </tr>
+    <tr>
+      <td>日本市場宣稱 (&ge;0.009 &mu;m)</td>
+      <td class="num">99.99% (94 種粒子)</td>
+      <td>-</td>
+      <td>Amway Japan</td>
+    </tr>
+  </table>
+  <p><strong>測試條件 (韓國)：</strong>Speed 5 風速，氯化鉀 (KCl) 測試粒子，適用於通過濾網的空氣</p>
+</div>
+
+<div class="card danger">
+  <h3>關鍵質疑：0.0024 &mu;m 的宣稱</h3>
+  <p>Amway 宣稱可去除小至 0.0024 &mu;m (2.4 nm) 的微粒，這遠小於標準 HEPA 的 0.3 &mu;m 測試粒徑。值得注意的事項：</p>
+  <ul>
+    <li>早期 Amway 文件使用的數字是 0.007 &mu;m（2018 年新聞稿），後來更新為 0.0024 &mu;m</li>
+    <li>Quora 上有工程師對此數字的可能性提出討論——極小微粒受布朗運動影響反而更容易被濾網捕捉，因此在物理上合理但測試方法需要明確說明</li>
+    <li><strong>未找到獨立第三方對此極小粒徑的驗證報告</strong>——此數據來自 Amway 委託測試，而非公開可查的第三方報告</li>
+    <li>韓國數據提到 EN 1822 標準，但 EN 1822 主要用於高效濾網分級測試，通常在 0.1-0.3 &mu;m 範圍的 MPPS (Most Penetrating Particle Size) 進行</li>
+  </ul>
+</div>
+
+<!-- ===== 10. 專利 ===== -->
+<h2 id="patent">10. 相關專利技術 <span class="badge badge-info">參考資料</span></h2>
+
+<div class="card">
+  <h3>已授權美國專利</h3>
+  <table>
+    <tr><th>專利號</th><th>名稱</th><th>內容</th></tr>
+    <tr>
+      <td>US 10,688,468</td>
+      <td>Treated activated carbon for removal of airborne organic and inorganic contaminants</td>
+      <td>經處理的活性碳濾材，可不可逆地去除或減少環境中的甲醛等有機及無機氣態污染物</td>
+    </tr>
+    <tr>
+      <td>US 11,000,824</td>
+      <td>Treated activated carbon for removal of airborne organic and inorganic contaminants</td>
+      <td>同上專利之延續案</td>
+    </tr>
+    <tr>
+      <td>US 10,773,235</td>
+      <td>Modified activated carbon for adsorption of airborne formaldehyde</td>
+      <td>針對甲醛吸附改質的活性碳技術</td>
+    </tr>
+  </table>
+  <p><strong>活性碳濾網規格：</strong>椰殼活性碳，1,315g (日本數據)，表面積等同 220 個足球場</p>
+  <p class="source">來源：<a href="https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/10688468" target="_blank">USPTO Patent US10688468</a>、<a href="https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/11000824" target="_blank">USPTO Patent US11000824</a></p>
+</div>
+
+<!-- ===== 11. 未找到 ===== -->
+<h2 id="notfound">11. 未能查證的項目</h2>
+
+<div class="card danger">
+  <h3>以下項目經搜尋後未能找到公開可驗證的數據</h3>
+  <table>
+    <tr><th>項目</th><th>搜尋結果</th></tr>
+    <tr>
+      <td><strong>CARB (加州空氣資源委員會) 認證</strong></td>
+      <td>CARB 的認證清單包含超過 9,000 個產品。在美國銷售的空氣清淨機依法需通過 CARB 認證（臭氧排放 &le; 0.05 ppm），Atmosphere Sky 在美國有銷售，推測應已取得，但本次搜尋未能在 CARB 公開清單中直接確認 Amway 的上架。</td>
+    </tr>
+    <tr>
+      <td><strong>Airmid Healthgroup 測試</strong></td>
+      <td>Airmid Healthgroup（愛爾蘭都柏林，ISO 17025 認證實驗室）確為知名空氣清淨設備測試機構，但搜尋未發現任何 Amway 委託 Airmid 進行測試的記錄。</td>
+    </tr>
+    <tr>
+      <td><strong>IBR Laboratories 測試報告</strong></td>
+      <td>未找到 IBR Laboratories 與 Amway Atmosphere Sky 相關的公開測試報告。</td>
+    </tr>
+    <tr>
+      <td><strong>Intertek / SGS / TUV 測試報告</strong></td>
+      <td>未找到這些測試機構對 Atmosphere Sky 的公開報告。產品可能經由 Intertek ETL 取得安全認證（EPA 生產者設施編號 006718-CHN-001 顯示中國製造），但具體報告未公開。</td>
+    </tr>
+    <tr>
+      <td><strong>Nelson Labs 測試</strong></td>
+      <td>未找到任何相關記錄。</td>
+    </tr>
+    <tr>
+      <td><strong>獨立學術研究（同儕審查論文）</strong></td>
+      <td>除 Amway 資助的 SleepScore Labs 會議摘要外，未找到完全獨立的同儕審查學術論文研究此產品。</td>
+    </tr>
+    <tr>
+      <td><strong>Wirecutter / RTINGS 評測</strong></td>
+      <td>這兩個主流評測網站均未收錄 Amway Atmosphere Sky 的測試。</td>
+    </tr>
+    <tr>
+      <td><strong>韓國 KC 認證編號</strong></td>
+      <td>搜尋未找到具體的 KC 認證號碼或電磁波適合性報告。</td>
+    </tr>
+    <tr>
+      <td><strong>各粒徑去除率 (0.1/0.3/1.0/2.5/10 &mu;m)</strong></td>
+      <td>Amway 僅公布單次通過效率 99.99%（在 0.0024 &mu;m 以上），未公布各粒徑的個別去除率數據。</td>
+    </tr>
+    <tr>
+      <td><strong>苯 (Benzene)、甲苯以外 VOC 去除率</strong></td>
+      <td>韓國測試數據包含甲苯 (99.5%+) 但未涵蓋苯的獨立測試數據。Amway 內部文件承認「cannot make a VOC claim」。</td>
+    </tr>
+    <tr>
+      <td><strong>各風速獨立噪音測量</strong></td>
+      <td>僅知範圍 26-52 dB(A)，夜間模式 25.2 dB(A)。各段風速的獨立噪音數據未公開。</td>
+    </tr>
+    <tr>
+      <td><strong>獨立實際功耗測量</strong></td>
+      <td>僅有「低速 &lt;5W、高速 &lt;50W」的約略描述及額定 65W。無第三方實測數據。</td>
+    </tr>
+  </table>
+</div>
+
+<!-- ===== 12. 關鍵發現 ===== -->
+<h2 id="critical">12. 關鍵發現與注意事項</h2>
+
+<div class="card success">
+  <h3>已確認的強項</h3>
+  <ol>
+    <li><strong>AHAM CADR 認證數據優異：</strong>Smoke 316 / Dust 304 / Pollen 319 cfm 的三項 CADR 值在同級產品中表現突出，且有 ENERGY STAR 公開資料庫可驗證</li>
+    <li><strong>四大國際認證齊全：</strong>AHAM + ENERGY STAR + Allergy UK + ECARF，涵蓋美國、英國、歐洲三大市場</li>
+    <li><strong>有害氣體去除有實測數據：</strong>韓國 KACA 標準測試提供五種氣體的個別去除率，甲苯 99.5%+ 和甲醛 91% 的數字具有參考價值</li>
+    <li><strong>睡眠研究有學術發表：</strong>SleepScore Labs 研究以摘要形式發表於 SLEEP 期刊 (Oxford Academic)，具有一定學術公信力</li>
+  </ol>
+</div>
+
+<div class="card danger">
+  <h3>需要注意的問題</h3>
+  <ol>
+    <li><strong>病毒/細菌去除為推算而非實測：</strong>Amway 官方已揭露未以實際病毒進行測試，102 種污染物的去除聲明基於粒徑代理推算。這是業界常見做法，但消費者容易誤解為直接實測</li>
+    <li><strong>VOC 去除能力有限：</strong>Amway 內部承認無法對 VOC 做出全面宣稱，活性碳對 VOC 的吸附量有限且受濕度影響</li>
+    <li><strong>低速效能顯著下降：</strong>Consumer Reports 明確指出低速下「not very effective」，而 CADR 認證數據均在最高速 (Speed 5) 下測試</li>
+    <li><strong>0.0024 &mu;m 宣稱缺乏獨立驗證：</strong>此極小粒徑的去除率數據來自 Amway 委託測試，未見獨立第三方驗證</li>
+    <li><strong>缺乏主流評測機構收錄：</strong>Wirecutter、RTINGS 等主流評測網站均未收錄此產品，限制了獨立比較的可能性</li>
+    <li><strong>SleepScore 研究由 Amway 資助：</strong>研究設計為前後測（無對照組），且樣本量小 (n=31)，改善量雖統計顯著但絕對值小</li>
+  </ol>
+</div>
+
+<div class="card">
+  <h3>與台灣市場的關聯性</h3>
+  <ul>
+    <li>AHAM 的 CADR 認證是全球統一標準，適用於台灣市場的產品效能參考</li>
+    <li>韓國 KACA 標準 (SPS-KACA002-132) 的有害氣體去除數據比台灣 CNS 標準更詳細</li>
+    <li>ENERGY STAR 的年耗電 298 kWh/yr 可作為台灣電費評估依據</li>
+    <li>建議確認台灣販售機型的電壓規格是否與搜尋到的美國 (120V) 或韓國 (100-240V) 版本一致</li>
+  </ul>
+</div>
+
+<!-- ===== 來源彙整 ===== -->
+<h2>資料來源彙整</h2>
+<div class="card">
+  <ol style="font-size:0.85em; padding-left:20px;">
+    <li><a href="https://www.energystar.gov/productfinder/product/certified-room-air-cleaners/" target="_blank">EPA ENERGY STAR Product Finder - Certified Room Air Cleaners</a></li>
+    <li><a href="https://ahamverifide.org/directory-of-air-cleaners/" target="_blank">AHAM Verifide - Directory of Air Cleaners</a></li>
+    <li><a href="https://www.allergyuk.org/our-services/allergyuk-products/amway-atmosphere-sky-air-purifier/" target="_blank">Allergy UK - Amway Atmosphere Sky Air Purifier</a></li>
+    <li><a href="https://www.ecarf-institute.org/en/products/atmosphere-sky-en/" target="_blank">ECARF Institute - Atmosphere Sky</a></li>
+    <li><a href="https://contenthub.amway.id/media/pdf/ECARF-Atmosphere-SKY.pdf" target="_blank">ECARF Certificate PDF (Amway Indonesia)</a></li>
+    <li><a href="https://contenthub.amway.id/media/pdf/Atmosphere-Sky-Allergy-UK-Certificate.pdf" target="_blank">Allergy UK Certificate PDF (Amway Indonesia)</a></li>
+    <li><a href="https://www.amway.co.kr/about-amway/atmosphere/purification" target="_blank">Amway Korea - 初微細淨化力 (Purification)</a></li>
+    <li><a href="https://www.amway.co.kr/shop/home/air-treatment/atmosphere-sky/p/120539K" target="_blank">Amway Korea - Atmosphere Sky 產品頁</a></li>
+    <li><a href="https://prod.danawa.com/info/?pcode=6790990" target="_blank">Danawa 價格比較 - 엣모스피어 스카이</a></li>
+    <li><a href="https://academic.oup.com/sleep/article/48/Supplement_1/A598/8136179" target="_blank">SLEEP Journal (Oxford Academic) - Abstract #1392</a></li>
+    <li><a href="https://www.amwayglobal.com/newsroom/amway-atmosphere-sky-air-treatment-system-certified-allergy-friendly/" target="_blank">Amway Global Newsroom - Certified Allergy-Friendly</a></li>
+    <li><a href="https://www.amwayglobal.com/newsroom/amway-atmosphere-sky-and-atmosphere-mini-earn-sleepscore-labs-validation-seal-for-supporting-better-sleep/" target="_blank">Amway Global Newsroom - SleepScore Labs Validation</a></li>
+    <li><a href="https://www.consumerreports.org/appliances/air-purifiers/amway-atmosphere-101076/m91798/" target="_blank">Consumer Reports - Amway Atmosphere 101076</a></li>
+    <li><a href="https://www.amwayglobal.com/answers/amway-covid-19-faq/" target="_blank">Amway COVID-19 FAQ (揭露未以病毒實測)</a></li>
+    <li><a href="https://www.manualslib.com/manual/1325339/Amway-Atmosphere-Sky.html" target="_blank">ManualsLib - Atmosphere Sky Owner's Manual</a></li>
+    <li><a href="https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/10688468" target="_blank">USPTO Patent US10,688,468</a></li>
+    <li><a href="https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/11000824" target="_blank">USPTO Patent US11,000,824</a></li>
+    <li><a href="https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/10773235" target="_blank">USPTO Patent US10,773,235</a></li>
+    <li><a href="https://ww2.arb.ca.gov/list-carb-certified-air-cleaning-devices" target="_blank">CARB - List of Certified Air Cleaning Devices</a></li>
+    <li><a href="https://www.amwayhome.jp/electronics/atmosphere/features/index.html" target="_blank">Amway Japan - Atmosphere 除去性能</a></li>
+  </ol>
+</div>
+
+<p style="text-align:center; color:#999; font-size:0.8em; padding:20px 0;">
+  &copy; 2026 如菓室內裝修 &#8226; 本報告僅供內部參考 &#8226; 賈維斯製表
+</p>
+
+</body>
+</html>
