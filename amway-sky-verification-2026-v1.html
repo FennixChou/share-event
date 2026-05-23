@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>安麗 Atmosphere Sky 報告查驗分析｜2026-05-23</title>
+<style>
+  :root {
+    --bg: #f4f7fb;
+    --card: #ffffff;
+    --ink: #243447;
+    --muted: #617184;
+    --line: #d8e1ea;
+    --blue: #0f4c81;
+    --blue2: #1b6ca8;
+    --green: #1f8b4c;
+    --yellow: #c98700;
+    --red: #c0392b;
+    --gray: #7f8c8d;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.75;
+  }
+  header {
+    background: linear-gradient(135deg, var(--blue), var(--blue2));
+    color: #fff;
+    padding: 38px 18px;
+  }
+  header .wrap, main { max-width: 1080px; margin: 0 auto; }
+  h1 { margin: 0 0 8px; font-size: 1.9rem; }
+  .subtitle { opacity: .92; font-size: 1rem; }
+  .meta { opacity: .82; font-size: .9rem; margin-top: 10px; }
+  main { padding: 22px 16px 40px; }
+  section {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 22px;
+    margin: 18px 0;
+    box-shadow: 0 6px 18px rgba(18, 52, 86, 0.05);
+  }
+  h2 {
+    margin: 0 0 14px;
+    font-size: 1.28rem;
+    color: var(--blue);
+    border-left: 5px solid var(--blue2);
+    padding-left: 12px;
+  }
+  h3 { margin: 18px 0 8px; color: #274d6e; }
+  p, li { font-size: .97rem; }
+  ul { margin: 8px 0 0 0; padding-left: 22px; }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-top: 16px;
+  }
+  .score {
+    border: 1px solid var(--line);
+    background: #f8fbff;
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+  }
+  .score .num { font-size: 2rem; font-weight: 700; color: var(--blue); }
+  .score .lab { color: var(--muted); font-size: .9rem; }
+  .pill {
+    display: inline-block;
+    border-radius: 999px;
+    padding: 3px 10px;
+    font-size: .82rem;
+    font-weight: 700;
+    color: #fff;
+    margin-right: 6px;
+    white-space: nowrap;
+  }
+  .ok { background: var(--green); }
+  .partial { background: var(--yellow); }
+  .bad { background: var(--red); }
+  .neutral { background: var(--gray); }
+  .callout {
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin: 12px 0;
+    border-left: 5px solid var(--blue2);
+    background: #eef6ff;
+  }
+  .warn { background: #fff7e8; border-left-color: var(--yellow); }
+  .danger { background: #fff0ee; border-left-color: var(--red); }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .92rem;
+    margin-top: 10px;
+  }
+  th, td {
+    border: 1px solid var(--line);
+    padding: 10px 11px;
+    text-align: left;
+    vertical-align: top;
+  }
+  th { background: #edf4fa; color: var(--blue); }
+  tr:nth-child(even) td { background: #fbfdff; }
+  code { background: #eef3f8; padding: 2px 6px; border-radius: 6px; }
+  .sources li { word-break: break-word; }
+  a { color: var(--blue2); }
+  .small { color: var(--muted); font-size: .88rem; }
+  .footnote { color: var(--muted); font-size: .88rem; margin-top: 10px; }
+  @media (max-width: 720px) {
+    h1 { font-size: 1.45rem; }
+    section { padding: 16px; }
+    table { font-size: .86rem; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>安麗 Atmosphere Sky 原報告查驗分析報告</h1>
+    <div class="subtitle">針對「amway-sky-complete-2026.html」之內容、數據與證據鏈進行官方來源交叉查證</div>
+    <div class="meta">查驗日期：2026-05-23｜查驗方式：官方產品頁、官方商店、ENERGY STAR API、CARB 公告、ECARF/Allergy UK 證書、Amway Global 聲明</div>
+  </div>
+</header>
+<main>
+  <section>
+    <h2>一、整體結論</h2>
+    <div class="callout">
+      原始報告不是憑空編造，<strong>多數基礎規格、價格、CADR、能源效率與主要認證確實有來源可循</strong>；但它把不少「官方行銷說法」直接寫成「已驗證事實」，且有幾個關鍵數字與驗證結論過度肯定，特別是 <strong>甲醛 91%、HEPA H13、Allergy UK 22 類/102 種、病毒防護語意</strong> 等部分需要修正。
+    </div>
+    <div class="hero-grid">
+      <div class="score"><div class="num">68 / 100</div><div class="lab">整體可信度</div></div>
+      <div class="score"><div class="num">高</div><div class="lab">基礎規格／價格可信度</div></div>
+      <div class="score"><div class="num">中</div><div class="lab">性能／認證詮釋可信度</div></div>
+      <div class="score"><div class="num">低</div><div class="lab">部分延伸推論與「已驗證」標記精準度</div></div>
+    </div>
+    <h3>核心判定</h3>
+    <ul>
+      <li><span class="pill ok">可確認</span> 主機價格 NT$41,000、濾網價格、尺寸重量、CADR 510 m³/h、WiFi/藍牙、空氣品質監測等，均可由安麗台灣官方頁面或商店頁面交叉確認。</li>
+      <li><span class="pill ok">可確認</span> ENERGY STAR 資料可直接由官方 API 查到：<code>model 120539**</code>、<code>Smoke 316 / Dust 304 / Pollen 319 cfm</code>、<code>integrated energy factor 6.1</code>、<code>annual energy use 298 kWh/yr</code>、<code>ozone emissions 0.00 ppb</code>。</li>
+      <li><span class="pill partial">需修正</span> 原報告把 <strong>65W</strong> 標成「已驗證」，但安麗台灣官方頁寫的是 <strong>功耗 6~50W</strong>；65W 可能是其他市場額定值，不能直接當成台灣版已驗證規格。</li>
+      <li><span class="pill bad">不成立／證據不足</span> 原報告寫「KACA 甲醛去除率 91% 已有量化驗證」，我查到的官方韓文頁明文是 <strong>5 種有害氣體 30 分鐘平均 94%</strong>，未直接看到「甲醛單獨 91%」這個官方文字，因此該敘述至少屬於<strong>證據不足或引用錯位</strong>。</li>
+      <li><span class="pill partial">需降級為部分驗證</span> Allergy UK 證書能證明確有 Seal of Approval，但原報告寫的 <strong>22 個 trigger categories、102 種 allergens/pollutants</strong> 比較像官方行銷頁摘要，不是我讀到的證書原文內容，故不宜寫成無保留「已驗證」。</li>
+      <li><span class="pill partial">需補限制說明</span> 安麗官方確實有「0.0024 微米、99.99%」說法，但那是針對<strong>顆粒單次通過濾材</strong>的表現，不等於對氣態甲醛、全室病毒暴露或真實居家情境都能直接套用。</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>二、查驗方法與分級標準</h2>
+    <table>
+      <tr><th>等級</th><th>判定標準</th></tr>
+      <tr><td><span class="pill ok">已確認</span></td><td>可由官方資料庫、官方產品頁、官方商店頁、正式證書或公部門公開資料直接對到同一數值或同一主張。</td></tr>
+      <tr><td><span class="pill partial">部分確認</span></td><td>主張方向大致成立，但數值、情境、有效期間、適用地區或證據層級不完全吻合。</td></tr>
+      <tr><td><span class="pill bad">不成立／證據不足</span></td><td>目前查到的官方資料無法支持原文數字，或原文把推論、行銷語句寫成硬證據。</td></tr>
+      <tr><td><span class="pill neutral">估算／評論</span></td><td>屬作者分析、推估、成本試算或評論，不是客觀可直接驗證的官方數據。</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>三、逐項查驗結果</h2>
+    <table>
+      <tr>
+        <th style="width:20%">原報告主張</th>
+        <th style="width:14%">查驗結果</th>
+        <th>分析</th>
+        <th style="width:30%">主要證據</th>
+      </tr>
+      <tr>
+        <td>台灣主機售價 NT$41,000；HEPA NT$5,200；活性碳 NT$3,450</td>
+        <td><span class="pill ok">已確認</span></td>
+        <td>三組價格可由安麗台灣電商頁的產品結構化資料直接讀到，與原報告一致。</td>
+        <td>安麗台灣電商 2070 / 2075 / 2076 的 JSON-LD：price 分別為 41000 / 5200 / 3450。</td>
+      </tr>
+      <tr>
+        <td>尺寸 74.7 × 41.1 × 30.1 cm；重量 12.6 kg；CADR 510 m³/h；WiFi/藍牙；空氣品質監測</td>
+        <td><span class="pill ok">已確認</span></td>
+        <td>安麗台灣官網規格表可直接讀到這些欄位。原報告此段基礎規格大致正確。</td>
+        <td>安麗台灣 <code>sky.html</code>："連接性 WiFi／藍芽(需搭配Connect APP)"、"重量 12.6 kg"、"尺寸 74.7 x 41.1 x 30.1cm"、"CADR 510m³/hr"。</td>
+      </tr>
+      <tr>
+        <td>額定功率 65W（韓國 Amway 數據），並標記「已驗證」</td>
+        <td><span class="pill partial">部分確認</span></td>
+        <td>原報告沒有清楚區分市場版本。台灣官方頁查到的是 <strong>功耗 6~50W</strong>，不是 65W。若 65W 來自韓國市場，應標註為「韓國版規格」，不能直接包裝成台灣版已驗證值。</td>
+        <td>安麗台灣官網："功耗 6~50W"。原報告第 297 行寫 65W，存在區域規格混用風險。</td>
+      </tr>
+      <tr>
+        <td>ENERGY STAR：6.1 cfm/W、298 kWh/yr</td>
+        <td><span class="pill ok">已確認</span></td>
+        <td>這兩項可由 ENERGY STAR 官方 Socrata API 直接查得，資料與原報告一致。</td>
+        <td>ENERGY STAR API：<code>brand_name=Atmosphere Sky</code>、<code>integrated_energy_factor_cfm_w=6.1</code>、<code>annual_energy_use_kwh_yr=298.00</code>。</td>
+      </tr>
+      <tr>
+        <td>AHAM CADR：Smoke 316 / Dust 304 / Pollen 319 cfm</td>
+        <td><span class="pill ok">已確認</span></td>
+        <td>即使我未直接調到 AHAM 的易讀資料列，但 ENERGY STAR 官方資料列同樣列出這三個 CADR 數值，可視為充分佐證。</td>
+        <td>ENERGY STAR API：<code>smoke_free_clean_air_delivery=316.0</code>、<code>dust_free_clean_air_delivery=304.0</code>、<code>pollen_free_clean_air_delivery=319.0</code>。</td>
+      </tr>
+      <tr>
+        <td>Allergy UK：全部 22 個過敏觸發類別、102 種污染物，標記「已驗證」</td>
+        <td><span class="pill partial">部分確認</span></td>
+        <td>我拿到的 Allergy UK 證書可證明產品曾獲 Seal of Approval，且證書列出多類過敏原、細菌、病毒、刺激物與致癌物；但「22 類／102 種」這種精確統計，在我讀到的證書原文裡沒有直接逐條出現。這比較像品牌宣傳頁的摘要，不宜直接標「已驗證」。此外證書文本顯示效期至 <strong>2023-08-09</strong>，原報告未交代效期問題。</td>
+        <td>Allergy UK PDF 證書：valid until 9th August 2023；香港官網文案提到 22 trigger categories / 102 types of allergens。</td>
+      </tr>
+      <tr>
+        <td>ECARF：證書編號 8314，2017 首發、2025 展延</td>
+        <td><span class="pill ok">已確認</span></td>
+        <td>這項證據鏈完整，且比原報告更可進一步補上最新展延有效期到 2027。</td>
+        <td>ECARF PDF：initial certification 31.10.2017；Declaration of Product Conformity 20.10.2025；Validity 31.10.2025–31.10.2027；certificate number 8314。</td>
+      </tr>
+      <tr>
+        <td>KACA 甲醛去除率 91%，且為目前唯一可查證量化數據</td>
+        <td><span class="pill bad">證據不足</span></td>
+        <td>我查到的安麗韓國官方頁明文是：在 8㎡ 空間、30 分鐘、SPS-KACA002-132:2018 條件下，對乙酸、甲苯、氨、乙醛、甲醛等 <strong>5 種有害氣體平均去除 94%</strong>。目前沒有在官方頁文字中直接看到「甲醛單獨 91%」這個數字，因此原報告把 91% 當成甲醛專屬數據，證據鏈不夠完整。</td>
+        <td>安麗韓國 purification 頁："平均 94% 有害氣體去除率"、測試條件 8.0±0.2㎥、21±1°C、45±5% RH、30 分鐘、含 HCHO。</td>
+      </tr>
+      <tr>
+        <td>HEPA 為 H13 等級</td>
+        <td><span class="pill bad">未證實</span></td>
+        <td>我在安麗台灣官網、台灣濾網商品頁與韓國官方頁中，看到的是「高效 HEPA 濾網」、「EN1822 測試」或 ENERGY STAR 裡的 <code>HEPA-Type</code>，沒有查到官方直接把 Sky 濾網標成 H13。這種等級判定不能自行補寫。</td>
+        <td>安麗台灣官網未見 H13；ENERGY STAR API：<code>filter_1_type=HEPA-Type</code>。</td>
+      </tr>
+      <tr>
+        <td>0.0024 微米、99.99% 去除率</td>
+        <td><span class="pill partial">部分確認</span></td>
+        <td>這是官方確實存在的行銷說法，但應限制在<strong>顆粒物／濾材單次通過</strong>的範圍。它不能直接推導成對甲醛、所有病毒暴露、全室真實環境都有同等效果。</td>
+        <td>安麗台灣、韓國、香港官網皆有 0.0024 μm／99.99% 文案；韓國頁並註明 EN1822 測試、空氣通過機器後之結果。</td>
+      </tr>
+      <tr>
+        <td>可濾除病毒／細菌</td>
+        <td><span class="pill partial">部分確認</span></td>
+        <td>台灣官網確實把冠狀病毒、流感病毒列入可濾除內容；但 Amway Global 的 COVID FAQ 同時強調：空氣清淨機本身<strong>不是防護病毒的適當方法</strong>，只能處理真正被吸進機器的那部分空氣。原報告如果沒有把這段限制寫清楚，容易讓讀者誤解為防疫級保護。</td>
+        <td>安麗台灣官網列出病毒；Amway Global FAQ："not by themselves an appropriate method of protection against viruses such as COVID-19... only from the air actually drawn through the unit."</td>
+      </tr>
+      <tr>
+        <td>SleepScore Labs 睡眠品質改善驗證，標記「已驗證」</td>
+        <td><span class="pill partial">部分確認</span></td>
+        <td>確有 Amway Global 新聞稿，內容指出 8 週研究、每組約 30 位參與者、深睡平均增加 5.5 分鐘（Sky）。但這仍屬公司發布之研究摘要，不等於高等級獨立臨床證據。原報告若寫成「已驗證」，建議改成「有公司發布研究支持，但證據強度有限」。</td>
+        <td>Amway Global Newsroom：8-week study、around 30 participants per study、Atmosphere Sky deep sleep average +5.5 minutes。</td>
+      </tr>
+      <tr>
+        <td>活性碳總吸附表面積 126 萬平方公尺</td>
+        <td><span class="pill ok">已確認</span></td>
+        <td>此數值可在安麗台灣官網直接找到，原報告引用本身沒有問題。但若要延伸成實際除味可用面積，仍需注意那是材料表面積，不等於實際有效房間坪數。</td>
+        <td>安麗台灣官網："總吸附表面積達126萬平方公尺，面積相當於5座大安森林公園。"</td>
+      </tr>
+      <tr>
+        <td>CCM、五年成本、濾網壽命推估等分析</td>
+        <td><span class="pill neutral">估算／評論</span></td>
+        <td>這些內容有分析價值，但本質上屬作者推估，不是官方可直接查核的固定事實。最適合標示成「估算模型」或「作者試算假設」，不要混進「已驗證」區。</td>
+        <td>原報告本身已有推估語氣，但部分段落容易讓讀者誤以為是外部認證數據。</td>
+      </tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>四、我認為原報告最需要修正的 7 個地方</h2>
+    <ol>
+      <li><strong>把 65W 改成市場別註記</strong>：台灣頁是 6~50W；65W 若保留，應改寫為「韓國市場資料」。</li>
+      <li><strong>把「甲醛 91%」降級為待補證</strong>：目前可直接查到的是 5 種有害氣體平均 94%，不是甲醛單項 91% 的官方原文。</li>
+      <li><strong>刪除或改寫「H13 等級」</strong>：目前只查到 HEPA / HEPA-Type / EN1822 測試，未見官方直接標 H13。</li>
+      <li><strong>Allergy UK 改成部分驗證</strong>：Seal of Approval 可確認，但 22 類 / 102 種應標「官方宣稱」或補上更直接證據。</li>
+      <li><strong>SleepScore 改成「有公司研究支持」</strong>：不要直接寫成第三方強驗證或臨床已證實。</li>
+      <li><strong>病毒／細菌表述加限制條件</strong>：需補一句「僅對被吸入機器的空氣有效，不能視為病毒防護裝置」。</li>
+      <li><strong>所有估算型內容統一標記</strong>：像 CCM 推估、壽命推估、房間效能延伸，應與硬證據分欄分級。</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>五、可直接替換到原報告的修正版結論</h2>
+    <div class="callout warn">
+      <strong>建議改寫：</strong><br>
+      Atmosphere Sky 的基礎規格、售價、CADR、ENERGY STAR 能效數據與部分國際認證有相當完整的官方來源支撐；但在甲醛、過敏原統計、病毒防護與濾材等級等議題上，原報告仍混有部分市場行銷說法、證據不足的單項數值，以及作者推估。若要提高報告嚴謹度，建議把「官方宣稱」「第三方認證」「作者估算」三類資訊分開標示，避免將尚未完整佐證的敘述直接標成「已驗證」。
+    </div>
+  </section>
+
+  <section>
+    <h2>六、主要查核來源</h2>
+    <ul class="sources">
+      <li>原始報告：<a href="https://fennixchou.github.io/share-event/amway-sky-complete-2026.html">https://fennixchou.github.io/share-event/amway-sky-complete-2026.html</a></li>
+      <li>安麗台灣產品頁：<a href="https://www.amway.com.tw/sky/sky.html">https://www.amway.com.tw/sky/sky.html</a></li>
+      <li>安麗台灣電商主機：<a href="https://shop.amway.com.tw/products/2070">https://shop.amway.com.tw/products/2070</a></li>
+      <li>安麗台灣電商 HEPA：<a href="https://shop.amway.com.tw/products/2075">https://shop.amway.com.tw/products/2075</a></li>
+      <li>安麗台灣電商活性碳：<a href="https://shop.amway.com.tw/products/2076">https://shop.amway.com.tw/products/2076</a></li>
+      <li>ENERGY STAR Room Air Cleaners API（dataset gaa3-swy6）</li>
+      <li>CARB 清單：<a href="https://ww2.arb.ca.gov/list-carb-certified-air-cleaning-devices">https://ww2.arb.ca.gov/list-carb-certified-air-cleaning-devices</a></li>
+      <li>安麗韓國 purification 頁：<a href="https://www.amway.co.kr/about-amway/atmosphere/purification">https://www.amway.co.kr/about-amway/atmosphere/purification</a></li>
+      <li>Amway Hong Kong：<a href="https://corp.amway.com.hk/en/atmosphere-sky">https://corp.amway.com.hk/en/atmosphere-sky</a></li>
+      <li>Allergy UK 證書 PDF：<a href="https://contenthub.amway.id/media/pdf/Atmosphere-Sky-Allergy-UK-Certificate.pdf">https://contenthub.amway.id/media/pdf/Atmosphere-Sky-Allergy-UK-Certificate.pdf</a></li>
+      <li>ECARF 證書 PDF：<a href="https://contenthub.amway.id/media/pdf/ECARF-Atmosphere-SKY.pdf">https://contenthub.amway.id/media/pdf/ECARF-Atmosphere-SKY.pdf</a></li>
+      <li>Amway Global COVID FAQ：<a href="https://www.amwayglobal.com/answers/amway-covid-19-faq/">https://www.amwayglobal.com/answers/amway-covid-19-faq/</a></li>
+      <li>Amway Global SleepScore Newsroom：<a href="https://www.amwayglobal.com/newsroom/amway-atmosphere-sky-and-atmosphere-mini-earn-sleepscore-labs-validation-seal-for-supporting-better-sleep/">https://www.amwayglobal.com/newsroom/amway-atmosphere-sky-and-atmosphere-mini-earn-sleepscore-labs-validation-seal-for-supporting-better-sleep/</a></li>
+    </ul>
+    <div class="footnote">備註：本報告採「就可取得公開資料進行外部查核」的方法。若日後取得 KACA 原始試驗報告 PDF、Allergy UK 最新證書全文、或 AHAM 原始列表截圖，仍可再進一步提高定論強度。</div>
+  </section>
+</main>
+</body>
+</html>
