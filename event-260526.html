@@ -27,6 +27,10 @@
   .cta-btn { display: inline-block; background: #CC0000; color: #fff; font-size: 1.15rem; font-weight: 700; padding: 1rem 3rem; border-radius: 50px; text-decoration: none; letter-spacing: .1rem; box-shadow: 0 4px 15px rgba(204,0,0,.3); transition: all .2s; }
   .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(204,0,0,.4); }
   .cta-sub { color: #999; font-size: .85rem; margin-top: .8rem; }
+  .copy-btn { display: inline-block; background: #06C755; color: #fff; font-size: 1rem; font-weight: 700; padding: .8rem 2rem; border-radius: 50px; border: none; cursor: pointer; letter-spacing: .05rem; box-shadow: 0 4px 12px rgba(6,199,85,.3); transition: all .2s; margin-top: 1rem; }
+  .copy-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(6,199,85,.4); }
+  .copy-btn:active { transform: scale(.97); }
+  .copy-toast { display: none; color: #06C755; font-size: .9rem; margin-top: .5rem; font-weight: 600; }
   .footer { text-align: center; padding: 1.5rem; background: #1a1a2e; color: #aaa; font-size: .8rem; }
   @media (max-width: 480px) { .content { padding: 1.5rem 1rem; } .tagline { font-size: 1.2rem; } .cta-btn { padding: .9rem 2rem; font-size: 1rem; } }
 </style>
@@ -65,7 +69,13 @@
   <div class="cta-area">
     <a href="https://forms.gle/tqCdD4jSitMbebXL9" target="_blank" class="cta-btn">&#x1F449; 立即報名</a>
     <div class="cta-sub">名額有限，採審核制</div>
+    <button class="copy-btn" onclick="copyLink()">&#x1F4CB; 複製連結，分享到 LINE</button>
+    <div class="copy-toast" id="toast">&#x2705; 已複製！貼到 LINE 社群即可分享</div>
   </div>
+
+<script>
+function copyLink(){var t=document.getElementById('toast');navigator.clipboard.writeText(window.location.href).then(function(){t.style.display='block';setTimeout(function(){t.style.display='none'},2500)});}
+</script>
 
   <div class="footer">
     新住戶生態系 ｜ 串聯驗屋 × 設計 × 工程 × 軟裝資源
